@@ -59,9 +59,9 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
-role :app, %w{deploy@34.210.43.189}
-role :web, %w{deploy@34.210.43.189}
-role :db, %w{deploy@34.210.43.189}
+role :app, %w{deploy_user@34.210.43.189}
+role :web, %w{deploy_user@34.210.43.189}
+role :db, %w{deploy_user@34.210.43.189}
 
 set :ssh_options, {
    keys: %w(~/.ssh/wayne-ec2.pem),
