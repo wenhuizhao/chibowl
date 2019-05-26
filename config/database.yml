@@ -29,7 +29,6 @@ test:
   database: chibowl_test
 
 production:
-  <<: *default
   adapter: mysql2
   database: chibowl
   host: <%= ENV['DB_HOST'] %>
