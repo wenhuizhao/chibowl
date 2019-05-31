@@ -77,5 +77,6 @@ gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem 'capistrano-figaro-yml', '~> 1.0.2'
 gem 'geocoder'
-gem 'country_select'
+#gem 'country_select'
 gem 'enum_help'
+#gem "comfortable_mexican_sofa", "~> 2.0.0"
