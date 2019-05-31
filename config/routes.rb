@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
+  resources :order_items
+  resources :orders
+  resources :products
+  resources :categories
+  resources :chefs
   resources :demos
-  devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }, :controllers => {:omniauth_callbacks => "users/omniauth_callback" }
+  devise_for :user, :path => '', 
+    :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" },
+    :controllers => {
+      :registrations => "users/registrations",
+      :omniauth_callbacks => "users/omniauth_callback" 
+    }
   root 'pages#home'
   get  "/*id", to: 'pages#show', as: :page, format: false, constraints: HighVoltage::Constraints::RootRoute
 

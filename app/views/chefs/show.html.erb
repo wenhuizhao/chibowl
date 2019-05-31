@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @chef.name %> %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @chef.desc %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @chef.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @chef.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @chef.state %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @chef.country %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @chef.zip %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @chef.user.email %>
+<p>
+  <strong>Latitude:</strong>
+  <%= @chef.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @chef.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_chef_path(@chef) %> |
+<%= link_to 'Back', chefs_path %>

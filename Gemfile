@@ -55,6 +55,10 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -72,3 +76,6 @@ gem 'capistrano-passenger', '>= 0.1.1'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem 'capistrano-figaro-yml', '~> 1.0.2'
+gem 'geocoder'
+gem 'country_select'
+gem 'enum_help'

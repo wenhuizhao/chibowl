@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Chefs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Desc</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Zip</th>
+      <th>User</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chefs.each do |chef| %>
+      <tr>
+        <td><%= chef.name %></td>
+        <td><%= chef.desc %></td>
+        <td><%= chef.street %></td>
+        <td><%= chef.city %></td>
+        <td><%= chef.state %></td>
+        <td><%= chef.country %></td>
+        <td><%= chef.zip %></td>
+        <td><%= chef.user.email %></td>
+        <td><%= chef.latitude %></td>
+        <td><%= chef.longitude %></td>
+        <td><%= link_to 'Show', chef %></td>
+        <td><%= link_to 'Edit', edit_chef_path(chef) %></td>
+        <td><%= link_to 'Destroy', chef, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chef', new_chef_path %>

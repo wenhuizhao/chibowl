@@ -1,9 +1,25 @@
 class User < ApplicationRecord
+  has_many :chefs
+  has_many :orders
+  geocoded_by :address
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
+  after_initialize :set_default_role, if: :new_record?
+  after_validation :geocode
+
+  enum role: [:user, :chef, :admin]
+
+  def address
+    [street, city, state, country].compact.join(', ')
+  end
+
+  def set_default_role
+    self.role ||= :user
+  end
 
   def self.new_with_session(params, session)
     super.tap do |user|

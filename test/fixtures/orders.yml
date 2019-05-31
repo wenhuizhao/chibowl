@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  status: 1
+  order_date: 2019-05-30 15:57:54
+  detail: MyText
+
+two:
+  user_id: 1
+  status: 1
+  order_date: 2019-05-30 15:57:54
+  detail: MyText

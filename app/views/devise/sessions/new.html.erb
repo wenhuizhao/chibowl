@@ -13,8 +13,13 @@
             <div class="form-actions center">
               <%= f.button :submit, "Log in" %>
             </div>
-            <div class="form-actions right">
+            <div class="form-actions">
+            <div class= "left">
+              <%= link_to "Register", new_user_registration_path %>
+            </div>
+            <div class="right">
               <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+            </div>
             </div>
           <% end %>    
         
