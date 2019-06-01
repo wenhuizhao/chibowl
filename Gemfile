@@ -47,7 +47,7 @@ end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+#  gem 'byebug', platform: :mri
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
@@ -80,3 +80,6 @@ gem 'geocoder'
 #gem 'country_select'
 gem 'enum_help'
 #gem "comfortable_mexican_sofa", "~> 2.0.0"
+gem 'paperclip', '~> 6.0.0'
+gem 'paperclip-ffmpeg', '~> 1.2.0'
+gem 'paperclip-av-transcoder'
