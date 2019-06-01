@@ -84,3 +84,4 @@ gem 'paperclip', '~> 6.1.0'
 gem 'paperclip-ffmpeg', '~> 1.2.0'
 gem 'paperclip-av-transcoder'
 gem 'aws-sdk-s3', '~> 1'
+gem "comfortable_mexican_sofa", "~> 1.12.0"
