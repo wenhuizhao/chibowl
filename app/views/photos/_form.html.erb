@@ -1,0 +1,14 @@
+<%= simple_form_for(@photo) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :global_owner, collection: Product.all+Chef.all,
+      label_method: :name, value_method: :to_global_id %>
+    <%= f.input :image, as: :file%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -80,6 +80,7 @@ gem 'geocoder'
 #gem 'country_select'
 gem 'enum_help'
 #gem "comfortable_mexican_sofa", "~> 2.0.0"
-gem 'paperclip', '~> 6.0.0'
+gem 'paperclip', '~> 6.1.0'
 gem 'paperclip-ffmpeg', '~> 1.2.0'
 gem 'paperclip-av-transcoder'
+gem 'aws-sdk-s3', '~> 1'

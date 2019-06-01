@@ -9,6 +9,11 @@
   <strong>Category:</strong>
   <%= @product.category_id %>
 </p>
+<% if @product.featured %>
+<p>
+  <strong>Featured</strong>
+</p>
+<% end %>
 
 <p>
   <strong>Chef:</strong>
