@@ -5,16 +5,16 @@
       </div>
       <a href="#!user"><%= image_tag("yuna.jpg", class: "circle") %></a>
       <% if user_signed_in? %>
-        <a><span class="white-text name">Hello World</span></a>
+        <a><span class="white-text name">吃宝</span></a>
         <a><span class="white-text email"><%= current_user.email %></span></a>
       <% else %>
-        <a><span class="white-text name">Welcome</span></a>
+        <a><span class="white-text name">欢迎</span></a>
       <% end %>
     </div></li>
     <!-- li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li -->
-    <li><a href="/">Home</a></li>
-    <li><a href="/demos">Demos</a></li>
-    <li><a href="/parts">Parts</a></li>
+    <li><a href="/">主页</a></li>
+    <li><a href="/chefs">私厨</a></li>
+    <li><a href="/cms">资讯</a></li>
    
     <% if user_signed_in? %>
       <li><div class="divider"></div></li>
