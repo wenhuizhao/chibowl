@@ -9,8 +9,7 @@ default: &default
 #  pool: 5
 #  timeout: 5000
   adapter: mysql2
-#  host: localhost
-  host: mysql.chm.life
+  host: localhost
   username: root
   password: 
   pool: 5
