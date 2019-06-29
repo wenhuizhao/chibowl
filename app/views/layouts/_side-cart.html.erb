@@ -1,0 +1,29 @@
+<div class="mdl-layout__drawer mdl-layout__drawer--right oxy-product-cart">
+    <span class="mdl-layout-title">Cart</span>
+    <div class="oxy-layout__divider"></div>
+    <div class="oxy-product-cart__body">
+        <ul class="oxy-list" id="side-cart-ul">
+
+        </ul>
+        <div class="oxy-product-cart__actions">
+            <div class="oxy-layout__divider"></div>
+            <h3 class="oxy-product-cart__total">
+                <%= t 'cart.subtotal' %>: <span id="side-cart-subtotal"></span>
+            </h3>
+            <div class="oxy-layout__divider"></div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                    <a href="cart.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent oxy-full-width">
+                      <%= t 'cart.view_cart' %>
+                    </a>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                    <a href="checkout.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary oxy-full-width">
+                      <%= t 'cart.checkout'%>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="side-cart-obfuscator" class="mdl-layout__obfuscator"></div>

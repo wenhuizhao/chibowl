@@ -1,0 +1,32 @@
+<header class="mdl-layout__header mdl-layout__header--scroll">
+    <!-- Top row, always visible -->
+    <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <a class="mdl-layout-title" href="index.html">
+            <%= image_tag "logo.png", alt:"ChiBowl" %> </a>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="shop.html"><%= t 'header.home' %></a>
+            <a class="mdl-navigation__link" href="posts.html"><%= t 'header.chef' %></a>
+            <a class="mdl-navigation__link" href="customizer.html"><%= t 'header.news' %></a>
+            <a class="mdl-navigation__link" href="cart.html"><%= t 'header.cart' %></a>
+            <a class="mdl-navigation__link" href="checkout.html"><%= t 'header.checkout' %></a>
+        <ul class="nav-right">
+        <% if user_signed_in? %>
+        <% else %>
+            <li>
+            <%= link_to (t 'header.login'), new_user_session_url, class: 'mdl-navigation__link' %>
+            </li>
+        <% end %>
+        </ul>
+
+        </nav>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
+                <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+                <input class="mdl-textfield__input" type="text" name="sample" id="waterfall-exp" /> </div>
+        </div>
+    </div>
+</header>

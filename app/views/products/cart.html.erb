@@ -1,0 +1,129 @@
+<div class="oxy-section">
+  <div class="oxy-section__background oxy-background-parallax">
+      <img src="assets/images/backgrounds/bg24-notinclude.jpg" alt="section background"> </div>
+  <div class="oxy-section__overlay oxy-section__overlay--gradient-from-top-30"></div>
+  <div class="oxy-section__content">
+      <div class="mdl-grid mdl-grid--no-fullwidth">
+          <h1 class="oxy-color-light mdl-typography--display-1 mdl-typography--font-thin "><%=t '.cart_title'%></h1>
+      </div>
+  </div>
+</div>
+<div class="oxy-section">
+  <div class="oxy-section__content">
+      <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
+          <div class="mdl-cell mdl-cell--12-col">
+              <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp oxy-full-width oxy-data-table oxy-data-table--center oxy-data-table--middle">
+                  <thead>
+                      <tr>
+                          <th> </th>
+                          <th> </th>
+                          <th><%= t '.product'%></th>
+                          <th><%= t '.price'%></th>
+                          <th><%= t '.quantity'%></th>
+                          <th><%= t '.total'%></th>
+                      </tr>
+                  </thead>
+                  <tbody id="cart-tbody">
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-bottom-20">
+          <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--8-col-phone mdl-cell--middle">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--full-width">
+                  <input class="mdl-textfield__input" type="text" id="coupon" />
+                  <label class="mdl-textfield__label" for="coupon">Coupon Code</label>
+              </div>
+          </div>
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet mdl-cell--8-col-phone mdl-cell--middle">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent oxy-full-width"> Apply Coupon </button>
+          </div>
+          <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--8-col-phone mdl-cell--middle"> </div>
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-cell--middle">
+              <!-- Accent-colored raised button with ripple -->
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent oxy-full-width"> Update Cart </button>
+          </div>
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-cell--middle">
+              <!-- Accent-colored raised button with ripple -->
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary oxy-full-width"> Checkout </button>
+          </div>
+      </div>
+      <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-bottom-40">
+          <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--8-col-phone mdl-cell--middle"> </div>
+          <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--8-col-phone mdl-cell--middle">
+              <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp oxy-full-width oxy-data-table oxy-data-table--center oxy-data-table--middle">
+                  <thead>
+                      <tr>
+                          <th colspan=2> <%= t 'cart.total' %> </th>
+                      </tr>
+                      <tbody>
+                          <tr>
+                              <td class="mdl-data-table__cell--non-numeric"><%= t 'cart.subtotal' %></td>
+                              <td id="cart-subtotal"></td>
+                          </tr>
+                          <tr>
+                              <td class="mdl-data-table__cell--non-numeric"><%= t 'cart.shipping' %> </td>
+                              <td id="cart-shipping"></td>
+                          </tr>
+                          <tr>
+                              <td class="mdl-data-table__cell--non-numeric">
+                                  <strong><%= t 'cart.total' %></strong>
+                              </td>
+                              <td>
+                                  <strong id="cart-total"></strong>
+                              </td>
+                          </tr>
+                      </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function(){
+    var items = getCartItems();
+    Object.keys(items).forEach(function(productId) {
+      var item = items[productId];
+      var tr = '<tr id="tr-product-'+productId+'">'+
+        '<td>'+
+        '    <a href="javascript:void(0);" onClick="removeProduct('+productId+')" title="Remove this item" class="mdl-button mdl-js-button mdl-button--accent mdl-button--icon">'+
+        '       <i class="material-icons">close</i>'+
+        '    </a>'+
+        '</td>'+
+        '<td>'+
+        '   <a href="#">'+
+        '       <img width="60" height="60" src="'+item.thumb+'" alt="image"> </a>'+
+        '</td>'+
+        '<td>'+
+        '   <a href="#">'+item.name+'</a>'+
+        '</td>'+
+        '<td> '+item.price.toFixed(2)+' </td>'+
+        '<td>'+
+        '   <div class="oxy-quantity">'+
+        '       <input type="button" value="-" onClick="minusQuantity('+productId+')">'+
+        '       <div class="mdl-textfield mdl-js-textfield">'+
+        '           <input type="number" step="1" min="0" name="cart" value='+item.quantity+
+        '         title="Qty" class="mdl-textfield__input" id="quantity-'+productId+'">'+
+        '           <label class="mdl-textfield__label" for="q1"></label>'+
+        '       </div>'+
+        '       <input type="button" value="+" onClick="plusQuantity('+productId+')"> </div>'+
+        '</td>'+
+        '<td id="total">'+
+        '   <strong>'+(item.price*item.quantity).toFixed(2)+'</strong>'+
+        '</td>'+
+    '</tr>';
+
+      $('#cart-tbody').append(tr);
+    });
+  });
+  function removeProduct(productId) {
+    $('#tr-product-'+productId).remove();
+  }
+  function plusQuantity(productId){
+    $('#quantity-'+productId).val(parseInt($('#quantity-'+productId).val())+1);
+  }
+  function minusQuantity(productId){
+    $('#quantity-'+productId).val(parseInt($('#quantity-'+productId).val())-1);    
+  }
+</script>

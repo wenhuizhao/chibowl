@@ -9,32 +9,46 @@
       <meta content="/" name="turbolinks-root" />
       <meta content="no-preview" name="turbolinks-cache-control" />
 
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,400italic,500,500italic,700,900' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
       <%= csrf_meta_tags %>
    </head>
    <body>
 
-      <%= render 'layouts/header_1' %>
-      <%= render 'layouts/side_bar' %>
+ <!--[if lt IE 10]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button mdl-layout--fixed-header">
+            <%= render "layouts/header" %>
+            <%= render "layouts/drawer" %>
+            <main class="mdl-layout__content">
+              <%= yield :form_errors %>
+              <%= yield %>
+              <%= render "layouts/footer" %>
+            </main>
+        </div>
+  <%= render "layouts/cart-button" %>
+  <%= render "layouts/side-cart" %>
 
-      <% flash.each do |message_type, message| %>
-        <%= javascript_tag "Materialize.toast('#{message}', 4000)" %>
-      <% end %> 
-
-      <%= render 'layouts/main' %>
-
-      <% if current_page?(root_path) %>
-        <%= render 'layouts/footer_2' %>
-      <% else %>
-        <style>
-            .page-footer { padding-top: 0px; }
-        </style>
-        
-        <%= render 'layouts/footer_1' %>
-      <% end %>
-
-   </body>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> <script>window.map = {
+    map_type: 'ROADMAP',
+    map_zoom: 15,
+    map_style: 'blackwhite',
+    map_scrollable: 'on',
+    marker: 'show',
+    label: ['London Royal'],
+    address: '',
+    latlng : ['51.511084, -0.133202'],
+    center_latlng: '',
+    markerURL: 'assets/images/marker.png',
+    auto_center: true
+};</script>
+<script>
+  M.AutoInit();
+ </script> 
+  </body>
 </html>

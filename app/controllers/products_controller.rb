@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :review]
 
   # GET /products
   # GET /products.json
@@ -61,6 +61,30 @@ class ProductsController < ApplicationController
     end
   end
 
+  def review 
+    review_content = params[:review_content]
+    rating = params[:rating]
+    @review = @product.reviews.build({
+      user_id: current_user.id,
+      content: review_content,
+      rating: rating
+    })
+    respond_to do |format|
+      if @product.save
+        format.json {render json: {reviews: @product.reviews}}
+        format.js
+      else
+        format.json { render json: @product.errors, status: :unprocessable_entity}
+      end
+    end
+  end
+
+  def cart
+  end
+
+  def checkout
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -69,6 +93,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :category_id, :chef_id, :price, :desc, :featured)
+      params.require(:product).permit(:name, :category_id,:department_id, :chef_id, 
+        :price, :sell_price, :desc,:extra, :rating, :featured, :hot, :status, files: [])
     end
 end

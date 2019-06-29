@@ -1,0 +1,62 @@
+<%= simple_form_for @product do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class= "row">
+      <div class="col s12">
+        <%= f.input :name, input_html: {class: 'input-field col s12'} %>
+      </div>
+    </div>
+    <div class= "row">  
+      <div class="col s12 input-field">
+        <%= f.association :category, label: false, wrapper: false %>
+        <label>Category</label>
+      </div>
+    </div>
+    <div class= "row">
+      <div class="col s12 input-field">
+        <%= f.association :chef, label: false, wrapper: false %>
+        <label>Chef</label>
+      </div>
+    </div>
+    <div class= "row">
+      <div class="col s12">
+        <%= f.input :price %>
+      </div>
+    </div>
+    <div class= "row">
+      <div class="col s12">
+        <div class="switch">
+          <label>
+            <%=f.input :featured, as: :boolean%>
+            <span class="level"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class= "row">
+      <div class="col s12">
+        <%= f.input :hot, inline_label: 'Hot'%>
+      </div>
+    </div>
+    <div class= "row">
+      <div class="col s12">
+        <%= f.input :desc %>
+      </div>
+    </div>
+    <div class= "row">
+      <div class="col s12">
+        <%= f.input :status %>
+      </div>
+    </div>
+    <div class= "row">
+      <div class="col s12">
+        <%= f.file_field :files, multiple: true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

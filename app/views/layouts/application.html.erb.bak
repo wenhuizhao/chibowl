@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Materialize</title>
+      
+      <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta content="/" name="turbolinks-root" />
+      <meta content="no-preview" name="turbolinks-cache-control" />
+
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,400italic,500,500italic,700,900' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="/assets/stylesheets/style.css">
+      <!%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %-->
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
+      <%= csrf_meta_tags %>
+   </head>
+   <body>
+
+      <% flash.each do |message_type, message| %>
+        <%= javascript_tag "Materialize.toast('#{message}', 4000)" %>
+      <% end %> 
+
+        <div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button mdl-layout--fixed-header">
+        <%= render "layouts/transp-waterfall" %>
+
+        <%= render "layouts/drawer" %>
+
+            <main class="mdl-layout__content">
+                <%= yield %>
+
+                    <%= render "layouts/footer" %>
+
+            </main>
+
+        </div>
+
+            <%= render "layouts/cart-button" %>
+
+        <%= render "layouts/side-cart" %>
+
+
+
+
+   </body>
+</html>

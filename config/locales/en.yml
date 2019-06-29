@@ -20,4 +20,74 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  badge:
+    sell: "Sell"
+    category: "Category"
+    department: "Department"
+    share_on: "Share on"
+  button:
+    add_to_cart: "Add to cart"
+  cart:
+    subtotal: 'Subtotal'
+    view_cart: 'View Cart'
+    checkout: 'Checkout'
+    total: 'Cart Totals'
+    cart_subtal: "Cart Subtotal"
+    cart_shipping: "Shipping & Handling"
+
+  footer:
+    about: "About us"
+    about_1: "ChiBowl provide platform to connect family chef and customers."
+    about_2: "ChiBowl focus on providing convinient service for both chef and customers"
+    contact_us_address: |
+      34230 Cottowood Stre<br/>
+      Fremont, CA 94538<br/>
+    faq: FAQ
+    privacy: Privacy
+    term: Term
+  header:
+    home: "Home"
+    chef: "Chef"
+    news: "News"
+    cart: "Cart"
+    checkout: "Checkout"
+    search: "Search"
+    featured: "Featured"
+    login: 'Login'
+    news_law: "Law"
+    news_news: "News"
+  home:
+    featured_product: "Featured Product"
+    featured_products: "Featured Products"
+    featured_title: "Featured"
+    featured_desc: "Featured products"
+    hot_products: "Hot Products"
+    latest_news_title: "Latest News"
+    latest_products: "Latest Products"
+    reviews: "Reviews"
+    sell_title1: "For sell"
+    sell_desc1: "By one get one free"
+    sell_view_all1: "View all products"
+    sell_title2: "New Collection"
+    sell_desc2: "See new collection!"
+    signup_name: "Name"
+    signup_email: "Email"
+    signup_submit: "Submit"
+    trending_title: "Trending Products"
+    view_detail: "View Detail"
+  products:
+    cart:
+      cart_title: 'Cart'
+      product: 'Product'
+      price: 'Price'
+      quantity: 'Quantity'
+      total: 'Total'
+    show:
+      additional_info: "Additional Information"
+      add_review: "Your review:"
+      add_review_title: "Add a review"
+      add_review_desc: "We would love to hear from you, feel free to leave your review."
+      description: "Description"
+      reviews: "Reviews"
+      reviews_for: "%{count} Reviews for %{name}"
+      related_products: "Related Products"

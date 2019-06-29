@@ -1,34 +1,208 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category_id %>
-</p>
-<% if @product.featured %>
-<p>
-  <strong>Featured</strong>
-</p>
-<% end %>
-
-<p>
-  <strong>Chef:</strong>
-  <%= @product.chef_id %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Desc:</strong>
-  <%= @product.desc %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<div class="oxy-section">
+    <div class="oxy-section__content">
+        <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 oxy-margin-bottom-30">
+            <div class="mdl-cell--middle mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                <ol class="oxy-breadcrumb">
+                    <li class="oxy-breadcrumb__item">
+                        <a href="/"><%= t 'header.home' %></a>
+                    </li>
+                </ol>
+            </div>
+            <div class="mdl-cell--middle mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-typography--text-right">                
+                    <a id="product-prev" href="#" rel="prev" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                    </a>
+                    <div class="mdl-tooltip" for="product-prev"> Summer Skirt </div>
+                    <a id="product-next" href="#" rel="next" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                        <i class="material-icons">keyboard_arrow_right</i>
+                    </a>
+                    <div class="mdl-tooltip" for="product-next"> Yellow top </div>                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="oxy-section">
+    <div class="oxy-section__content">
+        <div class="mdl-grid mdl-grid--no-fullwidth">
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div class="oxy-product-slider">
+                    <div class="oxy-product-badge"> <%= t 'badge.sell' %> </div>
+                    <div class="flexslider oxy-product-slider__slides" data-flex-animation="slide" 
+                        data-flex-controls="thumbnails" data-flex-controlsalign="left" 
+                        data-flex-controlsposition="outside" data-flex-directions="hide" 
+                        data-flex-directions-type="simple" data-flex-duration="600" 
+                        data-flex-slideshow="true" data-flex-speed="7000" id="product-images">
+                        <ul class="slides">
+                            <li data-thumb="<%= @product.photo1_url_medium %>">
+                                <%= image_tag @product.photo1_url, alt:"Top Fancy" %> </li>
+                            <li data-thumb="<%= @product.photo2_url_medium %>">
+                                <%= image_tag @product.photo2_url, alt:"Top Fancy" %> </li>
+                            <li data-thumb="<%= @product.photo3_url_medium %>">
+                                <%= image_tag @product.photo3_url, alt:"Top Fancy" %> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone oxy-product-details">
+                <h1 class="mdl-typography--display-1 oxy-margin-top-0 oxy-margin-bottom-10"><%= @product.name %></h1>
+                <p class="mdl-typography--display-1 oxy-margin-0 oxy-margin-bottom-20 oxy-product-price">
+                    <del>
+                        <span><%= @product.price_with_unit %></span>
+                    </del>
+                    <ins>
+                        <span><%= @product.sell_price_with_unit %></span>
+                    </ins>
+                </p>
+                <a href="#product-reviews-tab" id="review-rating-tooltip" class="oxy-rating oxy-rating--big oxy-margin-bottom-20 oxy-display-inline-block" title="Rated 4.00 out of 5">
+                    <span style="width:85%">
+                        <strong class="oxy-rating__stars"><%= @product.rating %></strong> out of 5 </span>
+                </a>
+                <div class="mdl-tooltip" for="review-rating-tooltip">
+                    <span itemprop="reviewCount" class="count">1</span> customer review </div>
+                <p class="mdl-typography--title mdl-typography--font-light 
+                    oxy-typography-line-height-normal oxy-opacity-50">
+                    
+                </p>
+                <%# <form class="oxy-margin-bottom-30"> %>
+                    <div class="oxy-quantity">
+                        <input type="button" value="-" id="btn-minus">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input type="number" step="1" min="0" name="cart" id="quantity" value="1" title="Qty" class="mdl-textfield__input" id="q1">
+                            <label class="mdl-textfield__label" for="q1"></label>
+                        </div>
+                        <input type="button" value="+" id='btn-plus'> </div>
+                    <button type="submit" id="btn-add-to-cart"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                        <%= t 'button.add_to_cart' %>
+                    </button>
+                <%# </form> %>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell mdl-cell--4-col-tablet mdl-cell mdl-cell--2-col-phone mdl-cell--middle">
+                        <div class="oxy-product-details__meta">
+                            <span> <%= t 'badge.category'%>:
+                                <a href="shop.html" rel="tag"><%= @product.category.name%></a>
+                            </span>
+                            <span> <%= t 'badge.department'%>:
+                                <a href="shop.html" rel="tag"><%= @product.department.name %></a>,
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell mdl-cell--4-col-tablet mdl-cell mdl-cell--2-col-phone mdl-cell--middle mdl-typography--text-right">
+                        <button id="product-share" class="mdl-button mdl-js-button mdl-button--icon">
+                            <i class="material-icons">share</i>
+                        </button>
+                        <ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="product-share">
+                            <li class="mdl-menu__item"><%= t 'badge.share_on'%> facebook</li>
+                            <li class="mdl-menu__item"><%= t 'badge.share_on'%> twitter</li>
+                            <li class="mdl-menu__item"><%= t 'badge.share_on'%> google+</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="oxy-section">
+    <div class="oxy-section__content">
+        <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40">
+            <div class="mdl-cell mdl-cell--12-col">
+                <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                    <div class="mdl-tabs__tab-bar oxy-flex-justify-start">
+                        <a href="#product-description-tab" class="mdl-tabs__tab"><%= t '.additional_info' %></a>
+                        <a href="#product-reviews-tab" class="mdl-tabs__tab is-active"><%= t '.reviews'%> (2)</a>
+                    </div>
+                    <div class="mdl-tabs__panel oxy-padding-top-20 oxy-padding-bottom-20" id="product-description-tab">
+                        <p><%= @product.extra %></p>
+                    </div>
+                    <div class="mdl-tabs__panel oxy-padding-top-20 oxy-padding-bottom-20 is-active" id="product-reviews-tab">
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--6-col">
+                                <h4 class="mdl-typography--title oxy-margin-top-0 oxy-margin-bottom-20">
+                                    <%= t '.reviews_for', name: @product.name, count:@product.reviews.size %> </h4>
+                                <ul class="oxy-list oxy-list--full-width " id="reviews">
+                                    <% @product.reviews.limit(2).each do |review|%>
+                                        <%= render 'review', review: review %>
+                                    <% end %>
+                                </ul>
+                            </div>
+                            <div class="mdl-cell mdl-cell--6-col">
+                                <h4 class="mdl-typography--title oxy-margin-top-0 oxy-margin-bottom-20"><%= t '.add_review_title' %></h4>
+                                <p><%= t '.add_review_desc'%></p>
+                                <p><%= t '.add_review' %></p>
+                                <%# <div class="oxy-rating-set">
+                                    <span class="oxy-rating-set__star"></span>
+                                    <span class="oxy-rating-set__star"></span>
+                                    <span class="oxy-rating-set__star"></span>
+                                    <span class="oxy-rating-set__star"></span>
+                                    <span class="oxy-rating-set__star"></span>
+                                </div> %>
+                                <%= form_tag(review_product_path(@product), method: 'post', remote: true, id:'review-form') do %>
+                                    <div class="rate">
+                                        <input type="radio" id="star5" name="rating" value="5" />
+                                        <label for="star5" title="text">5 stars</label>
+                                        <input type="radio" id="star4" name="rating" value="4" />
+                                        <label for="star4" title="text">4 stars</label>
+                                        <input type="radio" id="star3" name="rating" value="3" />
+                                        <label for="star3" title="text">3 stars</label>
+                                        <input type="radio" id="star2" name="rating" value="2" />
+                                        <label for="star2" title="text">2 stars</label>
+                                        <input type="radio" id="star1" name="rating" value="1" />
+                                        <label for="star1" title="text">1 star</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--full-width mdl-textfield--floating-label">
+                                        <textarea class="mdl-textfield__input" name="review_content" type="text" rows="4" id="user-review"></textarea>
+                                        <label class="mdl-textfield__label" for="user-review">Add your review here...</label>
+                                    </div>
+                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"> Add Review </button>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="oxy-section">
+        <div class="oxy-section__content">
+            <div class="mdl-grid mdl-grid--no-fullwidth">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <h2 class="mdl-typography--display-1 mdl-typography--text-center 
+                        mdl-typography--font-light oxy-margin-top-40  oxy-margin-bottom-20"> 
+                        <%= t '.related_products' %> </h2>
+                    <div class="oxy-divider oxy-divider--center">
+                        <div class="oxy-divider__border"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-grid mdl-grid--no-fullwidth">
+                <% @product.related_products.each do |product|%>
+                    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone oxy-margin-bottom-40">
+                        <!-- new card -->
+                        <%= render "shared/card", product: product%>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        var productId = "<%=@product.id%>";
+        var price = parseFloat("<%=@product.sell_price%>");
+        var sellPrice = parseFloat("<%=@product.sell_price%>");
+        var name = "<%=@product.name%>";
+        var thumb = "<%=@product.photos[0].image.url(:small)%>";
+        $('#btn-plus').click(function(){
+            $('#quantity').val(parseInt($('#quantity').val())+1);
+        });
+        $('#btn-minus').click(function(){
+            $('#quantity').val(parseInt($('#quantity').val())-1);
+        });
+        $('#btn-add-to-cart').click(function() {
+            var quantity = parseInt($('#quantity').val());
+            console.log("add to cart productid, price, quantity:", productId, price, quantity);
+            addToCart(productId, price, quantity,name,sellPrice,thumb);
+        })
+    });
+</script>

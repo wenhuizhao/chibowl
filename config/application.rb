@@ -6,10 +6,18 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Materialize
+module Chibowl
   class Application < Rails::Application
+    # Ensuring that ActiveStorage routes are loaded before Comfy's globbing
+    # route. Without this file serving routes are inaccessible.
+    config.railties_order = [ActiveStorage::Engine, :main_app, :all]
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.2
+
+    config.i18n.default_locale = :zh
     # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    # Application configuration can go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded after loading
+    # the framework and any gems in your application.
   end
 end

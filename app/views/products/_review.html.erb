@@ -1,0 +1,14 @@
+<li class="oxy-list__item oxy-list__item--top">
+    <a href="#" class="oxy-list__icon">
+        <%= image_tag review.user.avatar.url(:thumbs), alt:"image", class:"oxy-make-round" %> </a>
+    <div class="oxy-list__item-text">
+        <div href="#" class="oxy-list__title">
+            <a href="#">Mary Doe, July 14th 2015</a>
+            <div class="oxy-rating oxy-rating--medium" title="Rated <%=review.rating%> out of 5">
+                <span style="width:85%">
+                    <strong class="oxy-rating__stars"><%=review.rating%></strong> out of 5 </span>
+            </div>
+        </div>
+        <span class="oxy-list__subtitle"> <%= review.content %> </span>
+    </div>
+</li>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :departments
   comfy_route :cms_admin, :path => '/cms_admin'
 
   # Make sure this routeset is defined last
@@ -7,7 +8,15 @@ Rails.application.routes.draw do
   resources :photos
   resources :order_items
   resources :orders
-  resources :products
+  resources :products do
+    member do
+      post :review
+    end
+    collection do
+      get :cart
+      post :checkout
+    end
+  end
   resources :categories
   resources :chefs
   resources :demos
@@ -17,8 +26,7 @@ Rails.application.routes.draw do
       :registrations => "users/registrations",
       :omniauth_callbacks => "users/omniauth_callback" 
     }
-  root 'pages#home'
-  get  "/*id", to: 'pages#show', as: :page, format: false, constraints: HighVoltage::Constraints::RootRoute
+  root 'home#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

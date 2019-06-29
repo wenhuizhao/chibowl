@@ -2,6 +2,10 @@ class User < ApplicationRecord
   has_many :chefs
   has_many :orders
   geocoded_by :address
+  has_attached_file :avatar, 
+    styles: { large: "600x600>", medium: "300x300>", thumb: "100x100>" }, 
+    default_url: "/images/:style/missing_avatar.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

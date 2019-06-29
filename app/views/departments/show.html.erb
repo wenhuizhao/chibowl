@@ -1,0 +1,12 @@
+<div class="container">
+
+  <p>
+    Name:
+    <%= @department.name %>
+  <p>
+    Desc:
+      <%=@department.desc%>
+
+  <%= link_to 'Edit', edit_department_path(@department) %>
+  <%= link_to 'Back', departments_path %>
+</div>

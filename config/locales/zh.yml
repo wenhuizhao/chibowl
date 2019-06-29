@@ -1,0 +1,74 @@
+zh:
+  badge:
+    sell: "打折"
+    category: "分类"
+    department: "品种"
+    share_on: "分享到"
+  button:
+    add_to_cart: "加到购物车"
+  cart:
+    subtotal: '小结'
+    view_cart: '查看购物车'
+    checkout: '结账'
+    total: '总价'
+    cart_subtoal: '小结'
+    shipping: "运费"
+  footer:
+    about: "关于我们"
+    about_1: "吃宝ChiBowl是一个连接私厨和消费者的平台"
+    about_2: "吃宝致力于提供足够的便利于私厨和消费者"
+    contact_us: "联系我们"
+    contact_us_title: "如有疑问，请联系我们"
+    contact_us_address: |
+      34230 Cottowood Stre<br/>
+      Fremont, CA 94538<br/>
+    faq: 常见问题
+    privacy: 隐私条款
+    term: 服务条款
+  header:
+    home: "主页"
+    chef: "私厨"
+    news: "资讯"
+    cart: "购物车"
+    checkout: "结算"
+    search: "搜索"
+    featured: "推荐"
+    login: '登陆'
+    news_law: "相关法律"
+    news_news: "新闻"
+  home:
+    featured_product: "推荐"
+    featured_products: "推荐菜"
+    featured_title: "强力推荐"
+    featured_desc: "我们推荐的产品"
+    hot_products: "热销"
+    latest_news_title: "新闻资讯"
+    latest_products: "最新菜品"
+    reviews: "顾客评论"
+    sell_title1: "盛夏打折"
+    sell_desc1: "开业大吉，打折迎宾"
+    sell_view_all1: "所有打折"
+    sell_title2: "新品上市"
+    sell_desc2: "新品"
+    signup_title: "加入邮件通知"
+    signup_name: "姓名"
+    signup_email: "邮件"
+    signup_submit: "加入"
+    trending_title: "最受欢迎"
+    view_detail: "查看详情"
+  products:
+    cart:
+      cart_title: '购物车'
+      product: '产品'
+      price: '价格'
+      quantity: '数量'
+      total: '总价'
+    show:
+      additional_info: "附加信息"
+      add_review: "您的评价:"
+      add_review_title: "评论"
+      add_review_desc: "我们欢迎您的反馈，请填写您的评价。"
+      description: "详细介绍"
+      reviews: "评价"
+      reviews_for: "%{count}个%{name}的评价"
+      related_products: "类似推荐"

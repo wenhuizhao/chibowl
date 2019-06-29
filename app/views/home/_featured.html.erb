@@ -1,0 +1,26 @@
+<div class="oxy-section">
+    <div class="oxy-section__content">
+        <div class="mdl-grid mdl-grid--no-fullwidth">
+            <div class="mdl-cell mdl-cell--12-col">
+                <h2 class="mdl-typography--display-1 mdl-typography--text-center mdl-typography--font-light oxy-margin-top-40  oxy-margin-bottom-20  oxy-animation"
+                    data-os-animation="fadeIn" data-os-animation-delay="0.1s">
+                    <%= t 'home.featured_product'%>
+                </h2>
+                <div class="oxy-divider oxy-divider--center oxy-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s">
+                    <div class="oxy-divider__border"></div>
+                </div>
+            </div>
+        </div>
+        <div class="mdl-grid mdl-grid--no-fullwidth">
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone oxy-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
+                <%=image_tag "banners/banner-08-notinclude.png", alt:"Featured Product", class:"oxy-image-responsive" %> </div>
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone oxy-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s">
+                <h2 class="mdl-typography--headline  mdl-typography--font-light"> <%= t 'home.featured_title' %> </h2>
+                <p class="mdl-typography--title  mdl-typography--font-light oxy-opacity-50 oxy-typography-line-height-normal oxy-margin-bottom-20">
+                 <%= t 'home.featured_desc' %>
+                </p>
+                <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><%= t 'home.view_detail' %></a>
+            </div>
+        </div>
+    </div>
+</div>

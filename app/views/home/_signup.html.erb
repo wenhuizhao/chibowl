@@ -1,0 +1,31 @@
+<div class="oxy-section">
+    <div class="oxy-section__background oxy-section__background--bottom-align oxy-background-parallax">
+        <%= image_tag "backgrounds/bg9-notinclude.jpg", alt:"section background" %> </div>
+    <div class="oxy-section__overlay"></div>
+    <div class="oxy-section__content">
+        <div class="mdl-grid mdl-grid--no-fullwidth">
+            <div class="mdl-cell mdl-cell--12-col  oxy-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
+                <h2 class="oxy-color-light mdl-typography--display-1 mdl-typography--font-thin oxy-margin-top-80 oxy-margin-bottom-20">
+                 <%= t 'home.signup_title' %></h2>
+            </div>
+        </div>
+        <form action="#" class="oxy-margin-bottom-80 oxy-color-light">
+            <div class="mdl-grid mdl-grid--no-fullwidth">
+                <div class="mdl-cell mdl-cell--3-col">
+                    <div class="mdl-textfield mdl-js-textfield textfield-demo mdl-textfield--floating-label">
+                        <label class="mdl-textfield__label" for="signup-name"><%= t 'home.signup_name'%></label>
+                        <input class="mdl-textfield__input" type="text" id="signup-name" /> </div>
+                </div>
+                <div class="mdl-cell mdl-cell--3-col">
+                    <div class="mdl-textfield mdl-js-textfield textfield-demo mdl-textfield--floating-label">
+                        <label class="mdl-textfield__label" for="signup-email"><%= t 'home.signup_email' %></label>
+                        <input class="mdl-textfield__input" type="text" id="signup-email" /> </div>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--middle">
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-js-ripple-effect mdl-button--accent oxy-margin-bottom-10">
+                     <%= t 'home.signup_submit' %> </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
