@@ -6,13 +6,14 @@
             <%= image_tag "logo.png", alt:"ChiBowl" %> </a>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="shop.html"><%= t 'header.home' %></a>
-            <a class="mdl-navigation__link" href="posts.html"><%= t 'header.chef' %></a>
-            <a class="mdl-navigation__link" href="customizer.html"><%= t 'header.news' %></a>
+            <a class="mdl-navigation__link" href="/"><%= t 'header.home' %></a>
+            <%= link_to t('header.chef'), chefs_path, class: "mdl-navigation__link" %>
+            <a class="mdl-navigation__link" href="/cms"><%= t 'header.news' %></a>
             <a class="mdl-navigation__link" href="cart.html"><%= t 'header.cart' %></a>
             <a class="mdl-navigation__link" href="checkout.html"><%= t 'header.checkout' %></a>
         <ul class="nav-right">
         <% if user_signed_in? %>
+            <li><%= link_to (t 'header.logout'), destroy_user_session_url, data: {method: :delete} %></li>
         <% else %>
             <li>
             <%= link_to (t 'header.login'), new_user_session_url, class: 'mdl-navigation__link' %>

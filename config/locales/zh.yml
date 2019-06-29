@@ -34,6 +34,7 @@ zh:
     search: "搜索"
     featured: "推荐"
     login: '登陆'
+    logout: '登出'
     news_law: "相关法律"
     news_news: "新闻"
   home:
@@ -56,7 +57,14 @@ zh:
     signup_submit: "加入"
     trending_title: "最受欢迎"
     view_detail: "查看详情"
-  products:
+  devise:
+    sessions:
+      new:
+        email: '邮件'
+        password: '密码'
+        remember_me: '记住登陆'
+        login: '登陆'
+    products:
     cart:
       cart_title: '购物车'
       product: '产品'

@@ -54,6 +54,7 @@ en:
     search: "Search"
     featured: "Featured"
     login: 'Login'
+    logout: 'Logout'
     news_law: "Law"
     news_news: "News"
   home:
@@ -75,6 +76,13 @@ en:
     signup_submit: "Submit"
     trending_title: "Trending Products"
     view_detail: "View Detail"
+  devise:
+    sessions:
+      new:
+        email: 'Email'
+        password: 'Password'
+        remember_me: 'Remember Me'
+        login: 'Login'
   products:
     cart:
       cart_title: 'Cart'
