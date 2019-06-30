@@ -10000,14 +10000,14 @@ input.mdl-button[type="submit"] {
   display: block;
   -webkit-flex-shrink: 0;
           flex-shrink: 0;
-  padding: 16px 40px;
+  padding: 0px 40px;
   margin: 0;
   color: #757575;
 }
 
 @media screen and (max-width: 1024px) {
   .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
-    padding: 16px 16px;
+    padding: 0px 16px;
   }
 }
 
