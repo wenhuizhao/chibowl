@@ -29,11 +29,11 @@ class Product < ApplicationRecord
   end
 
   def photo2_url
-    photos[1]&.image.url
+    (photos[1]||photos[0])&.image.url
   end
 
   def photo3_url
-    photos[2]&.image.url
+    (photos[2]||photos[0])&.image.url
   end
 
   def photo1_url_medium
@@ -41,11 +41,11 @@ class Product < ApplicationRecord
   end
 
   def photo2_url_medium
-    photos[1]&.image.url(:medium)
+    (photos[1] || photos[0])&.image.url(:medium)
   end
 
   def photo3_url_medium
-    photos[2]&.image.url(:medium)
+    (photos[2]|| photos[0])&.image.url(:medium)
   end
 
 
