@@ -3,7 +3,7 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @chef.name %> %>
+  <%= @chef.name %>
 </p>
 
 <p>
@@ -51,7 +51,12 @@
   <strong>Longitude:</strong>
   <%= @chef.longitude %>
 </p>
-
+<div>
+  <p><strong>Images:</strong></p>
+  <% @chef.photos.each do |photo| %>
+    <%=image_tag photo.image.url(:small) %>
+  <% end %>
+</div>
 <%= link_to 'Edit', edit_chef_path(@chef) %> |
 <%= link_to 'Back', chefs_path %>
 </div>

@@ -1,8 +1,9 @@
 <div class="mdl-card mdl-shadow--2dp oxy-card-product">
     <div class="mdl-card__media oxy-card-product__media">
-        <a href="single-product.html">
+        <%= link_to product_path(product) do %>
             <%= image_tag product.photo1_url, alt:"some product", class:"oxy-card-product__image" %>
-            <%= image_tag product.photo2_url, alt:"some product", class:"oxy-card-product__image" %> </a>
+            <%= image_tag product.photo2_url, alt:"some product", class:"oxy-card-product__image" %>
+        <% end %>
         <div class="mdl-card__title oxy-card-product__title">
             <h3 class="mdl-card__title-text oxy-card-product__title-text">
                 <a href="single-product.html" class="mdl-typography--font-light"><%= product.name%></a>
