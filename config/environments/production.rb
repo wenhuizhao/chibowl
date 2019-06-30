@@ -96,8 +96,8 @@ Rails.application.configure do
     :storage => :s3,
     :preserve_files => true,
     :s3_credentials => {
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
+      :access_key_id => Rails.application.credentials.aws[:access_key_id],
+      :secret_access_key => Rails.application.credentials.aws[:secret_access_key],
       :s3_region => "us-west-2"
     },
     :url => ":s3_domain_url",
