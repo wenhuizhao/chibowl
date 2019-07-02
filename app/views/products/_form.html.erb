@@ -87,12 +87,12 @@
         <%= f.select :status, options_for_select(Product.statuses.map {|k, v| [k.humanize.capitalize, k]}) %>
       </div>
     </div>
-    <div class= "row">
-      <div class="col s12">
-        <label>Photos</label>
-        <%= f.file_field :files, multiple: true %>
-      </div>
-    </div>
+    <!-- <div class= "row">
+       <div class="col s12">
+         <label>Photos</label>
+         <%= f.file_field :files, multiple: true %>
+       </div>
+     </div>-->
   </div>
 
   <div class="form-actions">
