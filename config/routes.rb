@@ -26,7 +26,9 @@ Rails.application.routes.draw do
       :registrations => "users/registrations",
       :omniauth_callbacks => "users/omniauth_callback" 
     }
+  get 'home/index2'  
   root 'home#index'
-
+  get 'home/privacy'
+  get 'home/user_term'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

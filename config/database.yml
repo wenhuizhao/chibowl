@@ -1,3 +1,5 @@
+
+
 # SQLite version 3.x
 #   gem install sqlite3
 #
@@ -11,7 +13,7 @@ default: &default
   adapter: mysql2
   host: localhost
   username: root
-  password: 
+  password: root
   pool: 5
   timeout: 5000
 

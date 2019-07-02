@@ -1,6 +1,7 @@
 class Chef < ApplicationRecord
   belongs_to :user
   has_many :photos, as: :owner, dependent: :destroy
+  has_many :products
   geocoded_by :address
   after_validation :geocode
 #  reverse_geocoded_by :latitude, :longitude
