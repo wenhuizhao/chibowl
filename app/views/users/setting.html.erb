@@ -1,0 +1,12 @@
+  <%= form_for @user, url: {action: "update_setting"} , method: :post do |f| %>
+    <%= f.text_field :first_name %>
+    <%= f.text_field :last_name %>
+    <%= f.text_field :name %>
+    <%= f.text_field :image %>
+    <%= f.text_field :street %>
+    <%= f.text_field :city %>
+    <%= f.text_field :state %>
+    <%= f.text_field :country %>
+    <%= f.text_field :zip %>
+    <%= f.submit "Create" %>
+  <% end %>
