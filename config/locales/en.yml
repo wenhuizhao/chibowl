@@ -34,7 +34,9 @@ en:
     total: 'Cart Totals'
     cart_subtal: "Cart Subtotal"
     cart_shipping: "Shipping & Handling"
-
+  date:
+    order: ["Month", "day",  "year"]
+    month_names: ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "August", "September", "Oktober", "November", "December"]
   footer:
     about: "About us"
     about_1: "ChiBowl provide platform to connect family chef and customers."

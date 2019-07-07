@@ -13,6 +13,9 @@ zh:
     total: '总价'
     cart_subtoal: '小结'
     shipping: "运费"
+  date:
+    order: ["year", "month",  "year"]
+    month_names: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
   footer:
     about: "关于我们"
     about_1: "吃宝ChiBowl是一个连接私厨和消费者的平台"

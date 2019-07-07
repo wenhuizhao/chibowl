@@ -1,15 +1,16 @@
-<!%= render "home/slide" %->
+<%= render "home/slide" %>
 <!%= render "home/banner" %->
-<%= render "home/banner2" %>
+<!%= render "home/banner2" %->
+<%= render "home/date_choice", products: @next_week_products %>
 <%= render "home/trending", products: @hot_products %>
 
-<%= render "home/latest_product", products: @latest_products %>
+<!%= render "home/latest_product", products: @latest_products %->
 <!%= render "home/sell" %->
-<%= render "home/signup" %>
-<%= render "home/featured", products: @featured_products %>
+<!%= render "home/signup" %->
+<!%= render "home/featured", products: @featured_products %->
 <!%= render "home/map"%->
-<%= render "home/featured_list", products: @featured_products %>
+<!%= render "home/featured_list", products: @featured_products %->
 <!%= render "home/delivery" %->
-<%= render "home/review" %>
+<!%= render "home/review" %->
 <!%= render "home/join_mail_list" %->
-<%= render "home/latest_news" %>
+<!%= render "home/latest_news" %->
