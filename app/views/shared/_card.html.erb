@@ -5,13 +5,25 @@
             <%= image_tag product.photo2_url, alt:"some product", class:"oxy-card-product__image" %>
         <% end %>
         <div class="mdl-card__title oxy-card-product__title">
+            <div style="display:inline-block ">
             <h3 class="mdl-card__title-text oxy-card-product__title-text">
                 <a href="single-product.html" class="mdl-typography--font-light"><%= product.name%></a>
             </h3>
             <span class="mdl-typography--text-uppercase mdl-typography--font-bold oxy-card-product__tags">
-                <a href="shop.html" rel="tag"><%= product.department&.name %></a>,
-                <a href="shop.html" rel="tag"><%= product.category&.name %></a>
+                <a href="shop.html" rel="tag"><%= product.chef&.name %></a>,
+                <!-- <a href="shop.html" rel="tag"><%= product.category&.name %></a> -->
             </span>
+            </div>
+            <div style="display:inline-block; float:right">
+            <strong class="mdl-typography--headline oxy-product-price">
+                <del>
+                    <span><%= product.price %></span>
+                </del>
+                <ins>
+                    <span><%= product.sell_price %></span>
+                </ins>
+            </strong>
+            </div>
             <div class="oxy-rating oxy-card-product__rating oxy-card-product__rating--animated" title="Rated 4.00 out of 5">
                 <span style="width:80%">
                     <strong class="oxy-rating__stars"><%= product.rating %></strong> out of 5 </span>
