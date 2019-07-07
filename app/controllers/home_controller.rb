@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     @latest_products = product_service.latest
     @hot_products = product_service.hot
     @featured_products = product_service.featured
+    @next_week_products = product_service.hot
   end
   def index2
     

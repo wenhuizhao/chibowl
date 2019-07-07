@@ -47,7 +47,7 @@ en:
     term: Term
   header:
     home: "Home"
-    chef: "Chef"
+    chef: "become a Chef"
     news: "News"
     cart: "Cart"
     checkout: "Checkout"
@@ -57,6 +57,7 @@ en:
     logout: 'Logout'
     news_law: "Law"
     news_news: "News"
+    today: "today's menu"
   home:
     featured_product: "Featured Product"
     featured_products: "Featured Products"
@@ -76,6 +77,7 @@ en:
     signup_submit: "Submit"
     trending_title: "Trending Products"
     view_detail: "View Detail"
+    date_choice: "Date choice"
   devise:
     sessions:
       new:

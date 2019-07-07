@@ -87,12 +87,18 @@
         <%= f.select :status, options_for_select(Product.statuses.map {|k, v| [k.humanize.capitalize, k]}) %>
       </div>
     </div>
-    <!-- <div class= "row">
+    <!--<div class= "row">
+      <div class="col s12">
+        <label>Available date</label>
+        <%= f.date_select :available_day, {order: [:month, :day],prompt: { day: 'Select day', month: 'Select month'} }, use_short_month:true %>
+      </div>
+    </div>-->
+    <div class= "row">
        <div class="col s12">
          <label>Photos</label>
          <%= f.file_field :files, multiple: true %>
        </div>
-     </div>-->
+    </div> 
   </div>
 
   <div class="form-actions">
