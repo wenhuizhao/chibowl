@@ -204,5 +204,101 @@
             console.log("add to cart productid, price, quantity:", productId, price, quantity);
             addToCart(productId, price, quantity,name,sellPrice,thumb);
         })
-    });
+
+
+
+        // Flexslider Init
+        function flexInit(element) {
+            // We use data atributes on the flexslider items to control the behaviour of the slideshow
+            var slider = $(element),
+                //data-slideshow: defines if the slider will start automatically (true) or not
+                sliderShow = slider.attr('data-flex-slideshow') === 'false' ? false : true,
+
+                //data-flex-animation: defines the animation type, slide (default) or fade
+                sliderAnimation = !slider.attr('data-flex-animation') ? 'slide' : slider.attr('data-flex-animation'),
+
+                //data-flex-speed: defines the animation speed, 7000 (default) or any number
+                sliderSpeed = !slider.attr('data-flex-speed') ? 7000 : slider.attr('data-flex-speed'),
+
+                //data-flex-sliderdirection: defines the slide direction
+                direction = !slider.attr('data-flex-sliderdirection') ? 'horizontal' : slider.attr('data-flex-sliderdirection'),
+
+                //data-flex-duration: defines the transition speed in milliseconds
+                sliderDuration = !slider.attr('data-flex-duration') ? 600 : slider.attr('data-flex-duration'),
+
+                //data-flex-directions: defines the visibillity of the nanigation arrows, hide (default) or show
+                sliderDirections = slider.attr('data-flex-directions') === 'hide' ? false : true,
+
+                //data-flex-controls: defines the visibillity of the nanigation controls, hide (default) or show
+                sliderControls = slider.attr('data-flex-controls') === 'thumbnails' ? 'thumbnails' : slider.attr('data-flex-controls') === 'hide' ? false : true,
+
+                //data-flex-controlsposition: defines the positioning of the controls, inside (default) absolute positioning on the slideshow, or outside
+                sliderControlsPosition = slider.attr('data-flex-controlsposition') === 'inside' ? 'flex-controls-inside' : 'flex-controls-outside',
+
+                //data-flex-controlsalign: defines the alignment of the controls, center (default) left or right
+                sliderControlsAlign = !slider.attr('data-flex-controlsalign') ? 'flex-controls-center' : 'flex-controls-' + slider.attr('data-flex-controlsalign'),
+
+                //data-flex-controlsalign: defines the alignment of the controls, center (default) left or right
+                sliderControlsVericalAlign = !slider.attr('data-flex-controlsvertical') ? '' : 'flex-controls-' + slider.attr('data-flex-controlsvertical'),
+
+                //data-flex-itemwidth: the width of each item in case of a multiitem carousel, 0 (default for 100%) or a nymber representing pixels
+                sliderItemWidth = !slider.attr('data-flex-itemwidth') ? 0 : parseInt(slider.attr('data-flex-itemwidth'), 10),
+
+                //data-flex-itemmax: the max number of items in a carousel
+                sliderItemMax = !slider.attr('data-flex-itemmax') ? 0 : parseInt(slider.attr('data-flex-itemmax'), 0),
+
+                //data-flex-itemmin: the max number of items in a carousel
+                sliderItemMin = !slider.attr('data-flex-itemmin') ? 0 : parseInt(slider.attr('data-flex-itemmin'), 0),
+
+                //data-flex-captionvertical: defines the horizontal positioning of the captions, left or right or alternate
+                sliderCaptionsHorizontal = slider.attr('data-flex-captionhorizontal') === 'alternate' ? 'flex-caption-alternate' : 'flex-caption-' + slider.attr('data-flex-captionhorizontal');
+
+            slider.addClass(sliderControlsPosition).addClass(sliderControlsAlign).addClass(sliderControlsVericalAlign).addClass(sliderCaptionsHorizontal);
+
+            slider.flexslider({
+                slideshow: sliderShow,
+                animation: sliderAnimation,
+                direction: direction,
+                slideshowSpeed: parseInt(sliderSpeed),
+                animationSpeed: parseInt(sliderDuration),
+                itemWidth: sliderItemWidth,
+                minItems: sliderItemMin,
+                maxItems: sliderItemMax,
+                controlNav: sliderControls,
+                directionNav: sliderDirections,
+                prevText: '',
+                nextText: '',
+                smoothHeight: true,
+                useCSS : false
+            });
+        }
+
+        // Flexslider Init
+        $('.flexslider[id]').each(function() {
+            var that = this;
+            $(this).imagesLoaded().done(function() {
+                flexInit(that);
+            });
+        });
+
+        $('.oxy-button-fab').click(function(){
+            $('.oxy-product-cart').toggleClass('is-visible');
+        });
+        $('#side-cart-obfuscator').click(function(){
+            $('.oxy-product-cart').toggleClass('is-visible');
+        });
+
+        // Initial Fab Animation
+        var $cartButton = $('.oxy-js-button-shopping-cart');
+        var cartButtonAnimation = 'animated bounceInUp';
+
+        $($cartButton).addClass(cartButtonAnimation).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+            $cartButton.removeClass(cartButtonAnimation);
+        });
+
+
+ 
+
+
+});
 </script>
