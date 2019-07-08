@@ -16,6 +16,10 @@ class Product < ApplicationRecord
     end
   end
 
+  def real_price
+    sell_price || price
+  end
+  
   def price_with_unit
     "$#{price}"
   end
