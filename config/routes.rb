@@ -30,5 +30,8 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/privacy'
   get 'home/user_term'
+  get 'users/profile_show'
+  get 'users/setting'
+  post 'users/update_setting'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
