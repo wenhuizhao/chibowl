@@ -61,6 +61,26 @@ class OrdersController < ApplicationController
     end
   end
 
+  # GET /orders/cart
+  def cart
+    @order = Order.new(user_id: current_user.id || GuestUser.new.id)
+    product_ids = params[:product_ids].split(",").map(&:to_i)
+    quantities= params[:quantities].split(",").map(&:to_i)
+    product_ids.each_with_index do |product_id, index|
+      @order.order_items.build({
+        product_id: product_id,
+        quantity: quantities[index],
+        price: Product.find(product_id)&.real_price
+      })
+    end
+    
+  end
+
+  # GET /orders/checkout
+  def checkout
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order

@@ -7,14 +7,14 @@ Rails.application.routes.draw do
 
   resources :photos
   resources :order_items
-  resources :orders
+  resources :orders do
+    collection do
+      get :cart
+    end
+  end
   resources :products do
     member do
       post :review
-    end
-    collection do
-      get :cart
-      post :checkout
     end
   end
   resources :categories

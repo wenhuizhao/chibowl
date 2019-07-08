@@ -3,6 +3,13 @@ function getCartItems(){
   var cart = JSON.parse(cartData || "{}");
   return cart.items;
 }
+function viewCart(){
+  var items = getCartItems();
+  var productIds = Object.keys(items);
+  var quantities = productIds.map(id=>items[id].quantity);
+  window.location = "/orders/cart?product_ids="+productIds+"&quantities="+quantities;  
+}
+
 function updateCartBadge() {
   var items = getCartItems();
   if (!items || Object.keys(items).length === 0) {
