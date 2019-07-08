@@ -30,7 +30,7 @@ zh:
     term: 服务条款
   header:
     home: "主页"
-    chef: "私厨"
+    chef: "成为厨师"
     news: "资讯"
     cart: "购物车"
     checkout: "结算"
@@ -40,6 +40,7 @@ zh:
     logout: '登出'
     news_law: "相关法律"
     news_news: "新闻"
+    today: "今日菜品"
   home:
     featured_product: "推荐"
     featured_products: "推荐菜"
@@ -60,6 +61,7 @@ zh:
     signup_submit: "加入"
     trending_title: "最受欢迎"
     view_detail: "查看详情"
+    date_choice: "日期选择"
   devise:
     sessions:
       new:
