@@ -52,6 +52,19 @@ function updateSideCart() {
   });
 }
 
+function updateProductQuantity(productId, quantity) {
+  var cartData = sessionStorage.getItem("cart");
+  var cart = JSON.parse(cartData || "{}");
+  var cartCopy = cart || {};
+  var items = (cartCopy || {}).items || {};
+  if (items[productId]) {
+    items[productId].quantity = quantity;
+  }
+  cartCopy.items = items;
+  sessionStorage.setItem("cart", JSON.stringify(cartCopy));
+  updateCartBadge();
+  updateSideCart();  
+}
 function removeFromCart(productId){
   var cartData = sessionStorage.getItem("cart");
   var cart = JSON.parse(cartData || "{}");

@@ -89,6 +89,11 @@ en:
         password: 'Password'
         remember_me: 'Remember Me'
         login: 'Login'
+  orders:
+    cart:
+      apply_coupon: 'Apply Coupon'
+      checkout: 'Checkout'
+      update_cart: "Updat Cart"
   products:
     cart:
       cart_title: 'Cart'

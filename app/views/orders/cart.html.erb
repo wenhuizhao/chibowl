@@ -45,13 +45,13 @@
                               <input type="button" value="-" onClick="minusQuantity(<%=item.product.id%>)">
                               <div class="mdl-textfield mdl-js-textfield">
                                   <input type="number" step="1" min="0" name="cart" value="<%=item.quantity%>"
-                                title="Qty" class="mdl-textfield__input" id="quantity-productId+'">
+                                title="Qty" class="mdl-textfield__input" id="quantity-<%=item.product.id%>">
                                   <label class="mdl-textfield__label" for="q1"></label>
                               </div>
                               <input type="button" value="+" onClick="plusQuantity(<%=item.product.id%>)"> </div>
                         </td>
                         <td id="total">
-                          <strong><%=item.price.round(2)%></strong>
+                          <strong><%=item.subtotal.round(2)%></strong>
                         </td>
                       </tr>
                     <% end %>
@@ -68,16 +68,19 @@
               </div>
           </div>
           <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet mdl-cell--8-col-phone mdl-cell--middle">
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent oxy-full-width"> Apply Coupon </button>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect
+                mdl-button--accent oxy-full-width"> <%=t '.apply_coupon'%> </button>
           </div>
           <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--8-col-phone mdl-cell--middle"> </div>
           <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-cell--middle">
               <!-- Accent-colored raised button with ripple -->
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent oxy-full-width"> Update Cart </button>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect 
+                mdl-button--accent oxy-full-width" onClick="viewCart()"> <%= t '.update_cart'%> </button>
           </div>
           <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-cell--middle">
               <!-- Accent-colored raised button with ripple -->
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary oxy-full-width"> Checkout </button>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect
+                mdl-button--primary oxy-full-width"> <%= t '.checkout'%> </button>
           </div>
       </div>
       <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-bottom-40">
@@ -91,18 +94,18 @@
                       <tbody>
                           <tr>
                               <td class="mdl-data-table__cell--non-numeric"><%= t 'cart.subtotal' %></td>
-                              <td id="cart-subtotal"></td>
+                              <td id="cart-subtotal"><%=@order.subtotal%></td>
                           </tr>
                           <tr>
                               <td class="mdl-data-table__cell--non-numeric"><%= t 'cart.shipping' %> </td>
-                              <td id="cart-shipping"></td>
+                              <td id="cart-shipping"><%=@order.shipping%></td>
                           </tr>
                           <tr>
                               <td class="mdl-data-table__cell--non-numeric">
                                   <strong><%= t 'cart.total' %></strong>
                               </td>
                               <td>
-                                  <strong id="cart-total"></strong>
+                                  <strong id="cart-total"><%=@order.total%></strong>
                               </td>
                           </tr>
                       </tbody>
@@ -114,11 +117,16 @@
 <script>
   function removeProduct(productId) {
     $('#tr-product-'+productId).remove();
+    removeFromCart(productId);
   }
   function plusQuantity(productId){
-    $('#quantity-'+productId).val(parseInt($('#quantity-'+productId).val())+1);
+    var quantity = parseInt($('#quantity-'+productId).val())+1;
+    $('#quantity-'+productId).val(quantity);
+    updateProductQuantity(productId, quantity);
   }
   function minusQuantity(productId){
-    $('#quantity-'+productId).val(parseInt($('#quantity-'+productId).val())-1);    
-  }
+    var quantity = parseInt($('#quantity-'+productId).val())-1;
+    $('#quantity-'+productId).val(quantity);    
+    updateProductQuantity(productId, quantity);
+}
 </script>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :orders do
     collection do
       get :cart
+      get :checkout
     end
   end
   resources :products do

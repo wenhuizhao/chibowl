@@ -78,6 +78,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/checkout
   def checkout
+    
   end
 
 
