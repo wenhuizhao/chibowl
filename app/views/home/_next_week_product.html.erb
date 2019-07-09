@@ -2,22 +2,11 @@
     <div class="oxy-section__content">
         <div class="mdl-grid mdl-grid--no-fullwidth">
             <div class="mdl-cell mdl-cell--12-col  oxy-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
-                <h2 class="mdl-typography--display-1 mdl-typography--text-center mdl-typography--font-light oxy-margin-top-40
-                    oxy-margin-bottom-20">
-                    <%= t 'home.next_week_products'%>
-                </h2>
-                <div class="oxy-divider oxy-divider--center  oxy-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s">
-                    <div class="oxy-divider__border"></div>
-                </div>
+                <%= render 'date_choice'%>
             </div>
         </div>
-        <div class="mdl-grid mdl-grid--no-fullwidth">
-            <% products.each do |product| %>
-                <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone oxy-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
-                    <!-- new card -->
-                    <%= render 'shared/card', product: product %>
-                </div>
-            <% end %>
+        <div class="mdl-grid mdl-grid--no-fullwidth" id="daily_products">
+            <%= render partial: 'daily_products', locals: {items: products}%>
         </div>
     </div>
 </div>

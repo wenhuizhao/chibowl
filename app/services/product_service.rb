@@ -14,6 +14,11 @@ class ProductService
 
 
   def next_week_products
-    Product.where("available_day  >? and available_day <?",  (Time.now+1.days).beginning_of_day,  (Time.now+7.days).end_of_day)
+    Product.where("available_day  >? and available_day <?",  (Date.today),  (Date.today+8.days))
   end
+
+  def daily_menu(date)
+    Product.where("available_day = ?", date)
+  end
+  
 end
