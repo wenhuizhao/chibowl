@@ -80,6 +80,8 @@ en:
     trending_title: "Trending Products"
     view_detail: "View Detail"
     date_choice: "Date choice"
+    from: "from"
+    next_week_products: "next week products"
   devise:
     sessions:
       new:
@@ -103,3 +105,4 @@ en:
       reviews: "Reviews"
       reviews_for: "%{count} Reviews for %{name}"
       related_products: "Related Products"
+

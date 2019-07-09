@@ -62,6 +62,8 @@ zh:
     trending_title: "最受欢迎"
     view_detail: "查看详情"
     date_choice: "日期选择"
+    from: "来自"
+    next_week_products: "下周菜单"
   devise:
     sessions:
       new:

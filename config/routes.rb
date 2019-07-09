@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   get 'users/profile_show'
   get 'users/setting'
   post 'users/update_setting'
+  get '/fetch_products', to: 'home#daily', as: 'fetch_products'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
