@@ -71,7 +71,16 @@ zh:
         password: '密码'
         remember_me: '记住登陆'
         login: '登陆'
-    products:
+  orders:
+    cart:
+      apply_coupon: '使用优惠卷'
+      checkout: '支付'
+      update_cart: "更新购物车"
+    checkout:
+      billing_details: '账单信息'
+      place_order: '提交订单'
+      order_success: '您的订单已经成功提交，我们会尽快处理。'
+  products:
     cart:
       cart_title: '购物车'
       product: '产品'

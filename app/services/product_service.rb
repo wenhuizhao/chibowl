@@ -20,5 +20,4 @@ class ProductService
   def daily_menu(date)
     Product.where("available_day = ?", date)
   end
-  
 end

@@ -9,6 +9,12 @@ function viewCart(){
   var quantities = productIds.map(id=>items[id].quantity);
   window.location = "/orders/cart?product_ids="+productIds+"&quantities="+quantities;  
 }
+function viewCheckout(){
+  var items = getCartItems();
+  var productIds = Object.keys(items);
+  var quantities = productIds.map(id=>items[id].quantity);
+  window.location = "/orders/checkout?product_ids="+productIds+"&quantities="+quantities;  
+}
 
 function updateCartBadge() {
   var items = getCartItems();
@@ -52,6 +58,19 @@ function updateSideCart() {
   });
 }
 
+function updateProductQuantity(productId, quantity) {
+  var cartData = sessionStorage.getItem("cart");
+  var cart = JSON.parse(cartData || "{}");
+  var cartCopy = cart || {};
+  var items = (cartCopy || {}).items || {};
+  if (items[productId]) {
+    items[productId].quantity = quantity;
+  }
+  cartCopy.items = items;
+  sessionStorage.setItem("cart", JSON.stringify(cartCopy));
+  updateCartBadge();
+  updateSideCart();  
+}
 function removeFromCart(productId){
   var cartData = sessionStorage.getItem("cart");
   var cart = JSON.parse(cartData || "{}");

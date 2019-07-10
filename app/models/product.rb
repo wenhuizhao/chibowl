@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   belongs_to :department
   belongs_to :chef
   has_many :order_items
-  has_many :photos, as: :owner
+  has_many :photos, as: :owner 
   has_many :reviews
   has_many :product_relations
   has_many :related_products, through: :product_relations, class_name: "Product",

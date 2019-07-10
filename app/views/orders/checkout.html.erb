@@ -1,0 +1,231 @@
+<div class="oxy-section">
+    <div class="oxy-section__content">
+        <%= form_for(@order, url: {action: "place_order"}) do |f| %>
+            <%= hidden_field_tag :product_ids, @order.order_items.map(&:product).map(&:id).join(",")%>
+            <%= hidden_field_tag :quantities, @order.order_items.map(&:quantity).join(",")%>
+            
+            <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
+                <div class="mdl-grid mdl-cell mdl-cell--7-col mdl-cell--6-col-tablet mdl-cell--4-col-phone oxy-margin-bottom-40">
+                    <h2 class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-typography--headline  
+                      mdl-typography--font-light oxy-margin-bottom-0 oxy-margin-top-20"> 
+                      <%= t '.billing_details'%> 
+                    </h2>
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell-4-col-phone">
+                        <div class="mdl-selectfield mdl-selectfield--full-width mdl-js-selectfield" tabindex="-1">
+                            <%= f.hidden_field :country, value: 'US'%>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                        <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                            <label class="mdl-textfield__label" for="name">First Name</label>
+                            <%= f.text_field :first_name, class: "mdl-textfield__input" %>
+                          </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                        <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                            <label class="mdl-textfield__label" for="lastname">Last Name</label>
+                            <%= f.text_field :last_name, class: "mdl-textfield__input" %>
+                          </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-textfield--full-width">
+                            <%= f.text_field :address, class: "mdl-textfield__input" %>
+                            <label class="mdl-textfield__label" for="address">Your Address</label>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-textfield--full-width">
+                            <%= f.text_field :city, class: "mdl-textfield__input" %>
+                            <label class="mdl-textfield__label" for="address">City</label>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-textfield--full-width">
+                            <%= f.text_field :state, class: "mdl-textfield__input" %>
+                            <label class="mdl-textfield__label" for="address">State</label>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-textfield--full-width">
+                            <%= f.text_field :zipcode, class: "mdl-textfield__input" %>
+                            <label class="mdl-textfield__label" for="address">Zipcode</label>
+                        </div>
+                    </div>
+
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                        <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                            <label class="mdl-textfield__label" for="email">Email</label>
+                            <%= f.text_field :email, class: "mdl-textfield__input" %>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                        <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                            <label class="mdl-textfield__label" for="phone">Phone</label>
+                            <%= f.text_field :phone, class: "mdl-textfield__input" %>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                        <label class="mdl-checkbox" for="create-account-check">
+                            <input type="checkbox" id="create-account-check" class="mdl-checkbox__input" />
+                            <span class="mdl-checkbox__label">Create Account</span>
+                        </label>
+                    </div>
+                    <div id="create-account-details" class="mdl-cell mdl-cell--12-col">
+                        <p class="mdl-typography--body-2">Create an account by entering a password below. If you are a returning customer please login at the top of the page.</p>
+                        <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                            <label class="mdl-textfield__label" for="email">Account Password</label>
+                            <%= password_field_tag :password, class: "mdl-textfield__input", id: "password" %>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                        <label class="mdl-checkbox" for="shipping-address-check">
+                            <%= f.check_box :shipping_address_check, class: "mdl-checkbox__input", id: "shipping-address-check" %>
+                            <span class="mdl-checkbox__label">Different shipping Address</span>
+                        </label>
+                    </div>
+                    <div id="shipping-address-details" class="mdl-cell mdl-cell--12-col">
+                        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell-4-col-phone">
+                            <div class="mdl-selectfield mdl-selectfield--full-width mdl-js-selectfield" tabindex="-1">
+                              <%= f.hidden_field :shipping_country, value: 'US'%>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                            <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                                <label class="mdl-textfield__label" for="name">First Name</label>
+                                <%= f.text_field :shipping_first_name, class: "mdl-textfield__input", id: "shipping_first_name" %>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                            <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                                <label class="mdl-textfield__label" for="lastname">Last Name</label>
+                                <%= f.text_field :shipping_last_name, class: "mdl-textfield__input", id: "shipping_last_name" %>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-textfield--full-width">
+                                <%= f.text_field :shipping_address, class: "mdl-textfield__input", id: "shipping_address" %>
+                                <label class="mdl-textfield__label" for="address">Your Address</label>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                            <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                                <label class="mdl-textfield__label" for="town">City</label>
+                                <%= f.text_field :shipping_city, class: "mdl-textfield__input", id: "shipping_city" %>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                            <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                                <label class="mdl-textfield__label" for="town">State</label>
+                                <%= f.text_field :shipping_state, class: "mdl-textfield__input", id: "shipping_state" %>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                            <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                                <label class="mdl-textfield__label" for="town">Zipcode</label>
+                                <%= f.text_field :shipping_zipcode, class: "mdl-textfield__input", id: "shipping_zipcode" %>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                            <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                                <label class="mdl-textfield__label" for="email">Email</label>
+                                <%= f.text_field :shipping_email, class: "mdl-textfield__input", id: "shipping_zipcode" %>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                            <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
+                                <label class="mdl-textfield__label" for="phone">Phone</label>
+                                <%= f.text_field :shipping_phone, class: "mdl-textfield__input", id: "shipping_phone" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-grid mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                    <div class="mdl-card mdl-card mdl-shadow--2dp oxy-card-order oxy-margin-bottom-40">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Your Order</h2>
+                        </div>
+                        <div class="oxy-card-order__summary oxy-data-table">
+                            <table class="mdl-data-table mdl-js-data-table oxy-full-width oxy-card-order__summary-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <% @order.order_items.each do |item|%>
+                                    <tr>
+                                      <td><%=item.product.name%>
+                                        <strong>x <%=item.quantity%></strong>
+                                      </td>
+                                      <td><%=item.subtotal.round(2)%></td>
+                                    </tr>
+                                  <% end %>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>Subtotal</td>
+                                        <td><%=@order.subtotal_with_unit %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping</td>
+                                        <td>Free</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td><%=@order.total_with_unit %></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <%# <div class="mdl-card__supporting-text">
+                                <h2 class="mdl-typography--title mdl-typography--font-light">Payment methods</h2>
+                                <p>
+                                    <label class="mdl-radio" for="bank-transfer">
+                                        <input type="radio" id="bank-transfer" class="mdl-radio__button" name="options" value="bank-transfer" checked />
+                                        <span class="mdl-radio__label">Bank Transfer</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label class="mdl-radio " for="credit-card">
+                                        <input type="radio" id="credit-card" class="mdl-radio__button" name="options" value="credit-card" />
+                                        <span class="mdl-radio__label">Credit Card</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label class="mdl-radio " for="pay-pal">
+                                        <input type="radio" id="pay-pal" class="mdl-radio__button" name="options" value="pay-pal" />
+                                        <span class="mdl-radio__label">PayPal</span>
+                                    </label>
+                                </p>
+                            </div> %>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border mdl-typography--text-right">
+                            <%=f.button t('.place_order'), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<script>
+  $(document).ready(function($) {
+      $('#create-account-check').change(function() {
+          toggleDetail('#create-account-check', '#create-account-details');
+      });
+
+      $('#shipping-address-check').change(function() {
+          toggleDetail('#shipping-address-check', '#shipping-address-details');
+      });
+
+      toggleDetail('#shipping-address-check', '#shipping-address-details');
+      toggleDetail('#create-account-check', '#create-account-details');
+
+  });
+
+  function toggleDetail(checkboxId, detailId) {
+      $(detailId).slideToggle($(checkboxId).is(':checked'));
+  }
+
+</script>
