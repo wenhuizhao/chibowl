@@ -7,11 +7,19 @@ class Order < ApplicationRecord
     self.order_items.map(&:subtotal).sum
   end
 
+  def subtotal_with_unit
+    "$#{self.subtotal.round(2)}"
+  end
+
   def shipping
     0
   end
 
   def total
     self.subtotal + self.shipping
+  end
+
+  def total_with_unit
+    "$#{self.total.round(2)}"
   end
 end

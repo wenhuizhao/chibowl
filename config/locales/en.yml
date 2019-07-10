@@ -94,6 +94,10 @@ en:
       apply_coupon: 'Apply Coupon'
       checkout: 'Checkout'
       update_cart: "Updat Cart"
+    checkout:
+      billing_details: 'Billing Details'
+      place_order: 'Place Order'
+      order_success: 'Order was successfully created.'
   products:
     cart:
       cart_title: 'Cart'

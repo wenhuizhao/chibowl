@@ -9,6 +9,12 @@ function viewCart(){
   var quantities = productIds.map(id=>items[id].quantity);
   window.location = "/orders/cart?product_ids="+productIds+"&quantities="+quantities;  
 }
+function viewCheckout(){
+  var items = getCartItems();
+  var productIds = Object.keys(items);
+  var quantities = productIds.map(id=>items[id].quantity);
+  window.location = "/orders/checkout?product_ids="+productIds+"&quantities="+quantities;  
+}
 
 function updateCartBadge() {
   var items = getCartItems();
