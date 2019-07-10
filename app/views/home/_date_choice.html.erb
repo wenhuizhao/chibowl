@@ -1,7 +1,7 @@
 <div class="oxy-section">
     <div class="oxy-section__content">
         <div class="mdl-grid mdl-grid--no-fullwidth">
-            <div class="mdl-cell mdl-cell--12-col  oxy-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
+            <%# <div class="mdl-cell mdl-cell--12-col  oxy-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
                 <h2 class="mdl-typography--display-1 mdl-typography--text-center 
                 mdl-typography--font-light oxy-margin-top-40
                   oxy-margin-bottom-20"> date choice </h2>
@@ -10,7 +10,16 @@
                         <h1>monday tuesday</h1>
                     </div>
                 </div>
-            </div>
+            </div> %>
+            <ul>
+                <li><%=link_to (Time.now+1.days).strftime('%Y-%m-%d'), fetch_products_path(:product_date=>Date.today+1.days), :remote=>true %></li>
+                <li><%=link_to (Time.now+2.days).strftime('%Y-%m-%d'), fetch_products_path(:product_date=>Date.today+2.days), :remote=>true %></li>
+                <li><%=link_to (Time.now+3.days).strftime('%Y-%m-%d'), fetch_products_path(:product_date=>Date.today+3.days), :remote=>true %></li>
+                <li><%=link_to (Time.now+4.days).strftime('%Y-%m-%d'), fetch_products_path(:product_date=>Date.today+4.days), :remote=>true %></li>
+                <li><%=link_to (Time.now+5.days).strftime('%Y-%m-%d'), fetch_products_path(:product_date=>Date.today+5.days), :remote=>true %></li>
+                <li><%=link_to (Time.now+6.days).strftime('%Y-%m-%d'), fetch_products_path(:product_date=>Date.today+6.days), :remote=>true %></li>
+                <li><%=link_to (Time.now+7.days).strftime('%Y-%m-%d'), fetch_products_path(:product_date=>Date.today+7.days), :remote=>true %></li>
+            </ul>
         </div>
     </div>
 </div>

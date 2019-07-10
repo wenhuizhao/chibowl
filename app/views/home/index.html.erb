@@ -1,8 +1,8 @@
-<%= render "home/slide" %>
-<!%= render "home/banner" %->
+<!%= render "home/slide" %->
+<%= render "home/banner" %>
 <!%= render "home/banner2" %->
-<%= render "home/date_choice", products: @next_week_products %>
-<%= render "home/trending", products: @hot_products %>
+<%= render "home/next_week_product", products: @next_week_products %>
+<!%= render "home/trending", products: @hot_products %->
 
 <!%= render "home/latest_product", products: @latest_products %->
 <!%= render "home/sell" %->

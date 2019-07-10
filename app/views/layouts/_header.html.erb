@@ -2,16 +2,18 @@
     <!-- Top row, always visible -->
     <div class="mdl-layout__header-row">
         <!-- Title -->
-        <a class="mdl-layout-title" href="index.html">
-            <%= image_tag "logo.png", alt:"ChiBowl" %> </a>
+        <a class="mdl-layout-title" href="www.Chibowl.com">
+            <%= image_tag "chibowl.png", alt:"ChiBowl", size:"64x64" %> </a>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="/"><%= t 'header.home' %></a>
+            <a class="mdl-navigation__link" href="/"><%= t 'header.today' %></a>
             <%= link_to t('header.chef'), chefs_path, class: "mdl-navigation__link" %>
-            <a class="mdl-navigation__link" href="/cms"><%= t 'header.news' %></a>
+            <!--<a class="mdl-navigation__link" href="/cms"><%= t 'header.news' %></a>
             <a class="mdl-navigation__link" href="cart.html"><%= t 'header.cart' %></a>
-            <a class="mdl-navigation__link" href="checkout.html"><%= t 'header.checkout' %></a>
+            <a class="mdl-navigation__link" href="checkout.html"><%= t 'header.checkout' %></a>-->
         <ul class="nav-right">
+            <li><a>中文</a>
+                <a>English</a></li>
         <% if user_signed_in? %>
             <li><%= link_to (t 'header.logout'), destroy_user_session_url, data: {method: :delete} %></li>
         <% else %>
