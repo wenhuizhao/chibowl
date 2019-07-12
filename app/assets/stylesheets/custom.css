@@ -41,3 +41,11 @@
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
 }
+
+ul#date_list li{
+  display: inline-block;
+}
+
+ul#date_list{
+  text-align: center;
+}
