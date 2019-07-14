@@ -10,20 +10,23 @@
                 <a href="single-product.html" class="mdl-typography--font-light"><%= product.name%></a>
             </h3>
             <span class="mdl-typography--text-uppercase mdl-typography--font-bold oxy-card-product__tags">
-                <%# <a href="shop.html" rel="tag"><%= product.department&.name ></a>, %>
-                <a href="/"><%= t 'home.from' %></a>
-                <a href="shop.html" rel="tag"><%= product.chef&.name %></a>
+                <span><%= t 'home.from' %></span>
+                <a href="shop.html" rel="tag"><%= product.chef&.name %></a>,
+                <!-- <a href="shop.html" rel="tag"><%= product.category&.name %></a> -->
             </span>
             </div>
             <div style="display:inline-block; float:right">
-            <strong class="mdl-typography--headline oxy-product-price">
-                <del>
-                    <span><%= product.price %></span>
-                </del>
-                <ins>
-                    <span><%= product.sell_price %></span>
-                </ins>
-            </strong>
+                <strong class="mdl-typography--headline oxy-product-price">
+                    <!--<del>
+                        <span><%= product.price %></span>
+                    </del>-->
+                    <!--<ins>
+                        <span><%= product.sell_price %></span>
+                    </ins>-->
+                    <ins>
+                        <span>$<%= product.price %></span>
+                    </ins>
+                </strong>
             </div>
             <div class="oxy-rating oxy-card-product__rating oxy-card-product__rating--animated" title="Rated 4.00 out of 5">
                 <span style="width:80%">
@@ -33,19 +36,48 @@
         <div class="oxy-card-product__badge oxy-product-badge"> Sale </div>
     </div>
     <div class="mdl-card__actions oxy-card-product-actions">
-        <!--<!strong class="mdl-typography--headline oxy-product-price">
+        <!--<strong class="mdl-typography--pheadline oxy-productf-price">
             <del>
                 <span><%= product.price %></span>
             </del>
             <ins>
                 <span><%= product.sell_price %></span>
             </ins>
-        </!strong>-->
-        <div>
-            <p>div for selecting amount of product</p>
+        </strong>-->
+        <div class="oxy-quantity">
+                        <input type="button" value="-" id="btn-minus-<%=product.id%>">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input type="number" step="1" min="0" name="cart" id="quantity-<%=product.id%>" value="1" title="Qty" class="mdl-textfield__input" id="q1">
+                            <label class="mdl-textfield__label" for="q1"></label>
+                        </div>
+                        <input type="button" value="+" id='btn-plus-<%=product.id%>'> 
         </div>
-        <button class="oxy-button-add-product oxy-js-button-add-product mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+        <button class="oxy-button-add-product oxy-js-button-add-product mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+            id="add-to-cart-<%=product.id%>"> 
             <i class="material-icons">add_shopping_cart</i>
         </button>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+
+        $('#btn-plus-<%=product.id%>').click(function(){
+            $('#quantity-<%=product.id%>').val(parseInt($('#quantity-<%=product.id%>').val())+1);
+        });
+        $('#btn-minus-<%=product.id%>').click(function(){
+            $('#quantity-<%=product.id%>').val(parseInt($('#quantity-<%=product.id%>').val())-1);
+        });
+        $('#add-to-cart-<%=product.id%>').click(function() {
+
+            var productId = "<%=product.id%>";
+            var price = parseFloat("<%=product.price%>");
+            var sellPrice = parseFloat("<%=product.sell_price%>");
+            var name = "<%=product.name%>";
+            var thumb = "<%=product.photos[0].image.url(:small)%>";
+            var quantity = parseInt($('#quantity-<%=product.id%>').val());
+            console.log("add to cart productid, price, sell price, quantity:", productId, price, sellPrice, quantity);
+            addToCart(productId, price, quantity, name, sellPrice, thumb);
+        });
+    });
+</script>

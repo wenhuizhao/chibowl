@@ -91,6 +91,7 @@ class OrdersController < ApplicationController
       order.user_id = current_user.id || GuestUser.new.id
       order.status = Order.statuses[:pending]
       order.order_date = Time.now
+      order.paying_method = params[:paying_method]
       product_ids = (params[:product_ids] || "").split(",").map(&:to_i)
       quantities= (params[:quantities] || "").split(",").map(&:to_i)
       product_ids.each_with_index do |product_id, index|
@@ -114,7 +115,7 @@ class OrdersController < ApplicationController
         :first_name, :last_name, :address, :city, :state, :country, :zipcode,
         :shipping_address_check,
         :shipping_first_name, :shipping_last_name, :shipping_address, :shipping_city,
-        :shipping_state, :shipping_country, :shipping_zipcode
+        :shipping_state, :shipping_country, :shipping_zipcode, :paying_method
         )
     end
 end

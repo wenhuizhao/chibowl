@@ -118,15 +118,18 @@
   function removeProduct(productId) {
     $('#tr-product-'+productId).remove();
     removeFromCart(productId);
+    viewCart();
   }
   function plusQuantity(productId){
     var quantity = parseInt($('#quantity-'+productId).val())+1;
     $('#quantity-'+productId).val(quantity);
     updateProductQuantity(productId, quantity);
+    viewCart();
   }
   function minusQuantity(productId){
     var quantity = parseInt($('#quantity-'+productId).val())-1;
     $('#quantity-'+productId).val(quantity);    
     updateProductQuantity(productId, quantity);
+    viewCart();
 }
 </script>

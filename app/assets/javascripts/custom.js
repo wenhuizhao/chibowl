@@ -31,16 +31,17 @@ function updateCartBadge() {
 
 function updateSideCart() {
   var items = getCartItems();
+  var subTotal = 0;
   if (!items || Object.keys(items).length === 0) {
     $('#side-cart-ul').empty();
+    $('#side-cart-subtotal').html(subTotal.toFixed(2));
     return;
   }
-  var subTotal = 0;
+  $('#side-cart-ul').empty();
   Object.keys(items).forEach(productId => {
     item = items[productId];
     var price = item.sellPrice ? item.sellPrice : item.price;
     subTotal += item.quantity * price;
-    $('#side-cart-ul').empty();
     $('#side-cart-ul').append(
       '<li class="oxy-list__item" id="side-cart-li-'+productId+ '">' +
       ' <a href="single-product.html" class="oxy-list__icon">'+
@@ -48,7 +49,8 @@ function updateSideCart() {
       ' </a>'+
       ' <div class="oxy-list__item-text">'+
       '   <a href="single-product.html" class="oxy-list__title">'+item.name+'</a>'+
-      '   <span class="oxy-list__subtitle">'+ item.price.toFixed(2) + '<span>'+
+      '   <span class="oxy-list__subtitle"><i class="material-icons mdl-navigation__icon">attach_money</i>'+ price.toFixed(2) +
+      '   x '+item.quantity+'</span>'+
       ' </div>'+
       ' <div class="oxy-list__item-secondary-action">' +
       ' <a href="javascript:void(0);" onClick="removeFromCart('+ productId +');" title="Remove this item" class="mdl-button mdl-js-button mdl-button--accent mdl-button--icon"><i class="material-icons">close</i></a>'+

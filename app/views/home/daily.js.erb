@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 $("#daily_products").html("<%= escape_javascript(render partial:'daily_products', locals:{items: @selected}) %>");
-||||||| merged common ancestors
-=======
-$("#daily_products").html("<%= escape_javascript(render partial:'daily_products', locals:{items: @selected}) %>"); 
->>>>>>> previous version
+$('#date-choice-month').html("<%=@selected_date.strftime('%b')%>");

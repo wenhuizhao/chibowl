@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     @hot_products = product_service.hot
     @featured_products = product_service.featured
     @next_week_products = product_service.next_week_products
-    
+    @today_products = product_service.daily_menu(Date.today+1.days)
   end 
 
   def daily
@@ -18,6 +18,15 @@ class HomeController < ApplicationController
     end
   end
 
+  def daily
+    product_service = ProductService.new
+    @selected_date = Date.parse(params[:product_date])
+    @selected = product_service.daily_menu(@selected_date)
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   def index2
     
   end

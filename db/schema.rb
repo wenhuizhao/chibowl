@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_234330) do
+ActiveRecord::Schema.define(version: 2019_07_14_233602) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -228,6 +228,7 @@ ActiveRecord::Schema.define(version: 2019_07_09_234330) do
     t.string "shipping_zipcode"
     t.string "shipping_email"
     t.string "shipping_phone"
+    t.string "paying_method"
   end
 
   create_table "photos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -262,7 +263,7 @@ ActiveRecord::Schema.define(version: 2019_07_09_234330) do
     t.boolean "featured"
     t.boolean "hot"
     t.integer "status"
-    t.decimal "sell_price", precision: 10
+    t.float "sell_price"
     t.decimal "rating", precision: 10
     t.integer "department_id"
     t.text "extra"
