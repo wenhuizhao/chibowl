@@ -2,8 +2,9 @@
     <!-- Top row, always visible -->
     <div class="mdl-layout__header-row">
         <!-- Title -->
-        <a class="mdl-layout-title" href="www.Chibowl.com">
-            <%= image_tag "chibowl.png", alt:"ChiBowl", size:"64x64" %> </a>
+        <%= link_to root_path, class:"mdl-layout-title" do %>
+            <%= image_tag "chibowl.png", alt:"ChiBowl", size:"64x64" %>
+        <% end %>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
             <a class="mdl-navigation__link" href="/"><%= t 'header.today' %></a>
