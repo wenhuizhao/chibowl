@@ -17,11 +17,14 @@
             </div>
             <div style="display:inline-block; float:right">
                 <strong class="mdl-typography--headline oxy-product-price">
-                    <del>
+                    <!--<del>
                         <span><%= product.price %></span>
-                    </del>
-                    <ins>
+                    </del>-->
+                    <!--<ins>
                         <span><%= product.sell_price %></span>
+                    </ins>-->
+                    <ins>
+                        <span>$<%= product.price %></span>
                     </ins>
                 </strong>
             </div>
@@ -33,7 +36,7 @@
         <div class="oxy-card-product__badge oxy-product-badge"> Sale </div>
     </div>
     <div class="mdl-card__actions oxy-card-product-actions">
-        <!--<strong class="mdl-typography--headline oxy-product-price">
+        <!--<strong class="mdl-typography--pheadline oxy-product-price">
             <del>
                 <span><%= product.price %></span>
             </del>
@@ -41,11 +44,37 @@
                 <span><%= product.sell_price %></span>
             </ins>
         </strong>-->
-        <div>
-            <p>div for selecting amount of product</p>
+        <div class="oxy-quantity">
+                        <input type="button" value="-" id="btn-minus">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input type="number" step="1" min="0" name="cart" id="quantity" value="1" title="Qty" class="mdl-textfield__input" id="q1">
+                            <label class="mdl-textfield__label" for="q1"></label>
+                        </div>
+                        <input type="button" value="+" id='btn-plus'> 
         </div>
-        <button class="oxy-button-add-product oxy-js-button-add-product mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+        <button class="oxy-button-add-product oxy-js-button-add-product mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="add-to-cart"> 
             <i class="material-icons">add_shopping_cart</i>
         </button>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        var productId = "<%=product.id%>";
+        var price = parseFloat("<%=product.price%>");
+        var sellPrice = parseFloat("<%=product.sell_price%>");
+        var name = "<%=product.name%>";
+        var thumb = "<%=product.photos[0].image.url(:small)%>";
+        $('#btn-plus').click(function(){
+            $('#quantity').val(parseInt($('#quantity').val())+1);
+        });
+        $('#btn-minus').click(function(){
+            $('#quantity').val(parseInt($('#quantity').val())-1);
+        });
+        $('#add-to-cart').click(function() {
+            var quantity = parseInt($('#quantity').val());
+            console.log("add to cart productid, price, sell price, quantity:", productId, price, sellPrice, quantity);
+            addToCart(productId, price, quantity, name, sellPrice, thumb);
+        });
+    });
+</script>

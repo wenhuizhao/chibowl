@@ -20,7 +20,13 @@ Rails.application.routes.draw do
     end
   end
   resources :categories
-  resources :chefs
+  
+  resources :chefs do
+    collection do
+      get :become
+    end
+  end
+
   resources :demos
   devise_for :user, :path => '', 
     :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" },
@@ -28,7 +34,8 @@ Rails.application.routes.draw do
       :registrations => "users/registrations",
       :omniauth_callbacks => "users/omniauth_callback" 
     }
-  get 'home/index2'  
+  get 'home/index2'
+  get 'home/index'
   root 'home#index'
   get 'home/privacy'
   get 'home/user_term'

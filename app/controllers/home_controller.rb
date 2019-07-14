@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     @hot_products = product_service.hot
     @featured_products = product_service.featured
     @next_week_products = product_service.next_week_products
-    
+    @today_products = product_service.daily_menu(Date.today+1.days)
   end 
 
   def daily

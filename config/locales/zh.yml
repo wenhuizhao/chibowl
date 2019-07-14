@@ -72,11 +72,23 @@ zh:
         remember_me: '记住登陆'
         login: '登陆'
   orders:
+    order_success: '下单成功'
     cart:
       apply_coupon: '使用优惠卷'
       checkout: '支付'
       update_cart: "更新购物车"
     checkout:
+      picking_up_info: '自取时间及地址'
+      picking_up_time: '中午 12：00~15:00'
+      picking_up_address: 'Peter J. Sheld Library, Davis, CA 95618, United States'
+      delivery_info: '送餐人员电话： (415)792-xxxx'
+      paying_method: '支付方式'
+      bycash: '现金支付'
+      byVenmo: 'Venmo转账'
+      byAlipay: '支付宝转账'
+      contact_info: '联系方式'
+      email: '邮箱地址'
+      phone: '联系电话'
       billing_details: '账单信息'
       place_order: '提交订单'
       order_success: '您的订单已经成功提交，我们会尽快处理。'

@@ -7,14 +7,51 @@
             <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
                 <div class="mdl-grid mdl-cell mdl-cell--7-col mdl-cell--6-col-tablet mdl-cell--4-col-phone oxy-margin-bottom-40">
                     <h2 class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-typography--headline  
-                      mdl-typography--font-light oxy-margin-bottom-0 oxy-margin-top-20"> 
-                      <%= t '.billing_details'%> 
+                      mdl-typography--font-light oxy-margin-bottom-0 oxy-margin-top-20" > 
+                      <!-- <%= t '.billing_details'%> -->
+    
+                      <%= t '.picking_up_info'%>
                     </h2>
                     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell-4-col-phone">
-                        <div class="mdl-selectfield mdl-selectfield--full-width mdl-js-selectfield" tabindex="-1">
-                            <%= f.hidden_field :country, value: 'US'%>
-                        </div>
+                    <p style="margin:0"><%= t '.picking_up_time'%></p>
+                    <p style="margin:0"><%= t '.picking_up_address'%></p>
+                    <p style="margin:0"><%= t '.delivery_info'%></p>
                     </div>
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell-4-col-phone" style="height:2px; background-color:#BBBBBB">
+                        <!--<div class="mdl-selectfield mdl-selectfield--full-width mdl-js-selectfield" tabindex="-1">
+                            <%= f.hidden_field :country, value: 'US'%>
+                        </div>-->
+                    </div>
+                    <h2 class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-typography--headline  
+                      mdl-typography--font-light oxy-margin-bottom-0 oxy-margin-top-20" > 
+                      <%= t '.paying_method'%>
+                    </h2>
+                
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+                        <label class="mdl-radio" for="bycash">
+                            <input type="radio" id="bycash" class="mdl-radio__button" name="paying_method" value="bycash"/>
+                            <span class="mdl-radio__label" style="color:#333333"><%= t '.bycash'%></span>
+                        </label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                        <label class="mdl-radio" for="byVenmo">
+                            <input type="radio" id="byVenmo" class="mdl-radio__button" name="paying_method" value="byVenmo"/>
+                            <span class="mdl-radio__label" style="color:#333333"><%= t '.byVenmo'%></span>
+                        </label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                        <label class="mdl-radio" for="byAlipay">
+                            <input type="radio" id="byAlipay" class="mdl-radio__button" name="paying_method" value="byAlipay"/>
+                            <span class="mdl-radio__label" style="color:#333333"><%= t '.byAlipay'%></span>
+                        </label>
+                    </div>
+
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell-4-col-phone" style="height:2px; background-color:#BBBBBB">
+                    </div>
+                    <h2 class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-typography--headline  
+                      mdl-typography--font-light oxy-margin-bottom-0 oxy-margin-top-20" > 
+                      <%= t '.contact_info'%>
+                    </h2>
                     <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
                         <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
                             <label class="mdl-textfield__label" for="name">First Name</label>
@@ -27,7 +64,7 @@
                             <%= f.text_field :last_name, class: "mdl-textfield__input" %>
                           </div>
                     </div>
-                    <div class="mdl-cell mdl-cell--12-col">
+                    <!--<div class="mdl-cell mdl-cell--12-col">
                         <div class="mdl-textfield mdl-textfield--floating-label mdl-js-textfield mdl-textfield--full-width">
                             <%= f.text_field :address, class: "mdl-textfield__input" %>
                             <label class="mdl-textfield__label" for="address">Your Address</label>
@@ -50,7 +87,7 @@
                             <%= f.text_field :zipcode, class: "mdl-textfield__input" %>
                             <label class="mdl-textfield__label" for="address">Zipcode</label>
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
                         <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
@@ -77,13 +114,13 @@
                             <%= password_field_tag :password, class: "mdl-textfield__input", id: "password" %>
                         </div>
                     </div>
-                    <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
+                    <!--<div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
                         <label class="mdl-checkbox" for="shipping-address-check">
                             <%= f.check_box :shipping_address_check, class: "mdl-checkbox__input", id: "shipping-address-check" %>
                             <span class="mdl-checkbox__label">Different shipping Address</span>
                         </label>
-                    </div>
-                    <div id="shipping-address-details" class="mdl-cell mdl-cell--12-col">
+                    </div>-->
+                    <!--<div id="shipping-address-details" class="mdl-cell mdl-cell--12-col">
                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell-4-col-phone">
                             <div class="mdl-selectfield mdl-selectfield--full-width mdl-js-selectfield" tabindex="-1">
                               <%= f.hidden_field :shipping_country, value: 'US'%>
@@ -137,7 +174,7 @@
                                 <%= f.text_field :shipping_phone, class: "mdl-textfield__input", id: "shipping_phone" %>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="mdl-grid mdl-cell mdl-cell--1-col"></div>
                 <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
@@ -215,11 +252,11 @@
           toggleDetail('#create-account-check', '#create-account-details');
       });
 
-      $('#shipping-address-check').change(function() {
-          toggleDetail('#shipping-address-check', '#shipping-address-details');
-      });
+    //   $('#shipping-address-check').change(function() {
+    //       toggleDetail('#shipping-address-check', '#shipping-address-details');
+    //   });
 
-      toggleDetail('#shipping-address-check', '#shipping-address-details');
+    //   toggleDetail('#shipping-address-check', '#shipping-address-details');
       toggleDetail('#create-account-check', '#create-account-details');
 
   });

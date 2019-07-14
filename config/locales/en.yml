@@ -36,6 +36,7 @@ en:
     cart_shipping: "Shipping & Handling"
   date:
     order: ["Month", "day",  "year"]
+    
     month_names: ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "August", "September", "Oktober", "November", "December"]
   footer:
     about: "About us"
@@ -90,11 +91,23 @@ en:
         remember_me: 'Remember Me'
         login: 'Login'
   orders:
+    order_success: 'Order success'
     cart:
       apply_coupon: 'Apply Coupon'
       checkout: 'Checkout'
       update_cart: "Updat Cart"
     checkout:
+      picking_up_info: 'Pick up information'
+      picking_up_time: '12：00~15:00pm'
+      picking_up_address: 'Peter J. Sheld Library, Davis, CA 95618, United States'
+      delivery_info: 'delivery phone number: (415)792-xxxx'
+      paying_method: 'paying method'
+      bycash: 'cash'
+      byVenmo: 'Venmo'
+      byAlipay: 'Alipay'
+      contact_info: 'contact information'
+      email: 'your email address'
+      phone: 'your phone number'
       billing_details: 'Billing Details'
       place_order: 'Place Order'
       order_success: 'Order was successfully created.'
