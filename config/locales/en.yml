@@ -98,7 +98,6 @@ en:
       update_cart: "Updat Cart"
     checkout:
       picking_up_info: 'Pick up information'
-      picking_up_time: '12：00~15:00pm'
       picking_up_address: 'Peter J. Sheld Library, Davis, CA 95618, United States'
       delivery_info: 'delivery phone number: (415)792-xxxx'
       paying_method: 'paying method'

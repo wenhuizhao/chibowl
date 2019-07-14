@@ -44,8 +44,18 @@
 
 ul#date_list li{
   display: inline-block;
+  padding: 15px;
+
+}
+
+ul#date_list li :hover{
+  color: black;
 }
 
 ul#date_list{
   text-align: center;
+}
+
+#daily_products .oxy-card-product__image {
+  height: 200px;
 }

@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_12_224035) do
+ActiveRecord::Schema.define(version: 2019_07_14_233602) do
 
-  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -33,14 +33,14 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "chefs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "chefs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "desc"
     t.text "street"
@@ -54,24 +54,23 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "featured"
-    t.string "ssn"
   end
 
-  create_table "comfy_cms_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comfy_cms_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "site_id", null: false
     t.string "label", null: false
     t.string "categorized_type", null: false
     t.index ["site_id", "categorized_type", "label"], name: "index_cms_categories_on_site_id_and_cat_type_and_label", unique: true
   end
 
-  create_table "comfy_cms_categorizations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comfy_cms_categorizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category_id", null: false
     t.string "categorized_type", null: false
     t.integer "categorized_id", null: false
     t.index ["category_id", "categorized_type", "categorized_id"], name: "index_cms_categorizations_on_cat_id_and_catd_type_and_catd_id", unique: true
   end
 
-  create_table "comfy_cms_files", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comfy_cms_files", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "site_id", null: false
     t.string "label", default: "", null: false
     t.text "description"
@@ -81,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.index ["site_id", "position"], name: "index_comfy_cms_files_on_site_id_and_position"
   end
 
-  create_table "comfy_cms_fragments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comfy_cms_fragments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "record_type"
     t.bigint "record_id"
     t.string "identifier", null: false
@@ -97,7 +96,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.index ["record_type", "record_id"], name: "index_comfy_cms_fragments_on_record_type_and_record_id"
   end
 
-  create_table "comfy_cms_layouts", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comfy_cms_layouts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "site_id", null: false
     t.integer "parent_id"
     t.string "app_layout"
@@ -113,7 +112,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.index ["site_id", "identifier"], name: "index_comfy_cms_layouts_on_site_id_and_identifier", unique: true
   end
 
-  create_table "comfy_cms_pages", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comfy_cms_pages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "site_id", null: false
     t.integer "layout_id"
     t.integer "parent_id"
@@ -132,7 +131,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.index ["site_id", "full_path"], name: "index_comfy_cms_pages_on_site_id_and_full_path"
   end
 
-  create_table "comfy_cms_revisions", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comfy_cms_revisions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "record_type", null: false
     t.integer "record_id", null: false
     t.text "data", limit: 16777215
@@ -140,7 +139,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.index ["record_type", "record_id", "created_at"], name: "index_cms_revisions_on_rtype_and_rid_and_created_at"
   end
 
-  create_table "comfy_cms_sites", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comfy_cms_sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "label", null: false
     t.string "identifier", null: false
     t.string "hostname", null: false
@@ -151,7 +150,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.index ["hostname"], name: "index_comfy_cms_sites_on_hostname"
   end
 
-  create_table "comfy_cms_snippets", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comfy_cms_snippets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "site_id", null: false
     t.string "label", null: false
     t.string "identifier", null: false
@@ -163,7 +162,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.index ["site_id", "position"], name: "index_comfy_cms_snippets_on_site_id_and_position"
   end
 
-  create_table "comfy_cms_translations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comfy_cms_translations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "locale", null: false
     t.integer "page_id", null: false
     t.integer "layout_id"
@@ -177,14 +176,14 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.index ["page_id"], name: "index_comfy_cms_translations_on_page_id"
   end
 
-  create_table "demos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "demos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "desc"
     t.integer "parent_id"
@@ -192,7 +191,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "order_items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
     t.integer "status"
@@ -203,7 +202,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "orders", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "status"
     t.datetime "order_date"
@@ -232,7 +231,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.string "paying_method"
   end
 
-  create_table "photos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "photos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.integer "width"
     t.integer "height"
@@ -246,14 +245,14 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.string "owner_type"
   end
 
-  create_table "product_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "product_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "product_id"
     t.integer "related_product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "products", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "category_id"
     t.integer "chef_id"
@@ -264,7 +263,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.boolean "featured"
     t.boolean "hot"
     t.integer "status"
-    t.decimal "sell_price", precision: 10
+    t.float "sell_price"
     t.decimal "rating", precision: 10
     t.integer "department_id"
     t.text "extra"
@@ -272,7 +271,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.date "available_day"
   end
 
-  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "product_id"
     t.decimal "rating", precision: 10
@@ -282,7 +281,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_224035) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

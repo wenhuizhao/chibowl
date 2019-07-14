@@ -189,7 +189,7 @@
 <script>
     $(document).ready(function(){
         var productId = "<%=@product.id%>";
-        var price = parseFloat("<%=@product.sell_price%>");
+        var price = parseFloat("<%=@product.price%>");
         var sellPrice = parseFloat("<%=@product.sell_price%>");
         var name = "<%=@product.name%>";
         var thumb = "<%=@product.photos[0].image.url(:small)%>";
@@ -201,7 +201,7 @@
         });
         $('#btn-add-to-cart').click(function() {
             var quantity = parseInt($('#quantity').val());
-            console.log("add to cart productid, price, quantity:", productId, price, quantity);
+            console.log("add to cart productid, price, quantity:", productId, price, sellPrice, quantity);
             addToCart(productId, price, quantity,name,sellPrice,thumb);
         })
 

@@ -20,7 +20,8 @@ class HomeController < ApplicationController
 
   def daily
     product_service = ProductService.new
-    @selected = product_service.daily_menu(Date.parse(params[:product_date]))
+    @selected_date = Date.parse(params[:product_date])
+    @selected = product_service.daily_menu(@selected_date)
     respond_to do |format|
       format.js
     end
