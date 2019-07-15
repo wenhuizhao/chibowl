@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Materialize</title>
+      <title>Chibowl</title>
       
       <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
       <%= csrf_meta_tags %>
@@ -22,6 +24,7 @@
  <!--[if lt IE 10]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+      <div class="mdl-layout__container">
         <div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button mdl-layout--fixed-header">
             <%= render "layouts/header" %>
             <%= render "layouts/drawer" %>
@@ -31,12 +34,13 @@
               <%= render "layouts/footer" %>
             </main>
         </div>
+      </div>
   <%= render "layouts/cart-button" %>
   <%= render "layouts/side-cart" %>
 
 <script>
-  M.AutoInit();
     $(document).ready(function($) {
+  M.AutoInit();
 
         $('main').scroll(function(e) {
             if(e.target.scrollTop > 1) {

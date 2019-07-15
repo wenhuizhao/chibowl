@@ -7470,7 +7470,7 @@ input.mdl-button[type="submit"] {
 }
 
 .mdl-card__media {
-  background-color: rgb(68,138,255);
+  /*background-color: rgb(68,138,255);*/
   background-repeat: repeat;
   background-position: 50% 50%;
   background-size: cover;
