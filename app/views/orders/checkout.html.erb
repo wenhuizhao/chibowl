@@ -13,8 +13,13 @@
                       <%= t '.picking_up_info'%>
                     </h2>
                     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell-4-col-phone">
-                    <p style="margin:0"><%= t '.picking_up_time'%></p>
-                    <p style="margin:0"><%= t '.picking_up_address'%></p>
+                    <% @order.pickup_date_address.each do |day, products_hash| %>
+                        <div class="pickup-date"><%= I18n.localize(day, format: '%Y%m%dT%H%M')%>:</div>
+                        <% products_hash.each do |chef_id, val| %>
+                            <div class="pickup-addres"><%= val[:address] %></div>
+                            <div class="pickup-product"><%= val[:products] %></div>
+                        <% end %>
+                    <% end %>
                     <p style="margin:0"><%= t '.delivery_info'%></p>
                     </div>
                     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell-4-col-phone" style="height:2px; background-color:#BBBBBB">
@@ -55,13 +60,13 @@
                     <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
                         <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
                             <label class="mdl-textfield__label" for="name">First Name</label>
-                            <%= f.text_field :first_name, class: "mdl-textfield__input" %>
+                            <%= f.text_field :first_name, class: "mdl-textfield__input validate", required:"", 'aria-required': true %>
                           </div>
                     </div>
                     <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
                         <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
                             <label class="mdl-textfield__label" for="lastname">Last Name</label>
-                            <%= f.text_field :last_name, class: "mdl-textfield__input" %>
+                            <%= f.text_field :last_name, class: "mdl-textfield__input validate", required:"", 'aria-required': true %>
                           </div>
                     </div>
                     <!--<div class="mdl-cell mdl-cell--12-col">
