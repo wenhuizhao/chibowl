@@ -14,6 +14,10 @@ zh:
     cart_subtoal: '小结'
     shipping: "运费"
   date:
+    abbr_day_names: ['星期日', '星期一', '星期二',	'星期三',	'星期四',	'星期五',	'星期六']
+    abbr_month_names: ["十二月", "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
+    formats:
+      default: "%Y-%m-%dT%H:%M:%S+%H:%M"
     order: ["year", "month",  "year"]
     month_names: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
   footer:

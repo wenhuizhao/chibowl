@@ -59,3 +59,14 @@ ul#date_list{
 #daily_products .oxy-card-product__image {
   height: 200px;
 }
+
+.pickup-date {
+  font-size: 14px;
+}
+.pickup-address {
+
+}
+.pickup-product {
+  font-size: 12px;
+  color: '#050505'
+}

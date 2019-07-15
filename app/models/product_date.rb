@@ -1,0 +1,2 @@
+class ProductDate < ApplicationRecord
+end
