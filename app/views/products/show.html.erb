@@ -197,7 +197,9 @@
             $('#quantity').val(parseInt($('#quantity').val())+1);
         });
         $('#btn-minus').click(function(){
-            $('#quantity').val(parseInt($('#quantity').val())-1);
+            if (parseInt($('#quantity').val())> 0)
+                $('#quantity').val(parseInt($('#quantity').val())-1);
+            }
         });
         $('#btn-add-to-cart').click(function() {
             var quantity = parseInt($('#quantity').val());
