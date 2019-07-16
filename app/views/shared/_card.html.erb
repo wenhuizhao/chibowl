@@ -48,7 +48,7 @@
                         <input type="button" value="-" id="btn-minus-<%=product.id%>">
                         <div class="mdl-textfield mdl-js-textfield">
                             <input type="number" step="1" min="1" name="cart" id="quantity-<%=product.id%>" value="1" title="Qty" class="mdl-textfield__input">
-                            <label class="mdl-textfield__label" for="q1"></label>
+                            <label class="mdl-textfield__label" for="quantity-<%=product.id%>"></label>
                         </div>
                         <input type="button" value="+" id='btn-plus-<%=product.id%>'> 
         </div>
@@ -68,6 +68,10 @@
         $('#btn-minus-<%=product.id%>').click(function(){
             $('#quantity-<%=product.id%>').val(parseInt($('#quantity-<%=product.id%>').val())-1);
         });
+        // $('#quantity-<%=product.id%>').change(function(){
+        //     console.log("change");
+        //     alert("hhh");
+        // });
         $('#add-to-cart-<%=product.id%>').click(function() {
 
             var productId = "<%=product.id%>";
