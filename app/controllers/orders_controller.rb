@@ -79,7 +79,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to @order, notice: t('.order_success') }
         format.json { render :show, status: :created, location: @order }
       else
-        format.html { render :new }
+        format.html { render :checkout, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end

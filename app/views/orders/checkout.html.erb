@@ -6,6 +6,11 @@
             
             <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
                 <div class="mdl-grid mdl-cell mdl-cell--7-col mdl-cell--6-col-tablet mdl-cell--4-col-phone oxy-margin-bottom-40">
+                    <% if @order.errors %>
+                        <% @order.errors.messages.each do |key, msg|%>
+                            <div class="error"><%=msg.join(',')%></div>
+                        <% end %>
+                    <% end %>
                     <h2 class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-typography--headline  
                       mdl-typography--font-light oxy-margin-bottom-0 oxy-margin-top-20" > 
                       <!-- <%= t '.billing_details'%> -->

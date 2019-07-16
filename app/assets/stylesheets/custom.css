@@ -73,3 +73,7 @@ ul#date_list{
   font-size: 12px;
   color: '#050505'
 }
+
+.error {
+  color: red;
+}

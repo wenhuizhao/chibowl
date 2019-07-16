@@ -5,8 +5,13 @@ class Order < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  
+  validate :subtotal_not_zero
 
+  def subtotal_not_zero
+    if self.subtotal <= 0
+      self.errors.add(:order_items, :subtotal_zero)
+    end
+  end
   def subtotal
     self.order_items.map(&:subtotal).sum
   end
