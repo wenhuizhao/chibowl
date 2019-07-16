@@ -5,6 +5,7 @@ class Order < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  
 
   def subtotal
     self.order_items.map(&:subtotal).sum
@@ -42,4 +43,5 @@ class Order < ApplicationRecord
     end
     output
   end
+  
 end

@@ -88,7 +88,7 @@ zh:
       paying_method: '支付方式'
       bycash: '现金支付'
       byVenmo: 'Venmo转账'
-      byAlipay: '支付宝转账'
+      byWeChat: '微信转账'
       contact_info: '联系方式'
       email: '邮箱地址'
       phone: '联系电话'
