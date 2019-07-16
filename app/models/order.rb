@@ -48,4 +48,5 @@ class Order < ApplicationRecord
     end
     output
   end
+  
 end

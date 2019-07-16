@@ -17,15 +17,18 @@
             </div>
             <div style="display:inline-block; float:right">
                 <strong class="mdl-typography--headline oxy-product-price">
-                    <!--<del>
-                        <span><%= product.price %></span>
-                    </del>-->
-                    <!--<ins>
-                        <span><%= product.sell_price %></span>
-                    </ins>-->
+                    <% if product.sell_price.present?%>
+                    <del>
+                        <span>$<%= product.price %></span>
+                    </del>
+                    <ins>
+                        <span>$<%= product.sell_price %></span>
+                    </ins>
+                    <%else%>
                     <ins>
                         <span>$<%= product.price %></span>
                     </ins>
+                    <%end%>
                 </strong>
             </div>
             <div class="oxy-rating oxy-card-product__rating oxy-card-product__rating--animated" title="Rated 4.00 out of 5">
@@ -33,7 +36,9 @@
                     <strong class="oxy-rating__stars"><%= product.rating %></strong> out of 5 </span>
             </div>
         </div>
-        <div class="oxy-card-product__badge oxy-product-badge"> Sale </div>
+        <% if product.sell_price.present?%>
+            <div class="oxy-card-product__badge oxy-product-badge"> Sale </div>
+        <% end%>
     </div>
     <div class="mdl-card__actions oxy-card-product-actions">
         <!--<strong class="mdl-typography--pheadline oxy-productf-price">
@@ -52,22 +57,31 @@
                         </div>
                         <input type="button" value="+" id='btn-plus-<%=product.id%>'> 
         </div>
-        <button class="oxy-button-add-product oxy-js-button-add-product mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+        <button class="oxy-button-add-product  mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-button--raised"
             id="add-to-cart-<%=product.id%>"> 
-            <i class="material-icons">add_shopping_cart</i>
+            <%= t '.add_to_cart'%> </button>
+            <%# <i class="material-icons">add_shopping_cart</i> %>
         </button>
     </div>
 </div>
 
 <script>
     $(document).ready(function(){
+        // $('#quantity-<%=product.id%>').val().change(function(){
+        //     if ($('#quantity-<%=product.id%>').val()<1) {
+        //         alert("quantity of product must greater than 0")
+        //     }
 
+        // });
         $('#btn-plus-<%=product.id%>').click(function(){
             $('#quantity-<%=product.id%>').val(parseInt($('#quantity-<%=product.id%>').val())+1);
         });
         $('#btn-minus-<%=product.id%>').click(function(){
             $('#quantity-<%=product.id%>').val(parseInt($('#quantity-<%=product.id%>').val())-1);
         });
+        $('#quantity-<%=product.id%>').change(function(){
+            console.log($('#quantity-<%=product.id%>').val())
+        })
         $('#add-to-cart-<%=product.id%>').click(function() {
 
             var productId = "<%=product.id%>";
