@@ -1,4 +1,11 @@
 zh:
+  activerecord:
+    errors:
+      models:
+        order:
+          attributes:
+            order_items:
+              subtotal_zero: '订单金额不能为0'
   badge:
     sell: "打折"
     category: "分类"
