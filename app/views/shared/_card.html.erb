@@ -1,8 +1,8 @@
 <div class="mdl-card mdl-shadow--2dp oxy-card-product">
     <div class="mdl-card__media oxy-card-product__media">
         <%= link_to product_path(product) do %>
-            <%= image_tag product.photo1_url, alt:"some product", class:"oxy-card-product__image" %>
-            <%= image_tag product.photo2_url, alt:"some product", class:"oxy-card-product__image" %>
+            <%= image_tag product.photo1_url, alt:"some product", class:"oxy-card-product__image"%>
+            <%= image_tag product.photo2_url, alt:"some product", class:"oxy-card-product__image"%>
         <% end %>
         <div class="mdl-card__title oxy-card-product__title">
             <div style="display:inline-block ">
@@ -52,7 +52,7 @@
         <div class="oxy-quantity">
                         <input type="button" value="-" id="btn-minus-<%=product.id%>">
                         <div class="mdl-textfield mdl-js-textfield">
-                            <input type="number" step="1" min="0" name="cart" id="quantity-<%=product.id%>" value="1" title="Qty" class="mdl-textfield__input" id="q1">
+                            <input type="number" step="1" min="1" name="cart" id="quantity-<%=product.id%>" value="1" title="Qty" class="mdl-textfield__input">
                             <label class="mdl-textfield__label" for="q1"></label>
                         </div>
                         <input type="button" value="+" id='btn-plus-<%=product.id%>'> 

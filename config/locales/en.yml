@@ -20,6 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    errors:
+      models:
+        order:
+          attributes:
+            order_items:
+              subtotal_zero: "Order can not be empty"
   badge:
     sell: "Sell"
     category: "Category"
