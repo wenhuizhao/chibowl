@@ -110,7 +110,7 @@ en:
       paying_method: 'paying method'
       bycash: 'cash'
       byVenmo: 'Venmo'
-      byAlipay: 'Alipay'
+      byWeChat: 'WeChat'
       contact_info: 'contact information'
       email: 'your email address'
       phone: 'your phone number'

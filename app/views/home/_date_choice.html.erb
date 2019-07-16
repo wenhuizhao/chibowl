@@ -46,3 +46,11 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('#date_list li a').on('click', function() {
+            $('#date_list li a').removeClass('selected-date');
+            $(this).addClass('selected-date');
+        });
+    });
+</script>

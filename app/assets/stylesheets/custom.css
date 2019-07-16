@@ -52,11 +52,16 @@ ul#date_list li :hover{
   color: black;
 }
 
-
-
+ul#date_list li :visited{
+  color: black;
+}
 ul#date_list{
   text-align: center;
   display: flex; justify-content: space-between;
+}
+
+.selected-date {
+  color: darkred;
 }
 
 #daily_products .oxy-card-product__image {
