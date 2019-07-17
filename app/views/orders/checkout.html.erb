@@ -250,7 +250,7 @@
                             </div> %>
                         </div>
                         <div class="mdl-card__actions mdl-card--border mdl-typography--text-right">
-                            <%=f.button t('.place_order'), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"%>
+                            <%=f.button t('.place_order'), {id:"place_order", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored", onclick:"emptyCart()"}%>
                         </div>
                     </div>
                 </div>
@@ -260,6 +260,10 @@
 </div>
 <script>
   $(document).ready(function($) {
+    //   $('#place_order').click(function(){
+    //       console.log('empty');
+    //       emptyCart();
+    //   });
       $('#create-account-check').change(function() {
           toggleDetail('#create-account-check', '#create-account-details');
       });

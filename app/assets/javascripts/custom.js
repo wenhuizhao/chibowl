@@ -114,6 +114,12 @@ function addToCart(productId, price, quantity, name, sellPrice, thumb) {
   updateCartBadge();
   updateSideCart();
 }
+function emptyCart(){
+  sessionStorage.setItem("cart",null);
+  updateCartBadge();
+  updateSideCart();
+}
+
 $(document).ready(function() {
   updateCartBadge();
   updateSideCart();
