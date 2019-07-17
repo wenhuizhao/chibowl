@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @clear_cart = params[:clear_cart]
   end
 
   # GET /orders/new
@@ -78,7 +79,7 @@ class OrdersController < ApplicationController
     @order.phone=params[:order][:phone]
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: t('.order_success') }
+        format.html { redirect_to order_path(@order, clear_cart:true), notice: t('.order_success') }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :checkout, status: :unprocessable_entity }
