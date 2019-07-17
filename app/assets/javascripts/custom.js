@@ -124,7 +124,3 @@ function emptyCart(){
   updateSideCart();
 }
 
-$(document).ready(function() {
-  updateCartBadge();
-  updateSideCart();
-});

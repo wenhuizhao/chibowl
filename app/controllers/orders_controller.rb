@@ -75,8 +75,6 @@ class OrdersController < ApplicationController
 
   def place_order
     @order = prepare_order(order_params)
-    @order.email=params[:order][:email]
-    @order.phone=params[:order][:phone]
     respond_to do |format|
       if @order.save
         format.html { redirect_to order_path(@order, clear_cart:true), notice: t('.order_success') }

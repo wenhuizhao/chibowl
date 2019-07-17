@@ -12,7 +12,10 @@
             <%= link_to t('header.chef'), become_chefs_path, class: "mdl-navigation__link"%>
             <!--<a class="mdl-navigation__link" href="/cms"><%= t 'header.news' %></a>-->
             <!--<%= link_to t('header.cart'), cart_orders_path, class:"mdl-navigation__link" %>-->
-            <%= link_to t('header.checkout'), checkout_orders_path,  class:"mdl-navigation__link" %>
+            <!--<%= link_to t('header.checkout'), checkout_orders_path,  class:"mdl-navigation__link" %>-->
+            <a href="javascript:void(0);" onClick="viewCheckout()" class="mdl-navigation__link">
+                      <%= t 'header.checkout'%>
+                    </a>
         <ul class="nav-right">
             <li><a>中文</a>
                 <a>English</a>
