@@ -76,10 +76,20 @@ ul#date_list{
 
 }
 .pickup-product {
-  font-size: 12px;
+  font-size: 13px;
   color: '#050505'
 }
 
 .error {
   color: red;
+}
+
+.paying_scan_img {
+  display: block;
+  margin: auto;
+}
+
+.horizontal_center {
+  text-align: center;
+  margin: 10px;
 }

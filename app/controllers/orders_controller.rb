@@ -75,8 +75,6 @@ class OrdersController < ApplicationController
 
   def place_order
     @order = prepare_order(order_params)
-    @order.email=params[:order][:email]
-    @order.phone=params[:order][:phone]
     respond_to do |format|
       if @order.save
         format.html { redirect_to order_path(@order, clear_cart:true), notice: t('.order_success') }
@@ -94,7 +92,6 @@ class OrdersController < ApplicationController
       order.user_id = current_user&.id || GuestUser.new.id
       order.status = Order.statuses[:pending]
       order.order_date = Time.now
-      order.paying_method = params[:paying_method]
       product_ids = (params[:product_ids] || "").split(",").map(&:to_i)
       quantities= (params[:quantities] || "").split(",").map(&:to_i)
       product_ids.each_with_index do |product_id, index|

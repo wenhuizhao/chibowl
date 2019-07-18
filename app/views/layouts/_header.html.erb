@@ -7,15 +7,19 @@
         <% end %>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href=""><%= t 'header.today' %></a>
+            <!--<a class="mdl-navigation__link" href=""><%= t 'header.today' %></a>-->
+            <%= link_to t('header.today'), root_path(:anchor=> "daily_products"), class: "mdl-navigation__link"%>
             <!--<%= link_to t('header.chef'), chefs_path, class: "mdl-navigation__link" %>-->
             <%= link_to t('header.chef'), become_chefs_path, class: "mdl-navigation__link"%>
+            <a href="javascript:void(0);" onClick="viewCart()" class="mdl-navigation__link">
+                <%= t 'header.cart'%>
+            </a>
             <a href="javascript:void(0);" onClick="viewCheckout()" class="mdl-navigation__link">
                 <%= t 'header.checkout'%>
             </a>
             <!--<a class="mdl-navigation__link" href="/cms"><%= t 'header.news' %></a>-->
-            <!--<%= link_to t('header.cart'), cart_orders_path, class:"mdl-navigation__link" %>-->
-            <!--<%= link_to t('header.checkout'), checkout_orders_path,  class:"mdl-navigation__link" %>-->
+            <!--<%= link_to t('header.cart'), cart_orders_path, class:"mdl-navigation__link" %>
+            <%= link_to t('header.checkout'), checkout_orders_path,  class:"mdl-navigation__link" %>-->
         <ul class="nav-right">
             <%# <li><a>中文</a>
                 <a>English</a>
