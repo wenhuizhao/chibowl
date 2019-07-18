@@ -18,13 +18,22 @@
                       <%= t '.picking_up_info'%>
                     </h2>
                     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell-4-col-phone">
-                    <% @order.pickup_date_address.each do |day, products_hash| %>
-                        <div class="pickup-date"><%= I18n.localize(day, format: '%Y%m%dT%H%M')%>:</div>
+                    <p style="margin:0"><%= t '.order_detail'%></p>
+                    <!--<% @order.pickup_date_address.each do |day, products_hash| %>
+                        <div class="pickup-date"><%= I18n.localize(day, format: '%Y-%m-%d')%>:</div>
                         <% products_hash.each do |chef_id, val| %>
                             <div class="pickup-addres"><%= val[:address] %></div>
                             <div class="pickup-product"><%= val[:products] %></div>
                         <% end %>
+                    <% end %>-->
+                    <% @order.pickup_date_address.each do |day, products_hash| %>
+                        <div class="pickup-product"><%= I18n.localize(day, format: '%Y-%m-%d')%>:
+                        <% products_hash.each do |chef_id, val| %>
+                            <%= val[:products] %> &nbsp;
+                        <% end %></div>
                     <% end %>
+                    <p style="margin:0"><%= t '.picking_up_time'%></p>
+                    <p style="margin:0"><%= t '.picking_up_address'%></p>
                     <p style="margin:0"><%= t '.delivery_info'%></p>
                     </div>
                     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell-4-col-phone" style="height:2px; background-color:#BBBBBB">
@@ -37,19 +46,19 @@
                       <%= t '.paying_method'%>
                     </h2>
                 
-                    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+                    <!--<div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
                         <label class="mdl-radio" for="bycash">
                             <input type="radio" id="bycash" class="mdl-radio__button" name="paying_method" value="bycash" checked/>
                             <span class="mdl-radio__label" style="color:#333333"><%= t '.bycash'%></span>
                         </label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                    </div> -->
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                         <label class="mdl-radio" for="byVenmo">
-                            <input type="radio" id="byVenmo" class="mdl-radio__button" name="paying_method" value="byVenmo"/>
+                            <input type="radio" id="byVenmo" class="mdl-radio__button" name="paying_method" value="byVenmo" checked/>
                             <span class="mdl-radio__label" style="color:#333333"><%= t '.byVenmo'%></span>
                         </label>
                     </div>
-                    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                         <label class="mdl-radio" for="byAlipay">
                             <input type="radio" id="byAlipay" class="mdl-radio__button" name="paying_method" value="byAlipay"/>
                             <span class="mdl-radio__label" style="color:#333333"><%= t '.byWeChat'%></span>

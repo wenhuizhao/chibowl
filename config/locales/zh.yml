@@ -85,12 +85,15 @@ zh:
   orders:
     order_success: '下单成功'
     cart:
+      cart_title: '购物车'
       apply_coupon: '使用优惠卷'
       checkout: '支付'
       update_cart: "更新购物车"
     checkout:
+      order_detail: '订单详情:'
       picking_up_info: '自取时间及地址'
-      picking_up_address: 'Peter J. Sheld Library, Davis, CA 95618, United States'
+      picking_up_time: '自取时间：菜单当日12pm-3pm'
+      picking_up_address: '自取地址：Peter J. Sheld Library, Davis, CA 95618, United States'
       delivery_info: '送餐人员电话： (415)792-xxxx'
       paying_method: '支付方式'
       bycash: '现金支付'
@@ -118,3 +121,8 @@ zh:
       reviews: "评价"
       reviews_for: "%{count}个%{name}的评价"
       related_products: "类似推荐"
+  chefs:
+    become:
+      scan_img: "扫描公众号二维码，发送“成为厨师”获得更多详细信息。"
+      join_us: "快来加入我们吧～"
+      back_to_homepage: "返回首页"
