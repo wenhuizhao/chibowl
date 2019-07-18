@@ -95,8 +95,6 @@ class OrdersController < ApplicationController
       order.status = Order.statuses[:pending]
       order.order_date = Time.now
       order.paying_method = params[:paying_method]
-      #order.email=params[:order][:email]
-      #order.phone=params[:order][:phone]
       product_ids = (params[:product_ids] || "").split(",").map(&:to_i)
       quantities= (params[:quantities] || "").split(",").map(&:to_i)
       product_ids.each_with_index do |product_id, index|
