@@ -1,6 +1,6 @@
 <div class="oxy-section">
     <div class="oxy-section__content">
-        <%= form_for(@order, url: {action: "place_order"}) do |f| %>
+        <%= form_for(@order, url: {action: "place_order"}, html: {id:'place-order-form'}) do |f| %>
             <%= hidden_field_tag :product_ids, @order.order_items.map(&:product).map(&:id).join(",")%>
             <%= hidden_field_tag :quantities, @order.order_items.map(&:quantity).join(",")%>
             
@@ -108,9 +108,12 @@
                     <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
                         <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
                             <label class="mdl-textfield__label" for="phone">Phone</label>
-                            <%= f.phone_field :phone, class: "mdl-textfield__input validate", required:"", 'aria-required': true%>
+                            <%= f.phone_field :phone, class: "mdl-textfield__input validate", required:"", 'aria-required': true, 'aria-invalid': false, maxlength:14%>
                         </div>
                     </div>
+
+ 
+
                     <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
                         <label class="mdl-checkbox" for="create-account-check">
                             <input type="checkbox" id="create-account-check" class="mdl-checkbox__input" />
@@ -121,7 +124,7 @@
                         <p class="mdl-typography--body-2">Create an account by entering a password below. If you are a returning customer please login at the top of the page.</p>
                         <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
                             <label class="mdl-textfield__label" for="email">Account Password</label>
-                            <%= password_field_tag :password, class: "mdl-textfield__input", id: "password" %>
+                            <%= password_field_tag :password, id: 'password', class: "mdl-textfield__input", id: "password" %>
                         </div>
                     </div>
                     <!--<div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell-4-col-phone">
@@ -262,6 +265,17 @@
           toggleDetail('#create-account-check', '#create-account-details');
       });
 
+      $('#place-order-form').validate({
+        rules : {
+          'order[phone]': {
+            required: true,
+            phoneUS: true
+          },
+          password: {
+            minlength: 5
+          }
+        }
+      }); 
     //   $('#shipping-address-check').change(function() {
     //       toggleDetail('#shipping-address-check', '#shipping-address-details');
     //   });
