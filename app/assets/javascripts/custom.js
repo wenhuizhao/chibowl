@@ -118,7 +118,4 @@ function addToCart(productId, price, quantity, name, sellPrice, thumb) {
   updateCartBadge();
   updateSideCart();
 }
-$(document).ready(function() {
-  updateCartBadge();
-  updateSideCart();
-});
+
