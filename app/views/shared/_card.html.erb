@@ -1,17 +1,20 @@
 <div class="mdl-card mdl-shadow--2dp oxy-card-product">
     <div class="mdl-card__media oxy-card-product__media">
-        <%= link_to product_path(product) do %>
+        <!--<%= link_to product_path(product) do %>
             <%= image_tag product.photo1_url, alt:"some product", class:"oxy-card-product__image"%>
             <%= image_tag product.photo2_url, alt:"some product", class:"oxy-card-product__image"%>
-        <% end %>
+        <% end %>-->
+        <%= image_tag product.photo3_url, alt:"some product", class:"oxy-card-product__image"%>
         <div class="mdl-card__title oxy-card-product__title">
             <div style="display:inline-block ">
             <h3 class="mdl-card__title-text oxy-card-product__title-text">
-                <a href="single-product.html" class="mdl-typography--font-light"><%= product.name%></a>
+                <!-- <a href="single-product.html" class="mdl-typography--font-light"><%= product.name%></a> -->
+                <span class="mdl-typography--font-light"><%= product.name%></span>
             </h3>
             <span class="mdl-typography--text-uppercase mdl-typography--font-bold oxy-card-product__tags">
                 <span><%= t 'home.from' %></span>
-                <a href="shop.html" rel="tag"><%= product.chef&.name %></a>,
+                <!--<a href="shop.html" rel="tag"><%= product.chef&.name %></a>-->
+                <span><%= product.chef&.name %></span>
                 <!-- <a href="shop.html" rel="tag"><%= product.category&.name %></a> -->
             </span>
             </div>

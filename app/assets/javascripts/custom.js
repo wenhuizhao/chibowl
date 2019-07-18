@@ -28,7 +28,11 @@ function updateCartBadge() {
   });
   $("#cart-data-badge").attr("data-badge", totalQuantity);
 }
-
+function clearCart() {
+  sessionStorage.setItem('cart', '{}');
+  updateCartBadge();
+  updateSideCart();
+}
 function updateSideCart() {
   var items = getCartItems();
   var subTotal = 0;
@@ -114,7 +118,4 @@ function addToCart(productId, price, quantity, name, sellPrice, thumb) {
   updateCartBadge();
   updateSideCart();
 }
-$(document).ready(function() {
-  updateCartBadge();
-  updateSideCart();
-});
+
