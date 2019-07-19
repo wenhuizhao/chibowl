@@ -21,7 +21,7 @@ zh:
     cart_subtoal: '小结'
     shipping: "运费"
   date:
-    abbr_day_names: ['星期日', '星期一', '星期二',	'星期三',	'星期四',	'星期五',	'星期六']
+    abbr_day_names: ['周日', '周一', '周二',	'周三',	'周四',	'周五',	'周六']
     abbr_month_names: ["十二月", "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
     formats:
       default: "%Y-%m-%dT%H:%M:%S+%H:%M"
@@ -99,7 +99,7 @@ zh:
       picking_up_info: '自取时间及地址'
       picking_up_time: '自取时间：菜单当日12pm-3pm'
       picking_up_address: '自取地址：Peter J. Sheld Library, Davis, CA 95618, United States'
-      delivery_info: '送餐人员电话： (415)792-xxxx'
+      delivery_info: '送餐人员电话： (415)792-7787'
       paying_method: '支付方式'
       bycash: '现金支付'
       byVenmo: 'Venmo转账'

@@ -44,7 +44,7 @@
 
 ul#date_list li{
   display: inline-block;
-  padding: 15px;
+
 
 }
 
@@ -57,6 +57,7 @@ ul#date_list li :visited{
 }
 ul#date_list{
   text-align: center;
+  display: flex; justify-content: space-between;
 }
 
 .selected-date {
