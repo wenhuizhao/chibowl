@@ -3,6 +3,15 @@ function getCartItems(){
   var cart = JSON.parse(cartData || "{}");
   return cart.items;
 }
+function homePage(){
+  window.location = "/"
+}
+function homeToday(){
+  window.location = "/"
+}
+function becomeChef(){
+  window.location = "/chefs/become"
+}
 function viewCart(){
   var items = getCartItems();
   var productIds = Object.keys(items);
