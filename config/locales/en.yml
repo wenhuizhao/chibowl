@@ -55,6 +55,11 @@ en:
     faq: FAQ
     privacy: Privacy
     term: Term
+    follow_us: "follow us"
+    join_us: "join us"
+    collaboration: "collaboration"
+    follow_wechat: "scan and follow us on wechat"
+    more_products: "more delicious food!"
   header:
     home: "Home"
     chef: "become a Chef"
