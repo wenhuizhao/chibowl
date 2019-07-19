@@ -1,21 +1,21 @@
 <div class="mdl-layout__drawer">
-    <!-- <a class="mdl-layout-title" href="index.html">
-        <%= image_tag "logo-dark.png", alt:"FAB!" %>
-    </a> -->
-    <%= link_to root_path, class:"mdl-layout-title" do %>
+    <a class="mdl-layout-title" href="javascript:void(0);" onClick="homePage()">
+        <%= image_tag "chibowl.png", alt:"ChiBowl", size:"52x54" %>
+    </a> 
+    <!--<%= link_to root_path, class:"mdl-layout-title" do %>
             <%= image_tag "chibowl.png", alt:"ChiBowl", size:"52x54" %>
-    <% end %>
+    <% end %>-->
     <nav class="mdl-navigation">
-        <!-- <a class="mdl-navigation__link mdl-navigation__link--submenu" href="#"><%= t 'header.home' %></a>
-        <nav class="mdl-navigation mdl-navigation__submenu">
+        <a class="mdl-navigation__link mdl-navigation__link" href="javascript:void(0);" onClick="homeToday()"><%= t 'header.today' %></a>
+        <!--<nav class="mdl-navigation mdl-navigation__submenu">
             <a class="mdl-navigation__link mdl-navigation__submenu__link" href="index.html"><%= t 'header.home' %></a>
         </nav>-->
-        <%= link_to t('header.today'), root_path(:anchor=> "daily_products"), class: "mdl-navigation__link"%>
-        <!--<a class="mdl-navigation__link mdl-navigation__link--submenu" href="#"><%= t 'header.chef' %></a>
-        <nav class="mdl-navigation mdl-navigation__submenu">
+        <!--<%= link_to t('header.today'), root_path(:anchor=> "daily_products"), class: "mdl-navigation__link"%>-->
+        <a class="mdl-navigation__link mdl-navigation__link" href="javascript:void(0);" onClick="becomeChef()"><%= t 'header.chef' %></a>
+        <!--<nav class="mdl-navigation mdl-navigation__submenu">
             <a class="mdl-navigation__link mdl-navigation__submenu__link" href="shop.html"><%= t 'header.chef.featured' %></a>
         </nav>-->
-        <%= link_to t('header.chef'), become_chefs_path, class: "mdl-navigation__link"%>
+        <!--<%= link_to t('header.chef'), become_chefs_path, class: "mdl-navigation__link"%>-->
         <span class="mdl-navigation__link-divider"></span>
 
         <!--<a class="mdl-navigation__link" href="customizer.html">
