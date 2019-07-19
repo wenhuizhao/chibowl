@@ -80,7 +80,7 @@
             $('#quantity-<%=product.id%>').val(parseInt($('#quantity-<%=product.id%>').val())+1);
         });
         $('#btn-minus-<%=product.id%>').click(function(){
-            if (parseInt($('#quantity-<%=product.id%>').val()) > 0) {
+            if (parseInt($('#quantity-<%=product.id%>').val()) > 1) {
                 $('#quantity-<%=product.id%>').val(parseInt($('#quantity-<%=product.id%>').val())-1);
             }
         });

@@ -1,29 +1,34 @@
 <div class="mdl-layout__drawer">
-    <a class="mdl-layout-title" href="index.html">
+    <!-- <a class="mdl-layout-title" href="index.html">
         <%= image_tag "logo-dark.png", alt:"FAB!" %>
-    </a>
+    </a> -->
+    <%= link_to root_path, class:"mdl-layout-title" do %>
+            <%= image_tag "chibowl.png", alt:"ChiBowl", size:"52x54" %>
+    <% end %>
     <nav class="mdl-navigation">
-        <a class="mdl-navigation__link mdl-navigation__link--submenu" href="#"><%= t 'header.home' %></a>
+        <!-- <a class="mdl-navigation__link mdl-navigation__link--submenu" href="#"><%= t 'header.home' %></a>
         <nav class="mdl-navigation mdl-navigation__submenu">
             <a class="mdl-navigation__link mdl-navigation__submenu__link" href="index.html"><%= t 'header.home' %></a>
-        </nav>
-        <a class="mdl-navigation__link mdl-navigation__link--submenu" href="#"><%= t 'header.chef' %></a>
+        </nav>-->
+        <%= link_to t('header.today'), root_path(:anchor=> "daily_products"), class: "mdl-navigation__link"%>
+        <!--<a class="mdl-navigation__link mdl-navigation__link--submenu" href="#"><%= t 'header.chef' %></a>
         <nav class="mdl-navigation mdl-navigation__submenu">
             <a class="mdl-navigation__link mdl-navigation__submenu__link" href="shop.html"><%= t 'header.chef.featured' %></a>
-        </nav>
+        </nav>-->
+        <%= link_to t('header.chef'), become_chefs_path, class: "mdl-navigation__link"%>
         <span class="mdl-navigation__link-divider"></span>
 
-        <a class="mdl-navigation__link" href="customizer.html">
+        <!--<a class="mdl-navigation__link" href="customizer.html">
             <i class="material-icons mdl-navigation__icon">build</i>
             Customizer
+        </a>-->
+        <a class="mdl-navigation__link" href="javascript:void(0);" onClick="viewCart()">
+            <i style="display:inline-block" class="material-icons mdl-navigation__icon">shopping_cart</i>
+            <%= t 'header.cart'%>
         </a>
-        <a class="mdl-navigation__link" href="cart.html">
-            <i class="material-icons mdl-navigation__icon">shopping_basket</i>
-            Cart
-        </a>
-        <a class="mdl-navigation__link" href="checkout.html">
-            <i class="material-icons mdl-navigation__icon">credit_card</i>
-            Checkout
+        <a class="mdl-navigation__link" href="javascript:void(0);" onClick="viewCheckout()">
+            <i style="display:inline-block" class="material-icons mdl-navigation__icon">credit_card</i>
+            <%= t 'header.checkout'%>
         </a>
         <% if user_signed_in? %>
             <%= link_to (t 'header.logout'), destroy_user_session_url, data: {method: :delete} %>
