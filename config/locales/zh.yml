@@ -88,6 +88,12 @@ zh:
         remember_me: '记住登陆'
         login: '登陆'
   orders:
+    show:
+      wechat_paying: '扫描微信二维码支付订单~'
+      venmo_paying: '扫描Venmo二维码支付订单～'
+      order_total: '本次订单金额：'
+      back_to_homepage: "返回首页"
+      any_question: "如果您有任何疑问，请联系客服人员微信： WildLife96"
     order_success: '下单成功'
     cart:
       cart_title: '购物车'
@@ -110,6 +116,7 @@ zh:
       billing_details: '账单信息'
       place_order: '提交订单'
       order_success: '您的订单已经成功提交，我们会尽快处理。'
+      
   products:
     cart:
       cart_title: '购物车'
