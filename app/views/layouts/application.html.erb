@@ -42,7 +42,12 @@
 
 <script>
     $(document).ready(function($) {
-  M.AutoInit();
+        M.AutoInit();
+        updateCartBadge();
+        updateSideCart();
+        document.addEventListener('turbolinks:load', function() {
+            componentHandler.upgradeDom();
+        });
 
         $('main').scroll(function(e) {
             if(e.target.scrollTop > 1) {
@@ -53,9 +58,6 @@
             }
         });
 
-        updateCartBadge();
-        updateSideCart();
-        console.log("update");
         
         // Parallax backgrounds
         $('.oxy-background-parallax').parallax();
