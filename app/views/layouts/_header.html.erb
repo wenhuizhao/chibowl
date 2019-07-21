@@ -8,11 +8,9 @@
         <a class="mdl-layout-title" href="javascript:void(0);" onClick="homePage()"><%= image_tag "chibowl.png", alt:"ChiBowl", size:"52x54" %></a>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="javascript:void(0);" onClick="homeToday()"><%= t 'header.today' %></a>
-            <a class="mdl-navigation__link" href="javascript:void(0);" onClick="becomeChef()"><%= t 'header.chef' %></a>
-            <!--<%= link_to t('header.today'), root_path(:anchor=> "daily_products"), class: "mdl-navigation__link"%>-->
+            <%= link_to t('header.today'), root_path(:anchor=> "daily_products"), class: "mdl-navigation__link"%>
             <!--<%= link_to t('header.chef'), chefs_path, class: "mdl-navigation__link" %>-->
-            <!--<%= link_to t('header.chef'), become_chefs_path, class: "mdl-navigation__link"%>-->
+            <%= link_to t('header.chef'), become_chefs_path, class: "mdl-navigation__link"%>
             <a href="javascript:void(0);" onClick="viewCart()" class="mdl-navigation__link">
                 <%= t 'header.cart'%>
             </a>
