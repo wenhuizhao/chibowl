@@ -64,7 +64,7 @@ ul#date_list{
   color: darkred;
 }
 
-#daily_products .oxy-card-product__image {
+.oxy-card-product__image {
   height: 280px;
   width :100%;
   object-fit: cover;
@@ -93,4 +93,8 @@ ul#date_list{
 .horizontal_center {
   text-align: center;
   margin: 10px;
+}
+
+.divider_margin {
+  margin: 20px;
 }

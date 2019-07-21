@@ -26,13 +26,14 @@
             <%# <li><a>中文</a>
                 <a>English</a>
             </li> %>
-        <% if user_signed_in? %>
+        <!--<% if user_signed_in? %>
             <li><%= link_to (t 'header.logout'), destroy_user_session_url, data: {method: :delete} %></li>
         <% else %>
             <li>
             <%= link_to (t 'header.login'), new_user_session_url, class: 'mdl-navigation__link' %>
             </li>
-        <% end %>
+        <% end %>-->
+            <%= link_to t('home.my_profile'), home_profile_path%>
         </ul>
 
         </nav>

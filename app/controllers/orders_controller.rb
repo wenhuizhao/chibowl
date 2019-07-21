@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_permission, only:[:index, :update, :destroy, :edit]
   # GET /orders
   # GET /orders.json
   def index
@@ -86,6 +86,11 @@ class OrdersController < ApplicationController
     end
     
   end
+
+  def details
+    @order = Order.find(params[:id])
+  end
+
   private
     def prepare_order(place_order_params=nil)
       order = Order.new(place_order_params)
@@ -111,6 +116,13 @@ class OrdersController < ApplicationController
     def set_order
       @order = Order.find(params[:id])
     end
+
+    def check_permission
+      if @order&.user_id!=current_user.id&& !current_user.admin?
+        redirect_to home_error_page_path
+      end
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params

@@ -13,6 +13,9 @@ Rails.application.routes.draw do
       get :checkout
       post :place_order
     end
+    member do
+      get :details
+    end
   end
   resources :products do
     member do
@@ -35,7 +38,9 @@ Rails.application.routes.draw do
       :omniauth_callbacks => "users/omniauth_callback" 
     }
   get 'home/index2'
+  get 'home/error_page'
   get 'home/index'
+  get 'home/profile'
   root 'home#index'
   get 'home/privacy'
   get 'home/user_term'

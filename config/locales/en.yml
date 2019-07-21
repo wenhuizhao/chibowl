@@ -95,6 +95,7 @@ en:
     date_choice: "Date choice"
     from: "from"
     next_week_products: "next week products"
+    my_profile: "my profile"
   devise:
     sessions:
       new:

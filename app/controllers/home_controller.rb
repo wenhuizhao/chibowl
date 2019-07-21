@@ -36,4 +36,13 @@ class HomeController < ApplicationController
   def user_term
 
   end
+
+  def profile
+    @user = current_user
+    product_service = ProductService.new
+    @hot_products = product_service.hot
+  end
+
+  def error_page
+  end
 end

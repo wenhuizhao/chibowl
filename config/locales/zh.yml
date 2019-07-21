@@ -58,6 +58,9 @@ zh:
     news_news: "新闻"
     today: "今日菜品"
   home:
+    profile:
+      my_order: "我的订单"
+      hot_products: "热门菜品"
     featured_product: "推荐"
     featured_products: "推荐菜"
     featured_title: "强力推荐"
@@ -80,6 +83,7 @@ zh:
     date_choice: "日期选择"
     from: "来自"
     next_week_products: "下周菜单"
+    my_profile: "我的主页"
   devise:
     sessions:
       new:
@@ -88,6 +92,10 @@ zh:
         remember_me: '记住登陆'
         login: '登陆'
   orders:
+    details:
+      pick_up_date: '取餐日期'
+      pick_up_time: '取餐时间段： 12pm-3pm'
+      order_product: '订单菜品'
     show:
       wechat_paying: '扫描微信二维码支付订单~'
       venmo_paying: '扫描Venmo二维码支付订单～'
@@ -95,6 +103,7 @@ zh:
       back_to_homepage: "返回首页"
       any_question: "如果您有任何疑问，请联系客服人员微信： WildLife96"
     order_success: '下单成功'
+    order_details: "订单详情"
     cart:
       cart_title: '购物车'
       apply_coupon: '使用优惠卷'
@@ -138,3 +147,4 @@ zh:
       scan_img: "扫描公众号二维码，发送“成为厨师”获得更多详细信息。"
       join_us: "快来加入我们吧～"
       back_to_homepage: "返回首页"
+  

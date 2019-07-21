@@ -211,7 +211,8 @@
                             $cartButton.addClass(addProductToCartAnimation).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
                                 // increment cart count
                                 $cartButton.removeClass(addProductToCartAnimation);
-                                var productCount = parseInt($cartButton.attr('data-badge')) + 1;
+                                // var productCount = parseInt($cartButton.attr('data-badge')) + 1;
+                                var productCount = parseInt($cartButton.attr('data-badge'));
                                 $cartButton.attr('data-badge', productCount);
                             });
                             // remove pending class from add product button
