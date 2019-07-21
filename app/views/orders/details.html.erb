@@ -1,0 +1,23 @@
+<div class="oxy-section">
+<div class="oxy-section__content">
+<div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
+<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+
+
+</div>
+
+    <% @order.pickup_date_restaunt.each do |day, products_hash| %>
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+        <div class="mdl-typography--title"><%= t '.pick_up_date'%>: <%= I18n.localize(day, format: '%Y-%m-%d')%></div>
+        <div class="mdl-typography--title"><%= t '.pick_up_time'%></div>
+        <div class="mdl-typography--title"><%= t 'orders.checkout.picking_up_address'%></div>
+            <div class="mdl-typography--title"><%= t '.order_product'%>:</div>
+            <% products_hash.each do |chef_id, val| %>
+            <div class="mdl-typography--title"><%= val[:name] %>: <%= val[:products] %></div>
+            <% end %>
+    </div>
+    <% end %>
+
+</div>
+</div>
+</div>

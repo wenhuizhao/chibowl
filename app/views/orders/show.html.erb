@@ -1,32 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="oxy-section">
+    <div class="oxy-section__content">
+        <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+              <div class="mdl-typography--title horizontal_center" ><%= t 'orders.order_success'%></div>
+              <div class="mdl-typography--title horizontal_center"><%= t '.order_total'%><%= @order.total_with_unit%></div>
+              <% if @order.paying_method=="byVenmo"%>
+                <div class="mdl-typography--title horizontal_center"><%= t '.venmo_paying'%></div>
+                  <%= image_tag "venmo.jpg", alt:"pay by venmo", class:"paying_scan_img", size:"258x258"%>
+              <%else %>
+                <div class="mdl-typography--title horizontal_center"><%= t '.wechat_paying'%></div>
+                <%= image_tag "wechat.jpg", alt:"pay by wechat", class:"paying_scan_img", size:"258x258"%>
+              <% end%>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+                
+                <div class="mdl-typography--title horizontal_center" ><%= t '.any_question'%></div>
+                <%= link_to root_path do%>
+                    <div class="mdl-typography--title horizontal_center"><%= t '.back_to_homepage'%></div>
+                <%end%>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            </div>
+        </div>
+    </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @order.user_id %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @order.status %>
-</p>
-
-<p>
-  <strong>Order date:</strong>
-  <%= @order.order_date %>
-</p>
-
-<p>
-  <strong>Detail:</strong>
-  <%= @order.detail %>
-</p>
-
-<p>
-  <strong>Detail:</strong>
-  <%= @order.paying_method %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
 <script>
   $(document).ready(function() {
   <% if @clear_cart %>

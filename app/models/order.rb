@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items
-  enum status: {"pending" => 0, "paid" => "1"}
+  enum status: {"pending" => 0, "paid" => "1", "deliveried" =>"2"}
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -21,7 +21,7 @@ class Order < ApplicationRecord
   end
 
   def shipping
-    0
+    2
   end
 
   def total
@@ -43,6 +43,23 @@ class Order < ApplicationRecord
         output[day][chef.id] = {
           address: chef.address,
           products: items.select {|i| i.product.chef == chef}.map(&:product).map(&:name).join(",")
+        }
+      end
+    end
+    output
+  end
+
+  def pickup_date_restaunt
+    output = {}
+    available_days = self.order_items.group_by(&:available_day)
+    available_days.keys.sort.each do |day|
+      output[day]= {}
+      items = available_days[day]
+      chefs = items.map(&:product).map(&:chef).uniq
+      chefs.each do |chef|
+        output[day][chef.id] = {
+          name: chef.name,
+          products: items.select {|i| i.product.chef == chef}.map(&:product).map(&:name).join(" ")
         }
       end
     end

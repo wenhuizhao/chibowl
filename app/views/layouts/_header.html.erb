@@ -27,13 +27,16 @@
                 <a>English</a>
             </li> %>
         <% if user_signed_in? %>
-            <li><%= link_to (t 'header.logout'), destroy_user_session_url, data: {method: :delete} %></li>
+            <li><!--<%= link_to (t 'header.logout'), destroy_user_session_url, data: {method: :delete} %>-->
+                <%= link_to t('home.my_profile'), home_profile_path%>
+            </li>
         <% else %>
             <li>
             <%= link_to (t 'header.login'), new_user_session_url, class: 'mdl-navigation__link' %>
             </li>
         <% end %>
-        </ul>
+
+       </ul>
 
         </nav>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
