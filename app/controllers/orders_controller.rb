@@ -5,6 +5,9 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    if !current_user&.admin?
+      redirect_to home_error_page_path
+    end
   end
 
   # GET /orders/1
@@ -20,8 +23,8 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+  
   end
-
   # POST /orders
   # POST /orders.json
   def create
@@ -118,7 +121,7 @@ class OrdersController < ApplicationController
     end
 
     def check_permission
-      if @order&.user_id!=current_user.id&& !current_user.admin?
+      if @order&.user_id!=current_user&.id&& !current_user.admin?
         redirect_to home_error_page_path
       end
     end

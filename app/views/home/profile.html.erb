@@ -9,7 +9,14 @@
                     <%= t 'header.chef'%> </button>
                     <% end%>
                 </div>
-           
+                <!-- <div class="horizontal_center"><%= link_to destroy_user_session_url, data: {method: :delete} do%>
+                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-button--raised">
+                    <%= t 'header.logout'%> </button>
+                    <% end%>
+                </div> -->
+                <%= link_to destroy_user_session_url, data: {method: :delete} do%>
+                    <div class="mdl-typography--title horizontal_center"><%= t 'header.logout'%></div>
+                <%end%>
            </div>
        </div>
    </div>
