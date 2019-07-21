@@ -40,7 +40,11 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
+  gem 'pry-doc'
+  gem 'pry-nav'
   gem 'pry-rails'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
   gem 'dotenv-rails'
 end
 
@@ -87,3 +91,4 @@ gem 'paperclip-ffmpeg', '~> 1.2.0'
 gem 'paperclip-av-transcoder'
 gem 'aws-sdk-s3', '~> 1'
 gem 'jquery-rails'
+gem 'kaminari'

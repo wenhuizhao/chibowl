@@ -1,7 +1,7 @@
 function getCartItems(){
   var cartData = sessionStorage.getItem("cart");
   var cart = JSON.parse(cartData || "{}");
-  return cart.items;
+  return cart && cart.items ? cart.items : {};
 }
 function homePage(){
   window.location = "/"
