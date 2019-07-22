@@ -20,6 +20,11 @@ zh:
     total: '总价'
     cart_subtoal: '小结'
     shipping: "运费"
+  modal:
+    profile:
+      my_profile: '我的主页'
+      my_orders: '我的订单'
+      logout: '登出'
   date:
     abbr_day_names: ['周日', '周一', '周二',	'周三',	'周四',	'周五',	'周六']
     abbr_month_names: ["十二月", "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]

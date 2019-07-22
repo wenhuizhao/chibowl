@@ -29,9 +29,14 @@
             <%= t 'header.checkout'%>
         </a>
         <% if user_signed_in? %>
-            <%= link_to (t 'header.logout'), destroy_user_session_url, data: {method: :delete} %>
+            <a class="modal-trigger mdl-navigation__link" href="#profile-modal">
+            <i style="display:inline-block" class="material-icons mdl-navigation__icon">home</i>
+            <%=t('home.my_profile')%></a>
         <% else %>
-            <%= link_to (t 'header.login'), new_user_session_url, class: 'mdl-navigation__link' %>
+            <%= link_to new_user_session_url, class: 'mdl-navigation__link' do %>
+            <i style="display:inline-block" class="material-icons mdl-navigation__icon">home</i>
+            <%=t('header.login')%>
+            <% end %>
         <% end %>
     </nav>
 </div>

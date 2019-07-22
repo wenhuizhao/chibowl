@@ -98,3 +98,25 @@ ul#date_list{
 .divider_margin {
   margin: 20px;
 }
+
+footer .mdl-mega-footer--heading-checkbox {
+  pointer-events: auto !important;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #fafafa;
+  padding: 0;
+  max-height: 40%;
+  width: 300px;
+  margin-right: 10px;
+  will-change: top, opacity;  
+}
+
+.modal-profile-ul li {
+  background-color: #c59b08;
+  margin: 10px 20px;
+  padding: 10px;
+}
