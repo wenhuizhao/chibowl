@@ -103,6 +103,11 @@ en:
         password: 'Password'
         remember_me: 'Remember Me'
         login: 'Login'
+  modal:
+    profile:
+      my_profile: 'My Profile'
+      my_orders: 'My Orders'
+      logout: 'Logout'
   orders:
     order_success: 'Order success'
     cart:

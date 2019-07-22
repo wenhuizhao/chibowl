@@ -1,0 +1,19 @@
+<div id="profile-modal" class="modal">
+
+    <div class="modal-content">
+
+
+    <ul class="modal-profile-ul">
+      <li><%=link_to t('modal.profile.my_orders'), home_profile_path %></li>
+
+      <li><%= link_to (t 'modal.profile.logout'), destroy_user_session_url, data: {method: :delete} %></li>
+    </ul>
+    </div>
+
+    <div class="modal-footer">
+
+    <a href="javascript:void(0);" class="modal-action modal-close  btn red lighten-1">Close</a>
+
+    </div>
+
+</div>

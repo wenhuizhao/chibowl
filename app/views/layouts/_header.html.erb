@@ -2,10 +2,9 @@
     <!-- Top row, always visible -->
     <div class="mdl-layout__header-row">
         <!-- Title -->
-        <!--<%= link_to root_path, class:"mdl-layout-title" do %>
+        <%= link_to root_path, class:"mdl-layout-title" do %>
             <%= image_tag "chibowl.png", alt:"ChiBowl", size:"52x54" %>
-        <% end %>-->
-        <a class="mdl-layout-title" href="javascript:void(0);" onClick="homePage()"><%= image_tag "chibowl.png", alt:"ChiBowl", size:"52x54" %></a>
+        <% end %>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
             <%= link_to t('header.today'), root_path(:anchor=> "daily_products"), class: "mdl-navigation__link"%>
@@ -26,7 +25,7 @@
             </li> %>
         <% if user_signed_in? %>
             <li><!--<%= link_to (t 'header.logout'), destroy_user_session_url, data: {method: :delete} %>-->
-                <%= link_to t('home.my_profile'), home_profile_path%>
+                <a class="modal-trigger" href="#profile-modal"><%=t('home.my_profile')%></a>
             </li>
         <% else %>
             <li>
