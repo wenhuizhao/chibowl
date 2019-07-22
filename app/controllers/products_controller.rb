@@ -1,10 +1,15 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :review]
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
+  before_action :check_permission, only:[:index, :update, :destroy, :edit]
+  # GET /orders
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
+    if !current_user&.admin?
+      redirect_to home_error_page_path
+    end
   end
 
   # GET /products/1
@@ -75,6 +80,12 @@ class ProductsController < ApplicationController
       else
         format.json { render json: @product.errors, status: :unprocessable_entity}
       end
+    end
+  end
+
+  def check_permission
+    if @order&.user_id!=current_user&.id&& !current_user.admin?
+      redirect_to home_error_page_path
     end
   end
 

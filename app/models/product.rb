@@ -11,6 +11,7 @@ class Product < ApplicationRecord
   enum status: { created: 0, active: 1, inactive: 2}
 
   def files=(array_of_files = [])
+    photos.each{|p| p.destroy}
     array_of_files.each do |f|
       photos.build(image: f, owner: self)
     end

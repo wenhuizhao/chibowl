@@ -92,6 +92,8 @@ zh:
         remember_me: '记住登陆'
         login: '登陆'
   orders:
+    order_by_available_day:
+      chef: '餐馆'
     details:
       pick_up_date: '取餐日期'
       pick_up_time: '取餐时间段： 12pm-3pm'

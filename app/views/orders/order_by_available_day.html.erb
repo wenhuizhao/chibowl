@@ -1,0 +1,21 @@
+<!--<% @result.each do |available_day, order_items|%>
+
+    <div><%= available_day%>:</div>
+    <%order_items.each do |order_item|%>
+    <div>
+    <%= t '.chef'%>:<%= order_item.product.chef.name%>
+    <%= t 'products.cart.product'%>:<%=order_item.product.name%>
+    <%= t 'products.cart.quantity'%>:<%=order_item.quantity%>
+    </div>
+    <%end%>
+<%end %>-->
+
+<% @result.each do |chef,order_items|%>
+    <div><%= t '.chef'%></div>
+    <%= order_items.each do |order_item|%>
+        <div>
+        <%= t 'products.cart.product'%>:<%=order_item.product.name%>
+        <%= t 'products.cart.quantity'%>:<%=order_item.quantity%>
+        </div>
+    <%end%>
+<%end%>

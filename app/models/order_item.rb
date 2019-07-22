@@ -2,7 +2,7 @@ class OrderItem < ApplicationRecord
   belongs_to :order
   belongs_to :product
 
-  enum status: {"pending" => 0, "paid" => "1"}
+  enum status: {"pending" => 0, "paid" => "1","deliveried" => "2"}
 
   def subtotal
     self.quantity * self.product.real_price

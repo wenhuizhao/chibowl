@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     collection do
       get :cart
       get :checkout
+      get :order_by_available_day
+      get :choose_date
       post :place_order
     end
     member do
