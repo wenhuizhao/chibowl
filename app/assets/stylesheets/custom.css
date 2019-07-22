@@ -110,7 +110,7 @@ footer .mdl-mega-footer--heading-checkbox {
   background-color: #fafafa;
   padding: 0;
   max-height: 40%;
-  width: 35%;
+  width: 300px;
   margin-right: 10px;
   will-change: top, opacity;  
 }
