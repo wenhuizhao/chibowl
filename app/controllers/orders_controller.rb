@@ -130,7 +130,9 @@ class OrdersController < ApplicationController
   end
 
   def choose_date
-
+    if !current_user&.admin?
+      redirect_to home_error_page_path
+    end
   end
   private
     def prepare_order(place_order_params=nil)
