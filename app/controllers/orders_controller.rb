@@ -122,6 +122,7 @@ class OrdersController < ApplicationController
     @order = prepare_order(order_params)
     respond_to do |format|
       if @order.save
+        UserMailer.with(order:@order).order_email.deliver_later
         format.html { redirect_to order_path(@order, clear_cart:true), notice: t('.order_success') }
         format.json { render :show, status: :created, location: @order }
       else
