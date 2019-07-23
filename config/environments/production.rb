@@ -103,5 +103,11 @@ Rails.application.configure do
     :url => ":s3_domain_url",
     :bucket => 'upload.carrum.co',
     :path=>"/:class/:attachment/:id_partition/:style/:filename"
-  }  
+  }
+
+  config.action_mailer.default_url_options = {
+    host: 'www.chibowl.com',
+    protocol: 'http'
+  }
+
 end

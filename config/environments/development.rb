@@ -70,4 +70,9 @@ Rails.application.configure do
     :bucket => 'upload.carrum.co',
     :path=>"/:class/:attachment/:id_partition/:style/:filename"
   }
+
+  config.action_mailer.default_url_options = {
+    host: 'localhost:3000',
+    protocol: 'http'
+  }
 end
