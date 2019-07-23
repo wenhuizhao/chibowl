@@ -1,5 +1,5 @@
 <p>choose date</p>
-
+<%=form_for :anything, url:order_by_available_day_orders_path, method:"get" do |f|%>
 <div class= "row">
       <div class="col s12">
         <label>Available date</label>
@@ -11,3 +11,4 @@
   <div class="form-actions">
     <%= f.button :submit, class: 'btn' %>
   </div>
+  <%end%>

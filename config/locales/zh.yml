@@ -99,6 +99,11 @@ zh:
   orders:
     order_by_available_day:
       chef: '餐馆'
+      by_chef: '按餐厅显示'
+      by_customer: '按用户显示'
+      customer_name: '姓名'
+      customer_email: '邮箱'
+      customer_phone: '电话'
     details:
       pick_up_date: '取餐日期'
       pick_up_time: '取餐时间段： 12pm-3pm'

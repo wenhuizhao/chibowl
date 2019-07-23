@@ -24,18 +24,26 @@ class OrdersController < ApplicationController
     #   end
     # end
     @orders = Order.all
-    @result={}
+    @by_chef={}
+    @by_customer={}
     @orders.each do |order|
-      order.order_items.select{|item| item.available_day==params[:date]}.each do |order_item|
-        chef = order_item.product.chef.first_name
-        if !@result.key?(chef)
-          @result[chef]=[order_item]
+      order.order_items.select{|item| item.available_day==params[:anything][:available_day]}.each do |order_item|
+        customer = order_item.order.first_name+"&"+order_item.order.last_name+"&"+order_item.order.email+"&"+order_item.order.phone
+        chef = order_item.product.chef.name
+        if !@by_chef.key?(chef)
+          @by_chef[chef]=[order_item]
         else
-          @result[chef].push(order_item)
+          @by_chef[chef].push(order_item)
         end
+        if !@by_customer.key?(customer)
+          @by_customer[customer]=[order_item]
+        else
+          @by_customer[customer].push(order_item)
+        end
+      end
     end
-   end
   end
+ 
 
   # GET /orders/1
   # GET /orders/1.json
