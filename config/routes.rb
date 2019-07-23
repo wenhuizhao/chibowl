@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get :checkout
       get :order_by_available_day
       get :choose_date
+      get :view
       post :place_order
     end
     member do

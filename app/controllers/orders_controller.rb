@@ -51,6 +51,13 @@ class OrdersController < ApplicationController
     @clear_cart = params[:clear_cart]
   end
 
+  # GET /orders/1/view
+  # GET /orders/1/view.json
+  def view
+    @order = Order.find_by_uuid(params[:uuid])
+    redirect_to details_order_path(@order)
+  end
+
   # GET /orders/new
   def new
     @order = Order.new

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_15_014643) do
+ActiveRecord::Schema.define(version: 2019_07_23_041928) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -230,6 +230,8 @@ ActiveRecord::Schema.define(version: 2019_07_15_014643) do
     t.string "shipping_email"
     t.string "shipping_phone"
     t.string "paying_method"
+    t.string "uuid"
+    t.index ["uuid"], name: "index_orders_on_uuid"
   end
 
   create_table "photos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -322,6 +324,9 @@ ActiveRecord::Schema.define(version: 2019_07_15_014643) do
     t.datetime "avatar_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "uuid_extensions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
