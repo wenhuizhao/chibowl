@@ -103,6 +103,9 @@ en:
         password: 'Password'
         remember_me: 'Remember Me'
         login: 'Login'
+  mail:
+    order:
+      subject: 'We received your order'
   modal:
     profile:
       my_profile: 'My Profile'
