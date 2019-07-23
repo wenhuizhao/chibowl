@@ -1,19 +1,23 @@
 <div id="profile-modal" class="modal">
 
     <div class="modal-content">
-
-
+    <p class="modal-profile-p mdl-typography--title"><%= t 'modal.profile.personal_info'%></p>
+    <p class="modal-profile-p mdl-typography--subhead"><%= current_user&.email %></p>
     <ul class="modal-profile-ul">
       <li><%=link_to t('modal.profile.my_orders'), home_profile_path %></li>
-
+      <li><a href="javascript:void(0);" onClick="viewCart()" class="mdl-navigation__link">
+                <%= t 'header.cart'%>
+            </a>
+      </li>
+      <li><%=link_to t('modal.profile.account_info') %></li>
       <li><%= link_to (t 'modal.profile.logout'), destroy_user_session_url, data: {method: :delete} %></li>
     </ul>
     </div>
 
-    <div class="modal-footer">
+    <%# <div class="modal-footer">
 
     <a href="javascript:void(0);" class="modal-action modal-close  btn red lighten-1">Close</a>
 
-    </div>
+    </div> %>
 
 </div>

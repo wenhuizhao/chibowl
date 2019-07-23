@@ -111,12 +111,21 @@ footer .mdl-mega-footer--heading-checkbox {
   padding: 0;
   max-height: 40%;
   width: 300px;
-  margin-right: 10px;
+  margin-right: 20px;
   will-change: top, opacity;  
 }
 
 .modal-profile-ul li {
-  background-color: #c59b08;
-  margin: 10px 20px;
+  background-color:#fcebe8;
+  margin: 5px 20px;
   padding: 10px;
+}
+
+.modal-profile-ul li a{
+  color: black;
+}
+
+.modal-profile-p {
+  margin: 0px 20px;
+  padding: 0px 10px;
 }

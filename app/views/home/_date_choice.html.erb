@@ -13,7 +13,7 @@
                         </span>
                     </div>
                 </li>
-                <li id="today">
+                <li id="first_day">
                     <%=link_to fetch_products_path(:product_date=>Date.today+1.days), :remote=>true do %>
                         <%= render 'home/date', date: Date.today+1.days%>
                     <%end%>
@@ -52,6 +52,6 @@
             $('#date_list li a').removeClass('selected-date');
             $(this).addClass('selected-date');
         });
-        $('#today a').addClass('selected-date');
+        $('#first_day a').addClass('selected-date');
     });
 </script>

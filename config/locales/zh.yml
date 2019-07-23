@@ -22,8 +22,10 @@ zh:
     shipping: "运费"
   modal:
     profile:
+      personal_info: '个人中心'
       my_profile: '我的主页'
       my_orders: '我的订单'
+      account_info: '账号信息'
       logout: '登出'
   date:
     abbr_day_names: ['周日', '周一', '周二',	'周三',	'周四',	'周五',	'周六']
@@ -160,3 +162,6 @@ zh:
       join_us: "快来加入我们吧～"
       back_to_homepage: "返回首页"
   
+  layouts:
+    modal:
+      
