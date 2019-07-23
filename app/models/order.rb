@@ -3,9 +3,14 @@ class Order < ApplicationRecord
   has_many :order_items
   enum status: {"pending" => 0, "paid" => "1", "deliveried" =>"2"}
 
+  before_validation :set_uuid, on: :create
   validates :first_name, presence: true
   validates :last_name, presence: true
   validate :subtotal_not_zero
+
+  def set_uuid
+    self.uuid = SecureRandom.uuid
+  end
 
   def subtotal_not_zero
     if self.subtotal <= 0
