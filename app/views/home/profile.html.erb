@@ -2,7 +2,7 @@
    <div class=“oxy-section__content”>
        <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-                <div class="horizontal_center" ><%= image_tag @user.avatar.url%></div>
+                <div class="horizontal_center" ><%= image_tag @user.avatar.url, alt:"my avatar"%></div>
                 <div class="mdl-typography--subhead horizontal_center"><%= @user.email%></div>
                 <div class="horizontal_center"><%= link_to become_chefs_path do %>
                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-button--raised">
@@ -14,17 +14,22 @@
                     <%= t 'header.logout'%> </button>
                     <% end%>
                 </div> -->
-                <%= link_to destroy_user_session_url, data: {method: :delete} do%>
-                    <div class="mdl-typography--title horizontal_center"><%= t 'header.logout'%></div>
-                <%end%>
            </div>
        </div>
    </div>
 </div>
-<div class="divider divider_margin" ></div>
 <div class=“oxy-section oxy-color-primary”>
    <div class=“oxy-section__content”>
-       <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
+       <div class="mdl-grid mdl-grid--no-fullwidth">
+           <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div class="divider" ></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=“oxy-section oxy-color-primary”>
+   <div class=“oxy-section__content”>
+       <div class="mdl-grid mdl-grid--no-fullwidth">
            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                 <div class="mdl-typography--title"><%= t '.my_order'%>:</div>
                 <div class="mdl-typography--subhead"><% @user.orders.select{|order| order.status=="pending"}.each do |order|%>
@@ -46,10 +51,18 @@
        </div>
    </div>
 </div>
-<div class="divider divider_margin"></div>
 <div class=“oxy-section oxy-color-primary”>
    <div class=“oxy-section__content”>
-       <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
+       <div class="mdl-grid mdl-grid--no-fullwidth">
+           <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div class="divider" ></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=“oxy-section oxy-color-primary”>
+   <div class=“oxy-section__content”>
+       <div class="mdl-grid mdl-grid--no-fullwidth">
            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                 <div class="mdl-typography--title"><%= t '.hot_products'%>:</div>
             </div>

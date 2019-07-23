@@ -9,6 +9,41 @@ class OrdersController < ApplicationController
       redirect_to home_error_page_path
     end
   end
+  # GET orders/order_by_available_day
+  def order_by_available_day
+    # @orders = Order.where("order_date > ? and order_date < ?",(Date.today),(Date.today+8.days))
+    # @result={}
+    # @orders.each do |order|
+    #   order.order_items.each do |order_item|
+    #     available_day=order_item.available_day
+    #     if !@result.key?(available_day)
+    #       @result[available_day]=[order_item]
+    #     else
+    #       @result[available_day].push(order_item)
+    #     end
+    #   end
+    # end
+    @orders = Order.all
+    @by_chef={}
+    @by_customer={}
+    @orders.each do |order|
+      order.order_items.select{|item| item.available_day==params[:anything][:available_day]}.each do |order_item|
+        customer = order_item.order.first_name+"&"+order_item.order.last_name+"&"+order_item.order.email+"&"+order_item.order.phone
+        chef = order_item.product.chef.name
+        if !@by_chef.key?(chef)
+          @by_chef[chef]=[order_item]
+        else
+          @by_chef[chef].push(order_item)
+        end
+        if !@by_customer.key?(customer)
+          @by_customer[customer]=[order_item]
+        else
+          @by_customer[customer].push(order_item)
+        end
+      end
+    end
+  end
+ 
 
   # GET /orders/1
   # GET /orders/1.json
@@ -94,6 +129,11 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def choose_date
+    if !current_user&.admin?
+      redirect_to home_error_page_path
+    end
+  end
   private
     def prepare_order(place_order_params=nil)
       order = Order.new(place_order_params)

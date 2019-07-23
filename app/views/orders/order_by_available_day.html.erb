@@ -1,0 +1,46 @@
+<!--<% @result&.each do |available_day, order_items|%>
+
+    <div><%= available_day%>:</div>
+    <%order_items.each do |order_item|%>
+    <div>
+    <%= t '.chef'%>:<%= order_item.product.chef.name%>
+    <%= t 'products.cart.product'%>:<%=order_item.product.name%>
+    <%= t 'products.cart.quantity'%>:<%=order_item.quantity%>
+    </div>
+    <%end%>
+<%end %>-->
+<div class="oxy-section">
+<div class="oxy-section__content">
+<div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
+<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+<div class="mdl-typography--title"><%= t '.by_chef'%></div>
+<% @by_chef.each do |chef,order_items|%>
+    <div class="mdl-typography--subhead"><%= chef%>:</div>
+    <% order_items.each do |order_item|%>
+        <div>
+
+        <%= t 'products.cart.product'%>:<%=order_item.product.name%>
+        <%= t 'products.cart.quantity'%>:<%=order_item.quantity%>
+        </div>
+    <%end%>
+<%end%>
+</div>
+<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+<div class="mdl-typography--title"><%= t '.by_customer'%></div>
+<% @by_customer.each do |customer,order_items|%>
+    <%customer = customer.split("&")%>
+    <div class="mdl-typography--subhead"><%= t'.customer_name'%>:<%= customer[0]+" "+customer[1]%></div>
+    <div class="mdl-typography--subhead"><%= t'.customer_email'%>:<%= customer[2]%></div>
+    <div class="mdl-typography--subhead"><%= t'.customer_phone'%>:<%= customer[3]%></div>
+    <% order_items.each do |order_item|%>
+        <div>
+        <%= t '.chef'%>:<%=order_item.product.chef.name%>
+        <%= t 'products.cart.product'%>:<%=order_item.product.name%>
+        <%= t 'products.cart.quantity'%>:<%=order_item.quantity%>
+        </div>
+    <%end%>
+<%end%>
+</div>
+</div>
+</div>
+</div>

@@ -1,11 +1,15 @@
 class ChefsController < ApplicationController
   before_action :set_chef, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
+  before_action :check_permission, only:[:index, :update, :destroy, :edit]
 
   # GET /chefs
   # GET /chefs.json
   def index
     @chefs = Chef.all
+    if !current_user&.admin?
+      redirect_to home_error_page_path
+    end
   end
 
   # GET /chefs/1
@@ -75,6 +79,12 @@ class ChefsController < ApplicationController
   def become
   end
   
+  def check_permission
+    if @chef&.user_id!=current_user&.id&& !current_user.admin?
+      redirect_to home_error_page_path
+    end
+  end
+
   
   private
     # Use callbacks to share common setup or constraints between actions.
