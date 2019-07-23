@@ -2,7 +2,7 @@
 
     <div class="modal-content">
     <p class="modal-profile-p mdl-typography--title"><%= t 'modal.profile.personal_info'%></p>
-
+    <p class="modal-profile-p mdl-typography--subhead"><%= current_user&.email %></p>
     <ul class="modal-profile-ul">
       <li><%=link_to t('modal.profile.my_orders'), home_profile_path %></li>
       <li><a href="javascript:void(0);" onClick="viewCart()" class="mdl-navigation__link">
