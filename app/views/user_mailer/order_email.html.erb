@@ -5,10 +5,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= t 'mail.order.title'%></h1>
+    <p><%= t 'mail.order.title'%></p>
     <p>
-      <%=t 'mail.order.content' %>: <%= @url %>.
-    </p>
+      <%=t 'mail.order.content' %>: </p>
+     <h3>
+      <%= link_to t('mail.order.subject'), @url%>
+    </h3>
     <p>
       <%=t 'mail.order.ending'%>
     </p>
@@ -16,5 +18,7 @@
       <%=t 'mail.order.wish' %>
     </p>
     <p><%=t 'mail.order.sign'%></p>
+    <p><%=t 'mail.order.sign_2'%></p>
+    <%= image_tag(attachments['public_account.jpg'].url)%>
   </body>
 </html>

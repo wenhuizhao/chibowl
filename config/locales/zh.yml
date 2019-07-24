@@ -27,7 +27,8 @@ zh:
       content: '感谢您的订单，请点击以下链接查看您的订单详情'
       ending: '感谢使用Chibowl点餐，如有任何疑问请联系 support@chibowl.com, 或者联系客服人员微信： WildLife96'
       wish: '祝您用餐愉快！'
-      sign: 'Chibowl|团队 敬上'
+      sign: 'Chibowl|团队'
+      sign_2: '敬上'
   modal:
     profile:
       personal_info: '个人中心'
