@@ -62,9 +62,13 @@ class Order < ApplicationRecord
       items = available_days[day]
       chefs = items.map(&:product).map(&:chef).uniq
       chefs.each do |chef|
+        product_array = []
+          items.select {|i| i.product.chef == chef}.each do |item|
+            product_array.push(item.product.name+": "+item.quantity.to_s)
+          end
         output[day][chef.id] = {
           name: chef.name,
-          products: items.select {|i| i.product.chef == chef}.map(&:product).map(&:name).join(" ")
+          products: product_array
         }
       end
     end

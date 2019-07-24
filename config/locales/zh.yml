@@ -71,6 +71,7 @@ zh:
     profile:
       my_order: "我的订单"
       hot_products: "热门菜品"
+      order_date: '订单时间'
     featured_product: "推荐"
     featured_products: "推荐菜"
     featured_title: "强力推荐"
@@ -113,6 +114,7 @@ zh:
       pick_up_date: '取餐日期'
       pick_up_time: '取餐时间段： 12pm-3pm'
       order_product: '订单菜品'
+      piece: '份'
     show:
       wechat_paying: '扫描微信二维码支付订单~'
       venmo_paying: '扫描Venmo二维码支付订单～'
