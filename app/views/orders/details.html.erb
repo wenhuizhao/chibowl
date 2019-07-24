@@ -16,7 +16,10 @@
         <div class="mdl-typography--title"><%= t 'orders.checkout.picking_up_address'%></div>
             <div class="mdl-typography--title"><%= t '.order_product'%>:</div>
             <% products_hash.each do |chef_id, val| %>
-            <div class="mdl-typography--title"><%= val[:name] %>: <%= val[:products] %></div>
+            <div class="mdl-typography--title"><%= val[:name] %>: </div>
+            <% val[:products].each do |product|%>
+                <div class="mdl-typography--title mdl-typography--font-light"><%= product%><%= t '.piece'%></div>
+            <%end%>
             <% end %>
     </div>
     <% end %>
