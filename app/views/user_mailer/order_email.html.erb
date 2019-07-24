@@ -5,12 +5,16 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Thanks for taking order </h1>
+    <h1><%= t 'mail.order.title'%></h1>
     <p>
+      <%=t 'mail.order.content' %>: <%= @url %>.
     </p>
     <p>
-      To view the order, just follow this link: <%= @url %>.
+      <%=t 'mail.order.ending'%>
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>
+      <%=t 'mail.order.wish' %>
+    </p>
+    <p><%=t 'mail.order.sign'%></p>
   </body>
 </html>
