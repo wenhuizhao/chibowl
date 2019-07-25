@@ -35,9 +35,10 @@
             </div>
             <div class="mdl-typography--subhead">
                 <% @user.orders.select{|order| order.status=="pending"}.each do |order|%>
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone oxy-margin-top-30">
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone oxy-margin-top-20">
                     <div class="mdl-typography--title">
                         <%= t '.order_date'%>:<%= I18n.localize(order.order_date, format: '%Y-%m-%d')%></div>
+                        <div class="mdl-typography--title"><%= t'orders.show.order_total'%>:<%=order.total_with_unit%></div>
                     <ol style="list-style-type:disc;">
                         <% order.pickup_date_restaunt.each do |day, products_hash| %>
                         <li>

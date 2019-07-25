@@ -21,6 +21,11 @@ Rails.application.routes.draw do
     end
   end
   resources :products do
+    collection do
+      get :multiple_edit
+      get :available_day_multiple_edit
+      post :available_day_multiple_update
+    end
     member do
       post :review
     end
