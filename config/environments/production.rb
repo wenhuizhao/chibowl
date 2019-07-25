@@ -100,7 +100,8 @@ Rails.application.configure do
       :secret_access_key => Rails.application.credentials.aws[:secret_access_key],
       :s3_region => "us-west-2"
     },
-    :url => ":s3_domain_url",
+    :url => ":s3_alias_url",
+    :s3_host_alias => "d1j1bbd73rub2s.cloudfront.net",
     :bucket => 'upload.carrum.co',
     :path=>"/:class/:attachment/:id_partition/:style/:filename"
   }
