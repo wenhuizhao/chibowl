@@ -12,6 +12,44 @@ class ProductsController < ApplicationController
     end
   end
 
+  #GET /products/multiple_edit
+  def multiple_edit
+    @products = Product.all
+    if !current_user&.admin?
+      redirect_to home_error_page_path
+    end
+  end
+
+  #GET /products/available_day_multiple_edit
+  def available_day_multiple_edit
+    @products = Product.find(params[:product_ids])
+    if !current_user&.admin?
+      redirect_to home_error_page_path
+    end
+  end
+
+  #POST /products/available_day_multiple_update
+  def available_day_multiple_update
+    @products = Product.find(params[:product_ids])
+    if @products.empty?
+      redirect_to products_path
+    else
+      condition = true
+      @products.each do |product|
+        condition = condition && product.update_attributes(:available_day => params[:empty_attr][:available_day])
+      end
+      respond_to do |format|
+        if condition
+          format.html {redirect_to multiple_edit_products_path, notice: "Products' available day were updated."}
+          format.json {render :multiple_edit, status: :ok}
+        else
+          format.html { render :multiple_edit, status: :unprocessable_entitys, notice: "Please try again." }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show
