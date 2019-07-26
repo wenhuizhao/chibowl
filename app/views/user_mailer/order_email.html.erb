@@ -5,7 +5,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p><%= t 'mail.order.title'%></p>
+    <p><%=t 'mail.order.title_1'%><%=@order.first_name%> <%=@order.last_name%><%= t 'mail.order.title_2'%></p>
     <p>
       <%=t 'mail.order.content' %>: </p>
      <h3>
