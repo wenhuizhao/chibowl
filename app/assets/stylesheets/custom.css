@@ -129,3 +129,15 @@ footer .mdl-mega-footer--heading-checkbox {
   margin: 0px 20px;
   padding: 0px 10px;
 }
+
+.modal2 {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #fafafa;
+  padding: 0;
+  max-height: 40%;
+  width: 350px;
+  margin: auto;
+  will-change: top, opacity;  
+}

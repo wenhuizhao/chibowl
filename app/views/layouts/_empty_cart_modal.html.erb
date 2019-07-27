@@ -1,0 +1,15 @@
+<div id="empty-modal" class="modal modal2">
+
+    <div class="modal-content">
+    <p class=" mdl-typography--title"><%if user_signed_in?%><%= current_user&.email %>:<%else%><%= t 'modal.empty_cart.dear_guest'%><%end%></p>
+    <p class="modal-profile-p mdl-typography--subhead"><%= t 'modal.empty_cart.no_products'%></p>
+    <p class="modal-profile-p mdl-typography--subhead"><%=link_to t('modal.empty_cart.go_to_products'), root_path %></p>
+    </div>
+
+    <div class="modal-footer">
+
+    <a href="javascript:void(0);" class="modal-action modal-close  btn red lighten-1">Close</a>
+
+    </div>
+
+</div>
