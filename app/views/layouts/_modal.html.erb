@@ -9,7 +9,10 @@
                 <%= t 'header.cart'%>
             </a>
       </li>
-      <li><%=link_to t('modal.profile.account_info') %></li>
+      <!--<li><%=link_to t('modal.profile.account_info') %></li>-->
+      <%if current_user&.admin?%>
+      <li><%= link_to (t 'modal.profile.admin_manage'), home_index2_path %></li>
+      <%end%>
       <li><%= link_to (t 'modal.profile.logout'), destroy_user_session_url, data: {method: :delete} %></li>
     </ul>
     </div>
