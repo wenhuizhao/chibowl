@@ -13,12 +13,12 @@ function becomeChef(){
   window.location = "/chefs/become"
 }
 function viewCart(){
-  console.log('cart');
   var items = getCartItems();
   var productIds = Object.keys(items);
   var quantities = productIds.map(id=>items[id].quantity);
   if (!items || Object.keys(items).length === 0){
-    alert('your cart is empty');
+    console.log('cart');
+    $('#empty-modal').modal('open')
   }
   else
   window.location = "/orders/cart?product_ids="+productIds+"&quantities="+quantities;  
@@ -29,7 +29,7 @@ function viewCheckout(){
   var productIds = Object.keys(items);
   var quantities = productIds.map(id=>items[id].quantity);
   if (!items || Object.keys(items).length === 0){
-    alert('your cart is empty, there is nothing to checkout');
+    $('#empty-modal').modal('open')
   }
   else
   window.location = "/orders/checkout?product_ids="+productIds+"&quantities="+quantities;  
