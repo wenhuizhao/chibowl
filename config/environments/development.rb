@@ -87,4 +87,7 @@ Rails.application.configure do
     authentication:       'login',
     enable_starttls_auto: true 
   }
+
+  config.stripe.secret_key = Rails.application.credentials.stripe[:development][:secret_key]
+  config.stripe.publishable_key = Rails.application.credentials.stripe[:development][:publishable_key]
 end

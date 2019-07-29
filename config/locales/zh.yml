@@ -4,6 +4,10 @@ zh:
       models:
         order:
           attributes:
+            first_name:
+              blank: '名不能为空'
+            last_name:
+              blank: '姓不能为空'
             order_items:
               subtotal_zero: '订单金额不能为0'
   badge:
@@ -150,6 +154,7 @@ zh:
       bycash: '现金支付'
       byVenmo: 'Venmo转账'
       byWeChat: '微信转账'
+      byStripe: '信用卡'
       contact_info: '联系方式'
       email: '邮箱地址'
       phone: '联系电话'
