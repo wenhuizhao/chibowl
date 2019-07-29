@@ -123,14 +123,25 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         UserMailer.with(order:@order).order_email.deliver_later
-        format.html { redirect_to order_path(@order, clear_cart:true), notice: t('.order_success') }
-        format.json { render :show, status: :created, location: @order }
+        if @order.pay_by_stripe?
+          format.html { render :stripe_pay }
+        else
+          format.html { redirect_to order_path(@order, clear_cart:true), notice: t('.order_success') }
+          format.json { render :show, status: :created, location: @order }
+        end
       else
         format.html { render :checkout, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
     
+  end
+
+  def stripe_charge
+    order_id = params[:order_id]
+    @order = Order.find_by_id(order_id)
+    StripeChargesService.new(params[:stripeEmail], params[:stripeToken], order_id, current_user).call
+    render :payment_success
   end
 
   def details
@@ -181,7 +192,8 @@ class OrdersController < ApplicationController
         :first_name, :last_name, :address, :city, :state, :country, :zipcode,
         :shipping_address_check,
         :shipping_first_name, :shipping_last_name, :shipping_address, :shipping_city,
-        :shipping_state, :shipping_country, :shipping_zipcode, :paying_method, :email, :phone
+        :shipping_state, :shipping_country, :shipping_zipcode, :paying_method, :email, :phone,
+        :stripeEmail, :stripeToken
         )
     end
 end

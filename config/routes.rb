@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :choose_date
       get :view
       post :place_order
+      post :stripe_charge
     end
     member do
       get :details
@@ -56,5 +57,8 @@ Rails.application.routes.draw do
   get 'users/setting'
   post 'users/update_setting'
   get '/fetch_products', to: 'home#daily', as: 'fetch_products'
+  get '/card/new', to: 'billing#new_card', as: 'add_payment_method'
+  post '/card', to: 'billing#create_card', as: 'create_payment_method'
+  get '/success', to: 'billing#success', as: 'success'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

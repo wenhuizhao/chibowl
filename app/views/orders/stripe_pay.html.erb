@@ -1,0 +1,17 @@
+<div class="oxy-section">
+  <div class="oxy-section__content">
+  <%= form_for(@order, url: {action: "stripe_charge"}, method: :post) do %>
+    <%= hidden_field_tag :order_id, @order.id %>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description="Chibowl Order"
+    data-amount="<%=(@order.total*100).to_i%>"
+    data-locale="auto"></script>
+  <% end %>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    clearCart();
+  });
+</script>
