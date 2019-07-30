@@ -1,3 +1,3 @@
 $("#daily_products").html("<%= escape_javascript(render partial:'daily_products', locals:{items: @selected}) %>");
 <!--$('#date-choice-month').html("<%=@selected_date.strftime('%b')%>");-->
-$('#date-choice-month').html("<%=I18n.localize(@selected_date+1.days, format: '%b')%>");
+$('#date-choice-month').html("<%=I18n.localize(@selected_date, format: '%b')%>");
