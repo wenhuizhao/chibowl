@@ -5,11 +5,7 @@
                 <li>
                     <div>
                         <span id="date-choice-month">
-                        <!--<%if (Date.today+1.days).strftime('%b')==(Date.today+7.days).strftime('%b')%>-->
                             <%=I18n.localize(Date.today+1.days, format: '%b')%>
-                        <!--<%else%>
-                            <%=(Date.today+1.days).strftime('%b')%><br><%=(Date.today+7.days).strftime('%b')%>
-                        <%end%>-->
                         </span>
                     </div>
                 </li>
