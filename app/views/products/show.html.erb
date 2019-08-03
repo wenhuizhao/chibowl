@@ -5,11 +5,12 @@
             <div class="mdl-cell--middle mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                 <ol class="oxy-breadcrumb">
                     <li class="oxy-breadcrumb__item">
-                        <a href="/"><%= t 'header.home' %></a>
+                        <!--<a href="/"><%= t 'header.home' %></a>-->
+                        <%= link_to t('header.home'), root_path%>
                     </li>
                 </ol>
             </div>
-            <div class="mdl-cell--middle mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-typography--text-right">                
+            <!--<div class="mdl-cell--middle mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-typography--text-right">                
                     <a id="product-prev" href="#" rel="prev" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
                         <i class="material-icons">keyboard_arrow_left</i>
                     </a>
@@ -18,7 +19,7 @@
                         <i class="material-icons">keyboard_arrow_right</i>
                     </a>
                     <div class="mdl-tooltip" for="product-next"> Yellow top </div>                
-            </div>
+            </div>-->
         </div>
     </div>
 </div>
@@ -27,7 +28,9 @@
         <div class="mdl-grid mdl-grid--no-fullwidth">
             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                 <div class="oxy-product-slider">
+                    <%if @product.sell_price.present?%>
                     <div class="oxy-product-badge"> <%= t 'badge.sell' %> </div>
+                    <%end%>
                     <div class="flexslider oxy-product-slider__slides" data-flex-animation="slide" 
                         data-flex-controls="thumbnails" data-flex-controlsalign="left" 
                         data-flex-controlsposition="outside" data-flex-directions="hide" 
@@ -47,19 +50,31 @@
             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone oxy-product-details">
                 <h1 class="mdl-typography--display-1 oxy-margin-top-0 oxy-margin-bottom-10"><%= @product.name %></h1>
                 <p class="mdl-typography--display-1 oxy-margin-0 oxy-margin-bottom-20 oxy-product-price">
-                    <del>
+                    <!--<del>
+                        <span><%= @product.price_with_unit %></span>
+                    </del>
+                    <ins>
+                        <span><%= @product.sell_price_with_unit %></span>
+                    </ins>-->
+                    <%if @product.sell_price.present?%>
+                        <del>
                         <span><%= @product.price_with_unit %></span>
                     </del>
                     <ins>
                         <span><%= @product.sell_price_with_unit %></span>
                     </ins>
+                    <%else%>
+                        <ins>
+                        <span><%= @product.price_with_unit %></span>
+                    </ins>
+                    <%end%>
                 </p>
                 <a href="#product-reviews-tab" id="review-rating-tooltip" class="oxy-rating oxy-rating--big oxy-margin-bottom-20 oxy-display-inline-block" title="Rated 4.00 out of 5">
                     <span style="width:85%">
                         <strong class="oxy-rating__stars"><%= @product.rating %></strong> out of 5 </span>
                 </a>
-                <div class="mdl-tooltip" for="review-rating-tooltip">
-                    <span itemprop="reviewCount" class="count">1</span> customer review </div>
+                <div class="mdl-tooltip" for="review-rating-tooltip" id="review-rating-count">
+                    <span itemprop="reviewCount" class="count"><%= @product.reviews.size%></span> reviews </div>
                 <p class="mdl-typography--title mdl-typography--font-light 
                     oxy-typography-line-height-normal oxy-opacity-50">
                     
@@ -72,6 +87,10 @@
                             <label class="mdl-textfield__label" for="q1"></label>
                         </div>
                         <input type="button" value="+" id='btn-plus'> </div>
+                    <button type="button" id="pay_at_once"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                        <%= t 'button.pay_at_once' %>
+                    </button>
                     <button type="submit" id="btn-add-to-cart"
                         class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                         <%= t 'button.add_to_cart' %>
@@ -110,7 +129,7 @@
                 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                     <div class="mdl-tabs__tab-bar oxy-flex-justify-start">
                         <a href="#product-description-tab" class="mdl-tabs__tab"><%= t '.additional_info' %></a>
-                        <a href="#product-reviews-tab" class="mdl-tabs__tab is-active"><%= t '.reviews'%> (2)</a>
+                        <a href="#product-reviews-tab" class="mdl-tabs__tab is-active" id="review_count"><%= t '.reviews'%> (<%= @product.reviews_count%>)</a>
                     </div>
                     <div class="mdl-tabs__panel oxy-padding-top-20 oxy-padding-bottom-20" id="product-description-tab">
                         <p><%= @product.extra %></p>
@@ -118,10 +137,10 @@
                     <div class="mdl-tabs__panel oxy-padding-top-20 oxy-padding-bottom-20 is-active" id="product-reviews-tab">
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--6-col">
-                                <h4 class="mdl-typography--title oxy-margin-top-0 oxy-margin-bottom-20">
+                                <h4 class="mdl-typography--title oxy-margin-top-0 oxy-margin-bottom-20" id="reviews-tab-h4">
                                     <%= t '.reviews_for', name: @product.name, count:@product.reviews.size %> </h4>
                                 <ul class="oxy-list oxy-list--full-width " id="reviews">
-                                    <% @product.reviews.limit(2).each do |review|%>
+                                    <% @product.reviews.limit(4).each do |review|%>
                                         <%= render 'review', review: review %>
                                     <% end %>
                                 </ul>
@@ -137,7 +156,7 @@
                                     <span class="oxy-rating-set__star"></span>
                                     <span class="oxy-rating-set__star"></span>
                                 </div> %>
-                                <%= form_tag(review_product_path(@product), method: 'post', remote: true, id:'review-form') do %>
+                                <!--<%= form_tag(review_product_path(@product), method: 'post', remote: true, id:'review-form') do %>
                                     <div class="rate">
                                         <input type="radio" id="star5" name="rating" value="5" />
                                         <label for="star5" title="text">5 stars</label>
@@ -155,7 +174,10 @@
                                         <label class="mdl-textfield__label" for="user-review">Add your review here...</label>
                                     </div>
                                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"> Add Review </button>
-                                <% end %>
+                                <% end %>-->
+                                <div id='review_form'>
+                                <%= render 'review_form', product: @product%>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -197,7 +219,7 @@
             $('#quantity').val(parseInt($('#quantity').val())+1);
         });
         $('#btn-minus').click(function(){
-            if (parseInt($('#quantity').val())> 0) {
+            if (parseInt($('#quantity').val())> 1) {
                 $('#quantity').val(parseInt($('#quantity').val())-1);
             }
         });
@@ -206,7 +228,10 @@
             console.log("add to cart productid, price, quantity:", productId, price, sellPrice, quantity);
             addToCart(productId, price, quantity,name,sellPrice,thumb);
         })
-
+        $('#pay_at_once').click(function() {
+            var quantity = parseInt($('#quantity').val());
+            window.location = "/orders/checkout?product_ids="+productId+"&quantities="+quantity;  
+        })
 
 
 

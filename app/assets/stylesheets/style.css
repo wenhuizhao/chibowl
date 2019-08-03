@@ -26521,9 +26521,9 @@ website:    http://www.themepunch.com
   padding-top: 1em;
 }
 
-.oxy-rating span:before {
+/* .oxy-rating span:before {
   content: "\E838 \E838 \E838 \E838 \E838";
-}
+} */
 
 .oxy-rating-set {
   position: relative;
