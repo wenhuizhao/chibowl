@@ -6,6 +6,26 @@
   justify-content: flex-end;
 }
 
+.star_1 span::before {
+  content: "\E838";
+}
+
+.star_2 ::before {
+  content: "\E838 \E838";
+}
+
+.star_3 ::before {
+  content: "\E838 \E838 \E838";
+}
+
+.star_4 span::before {
+  content: "\E838 \E838 \E838 \E838";
+}
+
+.star_5 span::before {
+  content: "\E838 \E838 \E838 \E838 \E838";
+}
+
 .rate {
   float: left;
   height: 46px;

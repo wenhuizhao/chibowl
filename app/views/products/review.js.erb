@@ -1,1 +1,8 @@
-$("<%= escape_javascript(render 'review', review: @review) %>").appendTo('#reviews');
+if($('#reviews li').size() >= 4){
+    $('#reviews li').last().remove();
+}
+$("<%= escape_javascript(render 'review', review:@review)%>").prependTo('#reviews');
+$('#review_form').html("<%= escape_javascript(render 'review_form', product: @product) %>");
+$('#reviews-tab-h4').html("<%= escape_javascript(t 'products.show.reviews_for', name: @product.name, count:@product.reviews.size) %>");
+$('#review_count').html("<%= escape_javascript(t 'products.show.reviews')%> (<%= @product.reviews_count%>)");
+$('#review-rating-count').html('<span itemprop="reviewCount" class="count"><%= @product.reviews.size%></span> reviews');

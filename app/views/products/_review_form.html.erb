@@ -1,0 +1,19 @@
+<%= form_tag(review_product_path(product), method: 'post', remote: true, id:'review-form') do %>
+<div class="rate">
+    <input type="radio" id="star5" name="rating" value="5" />
+    <label for="star5" title="text">5 stars</label>
+    <input type="radio" id="star4" name="rating" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <input type="radio" id="star3" name="rating" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <input type="radio" id="star2" name="rating" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <input type="radio" id="star1" name="rating" value="1" />
+    <label for="star1" title="text">1 star</label>
+</div>
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--full-width mdl-textfield--floating-label">
+    <textarea class="mdl-textfield__input" name="review_content" type="text" rows="4" id="user-review"></textarea>
+    <label class="mdl-textfield__label" for="user-review">Add your review here...</label>
+</div>
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"> Add Review </button>
+<% end %>

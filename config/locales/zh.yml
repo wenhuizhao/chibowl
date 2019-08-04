@@ -17,6 +17,7 @@ zh:
     share_on: "分享到"
   button:
     add_to_cart: "加到购物车"
+    pay_at_once: '立即购买'
   cart:
     subtotal: '小结'
     view_cart: '查看购物车'
