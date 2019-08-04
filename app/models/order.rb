@@ -16,6 +16,14 @@ class Order < ApplicationRecord
     self.paying_method == 'byStripe'
   end
 
+  def pay_by_wechat?
+    self.paying_method == 'byWechat'
+  end
+
+  def pay_by_alipay?
+    self.paying_method == 'byAlipay'
+  end
+
   def subtotal_not_zero
     if self.subtotal <= 0
       self.errors.add(:order_items, :subtotal_zero)

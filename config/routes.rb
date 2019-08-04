@@ -60,5 +60,7 @@ Rails.application.routes.draw do
   get '/card/new', to: 'billing#new_card', as: 'add_payment_method'
   post '/card', to: 'billing#create_card', as: 'create_payment_method'
   get '/success', to: 'billing#success', as: 'success'
+  post '/yuansfer/ipn', to: 'yuansfer#ipn'
+  post '/yuansfer/callback', to: 'yuansfer#callback'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
