@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items
-  enum status: {"pending" => 0, "paid" => "1", "deliveried" =>"2"}
+  enum status: {"pending" => "0", "paid" => "1", "deliveried" =>"2"}
 
   before_validation :set_uuid, on: :create
   validates :first_name, presence: true
@@ -14,6 +14,14 @@ class Order < ApplicationRecord
 
   def pay_by_stripe?
     self.paying_method == 'byStripe'
+  end
+
+  def pay_by_wechat?
+    self.paying_method == 'byWeChat'
+  end
+
+  def pay_by_alipay?
+    self.paying_method == 'byAlipay'
   end
 
   def subtotal_not_zero

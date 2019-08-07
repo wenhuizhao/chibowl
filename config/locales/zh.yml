@@ -155,6 +155,7 @@ zh:
       bycash: '现金支付'
       byVenmo: 'Venmo转账'
       byWeChat: '微信转账'
+      byAlipay: '支付宝转账'
       byStripe: '信用卡'
       contact_info: '联系方式'
       email: '邮箱地址'
