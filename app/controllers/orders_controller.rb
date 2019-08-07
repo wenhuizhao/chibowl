@@ -127,7 +127,7 @@ class OrdersController < ApplicationController
           format.html { render :stripe_pay }
         elsif @order.pay_by_wechat? || @order.pay_by_alipay?
           @response = YuansferService.new(@order).call
-          format.html { render text: @response, layout: false}
+          format.html { redirect_to @response["result"]["cashierUrl"], layout: false}
         else
           format.html { redirect_to order_path(@order, clear_cart:true), notice: t('.order_success') }
           format.json { render :show, status: :created, location: @order }

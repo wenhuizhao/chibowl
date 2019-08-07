@@ -1,63 +1,92 @@
 require 'digest/md5'
 require 'net/http'
+require 'net/https'
 
 class YuansferService
-  def initialize(order, vendor)
+  def initialize(order)
     @api_token = Rails.configuration.yuansfer[:api_token]
-    @url = Rails.configuration.yuansfer[:url]
-    @mechant_no = Rails.configuration.yuansfer[:mechat_no]
+    @url = Rails.configuration.yuansfer[:url] + '/online/v2/secure-pay'
+    @merchant_no = Rails.configuration.yuansfer[:mechant_no]
     @store_no = Rails.configuration.yuansfer[:store_no]
     @ipn_url = 'https://www.chibowl.com/yuansfer/ipn'
-    @callbck_url = 'https://www.chibowl.com/yuansfer/callback'
+    @callback_url = 'https://www.chibowl.com/yuansfer/callback'
     @amount = order.total
-    @currency = 'USD'
+    @currency = "USD"
     @timeout = 120
-    @goods_info = @order.order_items.map do |item|
+    @order_id = order.id.to_s
+    @terminal = "ONLINE"
+    @goods_info = order.order_items.map do |item|
       {
-        'name': item.product.name,
-        'quantity': item.quantity
+        "name": item.product.name,
+        "quantity": item.quantity.to_s
       }
-    @vendor = vendor
+    end.to_json
+    if order.paying_method == "byAlipay"
+      @vendor = "alipay"
+    else
+      if order.paying_method == "byWeChat"
+        @vendor = "wechatpay"
+      end
     end
   end
 
   def call
-    make_post_req
+    response=make_post_req
+    JSON.parse(response)
   end
 
   private
 
+  def test_params
+    
+    # @amount= '1.00'
+    # @callback_url= 'https://wx.yuansfer.yunkeguan.com/wx'
+    # @currency= 'USD'
+     @goods_info= '[{"goods_name":"Yuansfer","quantity":"1"}]'
+    # @goods_info = '[]'
+    # @ipn_url= 'https://wx.yuansfer.yunkeguan.com/wx'
+    # @merchant_no= '200043'
+    # @order_id= 'seq_1525922323'
+    # @store_no= '300014'
+    # @terminal= 'ONLINE'
+    # @timeout= '120'
+    # @vendor= 'alipay'
+  end
+
   def signature
     api_token_md5 = Digest::MD5.hexdigest(@api_token)
-    buf = %q(
-    amount=#{@amount}&callbackUrl=#{@callback_url}&currency=#{currencty}&
-    goodsInfo=#{@goods_info}&ipnUrl=#{@ipnUrl}&mechantNo=#{@machant_no}&
-    reference=#{@order.id}&storeNo=#{@store_no}&terminal=ONLINE&timeout=#{@timeout}&
-    vendor=#{@vendor}&#{api_token}
-    )
-    Digest::Md5.hexdigest(buf)
+    buf = "amount=#{@amount}&callbackUrl=#{@callback_url}&currency=#{@currency}&goodsInfo=#{@goods_info}&ipnUrl=#{@ipn_url}&merchantNo=#{@merchant_no}&reference=#{@order_id}&storeNo=#{@store_no}&terminal=#{@terminal}&timeout=#{@timeout}&vendor=#{@vendor}&#{api_token_md5}"
+    Digest::MD5.hexdigest(buf)
   end
 
   def request_params
     {
-      mechantNo: @mechant_no,
+      merchantNo: @merchant_no,
       storeNo: @store_no,
       amount: @amount,
-      currency: @curreny,
+      currency: @currency,
       vendor: @vendor,
       ipnUrl: @ipn_url,
       callbackUrl: @callback_url,
+      terminal: @terminal,
+      reference: @order_id.to_s,
       timeout: @timeout,
       goodsInfo: @goods_info,
-      verifySign: @signature
+      verifySign: signature
     }
   end
+
+
+  
   def make_post_req
     begin
         uri = URI(@url)
         http = Net::HTTP.new(uri.host, uri.port)
-        req = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'}) 
-        req.body = request_params.to_json
+        http.use_ssl = true
+        req = Net::HTTP::Post.new(uri.path) 
+        test_params
+        param = request_params
+        req.set_form_data(param)
         res = http.request(req)
         puts "response #{res.body}"
         res.body

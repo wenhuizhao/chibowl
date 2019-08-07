@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items
-  enum status: {"pending" => 0, "paid" => "1", "deliveried" =>"2"}
+  enum status: {"pending" => "0", "paid" => "1", "deliveried" =>"2"}
 
   before_validation :set_uuid, on: :create
   validates :first_name, presence: true
@@ -17,7 +17,7 @@ class Order < ApplicationRecord
   end
 
   def pay_by_wechat?
-    self.paying_method == 'byWechat'
+    self.paying_method == 'byWeChat'
   end
 
   def pay_by_alipay?
