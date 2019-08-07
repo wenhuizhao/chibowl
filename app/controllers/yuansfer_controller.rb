@@ -12,7 +12,6 @@ class YuansferController < ApplicationController
     reference = params[:reference]
     note = params[:note]
     verifySign = params[:verifySign]
-    binding.pry
     validate(yuansfer_id, status, amount, time, reference, note, verifySign)
 
   end
