@@ -123,9 +123,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         UserMailer.with(order:@order).order_email.deliver_later
-        if @order.pay_by_stripe?
-          format.html { render :stripe_pay }
-        elsif @order.pay_by_wechat? || @order.pay_by_alipay?
+        if @order.pay_by_wechat? || @order.pay_by_alipay? || @order.pay_by_stripe?
           @response = YuansferService.new(@order).call
           format.html { redirect_to @response["result"]["cashierUrl"], layout: false}
         else

@@ -11,10 +11,9 @@ class YuansferController < ApplicationController
     amount = params[:amount]
     time = params[:time]
     reference = params[:reference]
-    note = params[:note]
     verifySign = params[:verifySign]
-    validate(yuansfer_id, status, amount, time, reference, note, verifySign)
-
+    validate(yuansfer_id, status, amount, time, reference, verifySign)
+    render json: @response
   end
 
   def ipn
@@ -25,17 +24,18 @@ class YuansferController < ApplicationController
     reference = params[:reference]
     note = params[:note]
     verifySign = params[:verifySign]
-    validate(yuansfer_id, status, amount, time, reference, note, verifySign)
+    validate(yuansfer_id, status, amount, time, reference, verifySign)
+    render json: @response
   end
 
   private
 
-  def validate(yuansfer_id, status, amount, time, reference, note, verifySign)
-    if verifySign != signature(yuansfer_id, status, amount, time, reference, note)
+  def validate(yuansfer_id, status, amount, time, reference, verifySign)
+    if verifySign != signature(yuansfer_id, status, amount, time, reference)
       @response = 'invaliad yuansfer callback:' + params.to_s
-      # Rails.logger.warn('invaliad yuansfer callback:' + params.to_s)
+      Rails.logger.debug('invaliad yuansfer callback:' + params.to_s)
     elsif !Order.exists?(reference)
-      # Rails.logger.warn('invalid yuansfer callback with order id:#{reference}')
+      Rails.logger.error('invalid yuansfer callback with order id:#{reference}')
       @response = 'invalid yuansfer callback with order id:'+reference.to_s
     else
       order = Order.find(reference)
@@ -54,17 +54,15 @@ class YuansferController < ApplicationController
         yuansfer_id: yuansfer_id,
         status: status,
         amount: amount,
-        payment_time: payment_time,
-        #note: note,
-        #transaction_type: :payment
+        payment_time: payment_time
       })
     end
 
   end
 
-  def signature(yuansfer_id, status, amount, time, reference, note)
+  def signature(yuansfer_id, status, amount, time, reference)
     api_token_md5 = Digest::MD5.hexdigest(Rails.configuration.yuansfer[:api_token])
-    buf ="amount=#{amount}&note=#{note}&reference=#{reference}&status=#{status}&time=#{time}&yuansfer_id=#{yuansfer_id}&#{api_token_md5}"
+    buf ="amount=#{amount}&reference=#{reference}&status=#{status}&time=#{time}&yuansferId=#{yuansfer_id}&#{api_token_md5}"
     Digest::MD5.hexdigest(buf)
   end
 

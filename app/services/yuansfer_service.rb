@@ -23,10 +23,10 @@ class YuansferService
     end.to_json
     if order.paying_method == "byAlipay"
       @vendor = "alipay"
-    else
-      if order.paying_method == "byWeChat"
-        @vendor = "wechatpay"
-      end
+    elsif order.paying_method == "byWeChat"
+      @vendor = "wechatpay"
+    elsif order.paying_method == 'byStripe'
+      @vendor = 'unionpay'
     end
   end
 
