@@ -81,7 +81,6 @@ class YuansferService
   def make_post_req
     begin
         uri = URI(@url)
-        binding.pry
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true
         req = Net::HTTP::Post.new(uri.path) 
