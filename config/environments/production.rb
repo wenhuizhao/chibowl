@@ -124,4 +124,13 @@ Rails.application.configure do
 
 config.stripe.secret_key = Rails.application.credentials.stripe[:production][:secret_key]
 config.stripe.publishable_key = Rails.application.credentials.stripe[:production][:publishable_key]
+
+config.yuansfer = {
+  url: 'https://mapi.yuansfer.yunkeguan.com',
+  mechant_no: '200043',
+  store_no: '300014',
+  api_token: '5cbfb079f15b150122261c8537086d77a',
+
+}
+
 end
