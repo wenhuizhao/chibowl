@@ -24,8 +24,12 @@ class YuansferController < ApplicationController
     reference = params[:reference]
     note = params[:note]
     verifySign = params[:verifySign]
-    validate(yuansfer_id, status, amount, time, reference, verifySign)
-    render json: @response
+    begin
+      validate(yuansfer_id, status, amount, time, reference, note, verifySign)
+      render json: @response
+    rescue => e
+      Rails.logger.error(e)
+    end
   end
 
   private
