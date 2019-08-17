@@ -12,8 +12,12 @@ class YuansferController < ApplicationController
     time = params[:time]
     reference = params[:reference]
     verifySign = params[:verifySign]
+    begin
     validate(yuansfer_id, status, amount, time, reference, verifySign)
     render json: @response
+    rescue => e
+      Rails.logger.error(e)
+    end
   end
 
   def ipn
