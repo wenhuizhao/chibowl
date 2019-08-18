@@ -126,8 +126,8 @@ class OrdersController < ApplicationController
         if @order.pay_by_stripe?
           format.html { render :stripe_pay }
         elsif @order.pay_by_wechat? || @order.pay_by_alipay?
+          @response = YuansferService.new(@order).call
           begin
-            @response = YuansferService.new(@order).call
             format.html { redirect_to @response["result"]["cashierUrl"], layout: false}
           rescue => e
             Rails.logger.error(e)
