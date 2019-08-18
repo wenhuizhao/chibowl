@@ -43,7 +43,7 @@ class YuansferController < ApplicationController
       @response = 'invaliad yuansfer callback:' + params.to_s
       Rails.logger.debug('invaliad yuansfer callback:' + params.to_s)
     elsif !Order.exists?(reference)
-      Rails.logger.error('invalid yuansfer callback with order id:#{reference}')
+      Rails.logger.debug('invalid yuansfer callback with order id:' + reference.to_s)
       @response = 'invalid yuansfer callback with order id:'+reference.to_s
     else
       order = Order.find(reference)
