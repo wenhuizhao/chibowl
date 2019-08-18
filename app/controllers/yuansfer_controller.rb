@@ -40,11 +40,12 @@ class YuansferController < ApplicationController
 
   def validate(yuansfer_id, status, amount, time, reference, note, verifySign)
     if verifySign != signature(yuansfer_id, status, amount, time, reference)
-      @response = 'invaliad yuansfer callback:' + params.to_s
-      Rails.logger.debug('invaliad yuansfer callback:' + params.to_s)
+      @response = 'wrong verifySign:' + params.to_s
+      Rails.logger.debug('wrong verifySign:' + params.to_s)
     elsif !Order.exists?(reference)
-      Rails.logger.debug('invalid yuansfer callback with order id:' + reference.to_s)
-      @response = 'invalid yuansfer callback with order id:'+reference.to_s
+      Rails.logger.debug('no order id:' + reference.to_s)
+      Rails.logger.debug('params:' + params.to_s)
+      @response = 'no order id:'+reference.to_s
     else
       order = Order.find(reference)
       if status == 'success'
