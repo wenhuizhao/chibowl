@@ -6,6 +6,7 @@ class YuansferController < ApplicationController
   end
 
   def callback
+    Rails.logger.debug('params of callback:' + params.to_s)
     yuansfer_id = params[:yuansferId]
     status = params[:status]
     amount = params[:amount]
@@ -23,6 +24,7 @@ class YuansferController < ApplicationController
   end
 
   def ipn
+    Rails.logger.debug('params of ipn:' + params.to_s)
     yuansfer_id = params[:yuansferId]
     status = params[:status]
     amount = params[:amount]
