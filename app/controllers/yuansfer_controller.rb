@@ -12,10 +12,11 @@ class YuansferController < ApplicationController
     time = params[:time]
     reference = params[:reference]
     verifySign = params[:verifySign]
+    note = params[:note]
     begin
     validate(yuansfer_id, status, amount, time, reference, note, verifySign)
-    Rails.logger.debug('@response of validate' + @response.to_json)
-    render json: @response
+    Rails.logger.debug('@response of callback validate' + @response.to_s)
+    #render json: @response
     rescue => e
       Rails.logger.error(e)
     end
@@ -31,8 +32,8 @@ class YuansferController < ApplicationController
     verifySign = params[:verifySign]
     begin
       validate(yuansfer_id, status, amount, time, reference, note, verifySign)
-      Rails.logger.debug('@response of validate' + @response.to_json)
-      render json: @response
+      Rails.logger.debug('@response of ipn validate' + @response.to_s)
+      #render json: @response
     rescue => e
       Rails.logger.error(e)
     end
@@ -50,17 +51,19 @@ class YuansferController < ApplicationController
       @response = 'no order id:'+reference.to_s+' params:' + params.to_s
     else
       order = Order.find(reference)
-      Rails.logger.debug(order)
+      Rails.logger.debug('order before changing status:' + order.to_json)
       if status == 'success'
         order.status = Order.statuses[:paid]
         order.save!
         Rails.logger.debug('order:' + order.to_json)
-        @response = 'pay success'
+        @response = 'pay success' + params.to_s
+        Rails.logger.debug('response : ' + @response)
       else
         order.status = Order.statuses[:pending]
         order.save!
         Rails.logger.debug('order:' + order.to_json)
-        @response = 'try later'
+        @response = 'try later' + params.to_s
+        Rails.logger.debug('response : ' + @response)
       end
       payment_time = DateTime.strptime(time, '%y%m%d%H%M%S')
       Transaction.create({

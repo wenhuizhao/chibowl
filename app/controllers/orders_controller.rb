@@ -129,7 +129,9 @@ class OrdersController < ApplicationController
           @response = YuansferService.new(@order).call
           Rails.logger.debug('response of yuansfer call'+ @response.to_s)
           begin
+            if(@response["result"]["cashierUrl"])
             format.html { redirect_to @response["result"]["cashierUrl"], layout: false}
+            end
           rescue => e
             Rails.logger.error(e)
           end
