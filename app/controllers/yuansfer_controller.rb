@@ -14,6 +14,7 @@ class YuansferController < ApplicationController
     verifySign = params[:verifySign]
     begin
     validate(yuansfer_id, status, amount, time, reference, note, verifySign)
+    Rails.logger.debug('@response of validate' + @response.to_json)
     render json: @response
     rescue => e
       Rails.logger.error(e)
@@ -30,6 +31,7 @@ class YuansferController < ApplicationController
     verifySign = params[:verifySign]
     begin
       validate(yuansfer_id, status, amount, time, reference, note, verifySign)
+      Rails.logger.debug('@response of validate' + @response.to_json)
       render json: @response
     rescue => e
       Rails.logger.error(e)
@@ -45,16 +47,19 @@ class YuansferController < ApplicationController
     elsif !Order.exists?(reference)
       Rails.logger.debug('no order id:' + reference.to_s)
       Rails.logger.debug('params:' + params.to_s)
-      @response = 'no order id:'+reference.to_s
+      @response = 'no order id:'+reference.to_s+' params:' + params.to_s
     else
       order = Order.find(reference)
+      Rails.logger.debug(order)
       if status == 'success'
         order.status = Order.statuses[:paid]
-        order.save
+        order.save!
+        Rails.logger.debug('order:' + order.to_json)
         @response = 'pay success'
       else
         order.status = Order.statuses[:pending]
-        order.save
+        order.save!
+        Rails.logger.debug('order:' + order.to_json)
         @response = 'try later'
       end
       payment_time = DateTime.strptime(time, '%y%m%d%H%M%S')
