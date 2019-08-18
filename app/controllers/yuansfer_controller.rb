@@ -13,7 +13,7 @@ class YuansferController < ApplicationController
     reference = params[:reference]
     verifySign = params[:verifySign]
     begin
-    validate(yuansfer_id, status, amount, time, reference, verifySign)
+    validate(yuansfer_id, status, amount, time, reference, note, verifySign)
     render json: @response
     rescue => e
       Rails.logger.error(e)
@@ -29,7 +29,7 @@ class YuansferController < ApplicationController
     note = params[:note]
     verifySign = params[:verifySign]
     begin
-      validate(yuansfer_id, status, amount, time, reference, verifySign)
+      validate(yuansfer_id, status, amount, time, reference, note, verifySign)
       render json: @response
     rescue => e
       Rails.logger.error(e)
@@ -38,7 +38,7 @@ class YuansferController < ApplicationController
 
   private
 
-  def validate(yuansfer_id, status, amount, time, reference, verifySign)
+  def validate(yuansfer_id, status, amount, time, reference, note, verifySign)
     if verifySign != signature(yuansfer_id, status, amount, time, reference)
       @response = 'invaliad yuansfer callback:' + params.to_s
       Rails.logger.debug('invaliad yuansfer callback:' + params.to_s)
