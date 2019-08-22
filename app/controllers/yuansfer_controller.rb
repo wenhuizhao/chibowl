@@ -44,7 +44,7 @@ class YuansferController < ApplicationController
   private
 
   def validate(yuansfer_id, status, amount, time, reference, note, verifySign)
-    if verifySign != signature(yuansfer_id, status, amount, time, reference)
+    if verifySign != signature(yuansfer_id, status, amount, time, note, reference)
       @response = 'wrong verifySign:' + params.to_s
       Rails.logger.debug('wrong verifySign:' + params.to_s)
     elsif !Order.exists?(reference)
@@ -79,9 +79,13 @@ class YuansferController < ApplicationController
 
   end
 
-  def signature(yuansfer_id, status, amount, time, reference)
+  def signature(yuansfer_id, status, amount, time, note, reference)
     api_token_md5 = Digest::MD5.hexdigest(Rails.configuration.yuansfer[:api_token])
-    buf ="amount=#{amount}&reference=#{reference}&status=#{status}&time=#{time}&yuansferId=#{yuansfer_id}&#{api_token_md5}"
+    if note.empty?
+      buf ="amount=#{amount}&reference=#{reference}&status=#{status}&time=#{time}&yuansferId=#{yuansfer_id}&#{api_token_md5}"
+    else
+      buf ="amount=#{amount}&note=#{note}&reference=#{reference}&status=#{status}&time=#{time}&yuansferId=#{yuansfer_id}&#{api_token_md5}"
+    end
     Digest::MD5.hexdigest(buf)
   end
 
