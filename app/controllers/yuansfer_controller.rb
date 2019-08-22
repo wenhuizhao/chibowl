@@ -30,7 +30,7 @@ class YuansferController < ApplicationController
     amount = params[:amount]
     time = params[:time]
     reference = params[:reference]
-    note = params[:note]
+    note = params[:note]?params[:note]:""
     verifySign = params[:verifySign]
     begin
       validate(yuansfer_id, status, amount, time, reference, note, verifySign)
@@ -81,7 +81,7 @@ class YuansferController < ApplicationController
 
   def signature(yuansfer_id, status, amount, time, note, reference)
     api_token_md5 = Digest::MD5.hexdigest(Rails.configuration.yuansfer[:api_token])
-    if note.empty? || note.nil?
+    if note.empty?
       buf ="amount=#{amount}&reference=#{reference}&status=#{status}&time=#{time}&yuansferId=#{yuansfer_id}&#{api_token_md5}"
     else
       buf ="amount=#{amount}&note=#{note}&reference=#{reference}&status=#{status}&time=#{time}&yuansferId=#{yuansfer_id}&#{api_token_md5}"
