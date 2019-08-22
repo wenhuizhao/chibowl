@@ -8,8 +8,8 @@ class YuansferService
     @url = Rails.configuration.yuansfer[:url] + '/online/v2/secure-pay'
     @merchant_no = Rails.configuration.yuansfer[:mechant_no]
     @store_no = Rails.configuration.yuansfer[:store_no]
-    @ipn_url = 'http://localhost:3000/yuansfer/ipn'
-    @callback_url = 'http://localhost:3000/yuansfer/callback?yuansferId={yuansferId}&status={status}&amount={amount}&time={time}&reference={reference}&note={note}&verifySign={verifySign}'
+    @ipn_url = 'https://www.chibowl.com/yuansfer/ipn'
+    @callback_url = 'http://www.chibowl.com/yuansfer/callback?yuansferId={yuansferId}&status={status}&amount={amount}&time={time}&reference={reference}&note={note}&verifySign={verifySign}'
     @amount = order.total
     @currency = "USD"
     @timeout = 120
