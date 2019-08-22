@@ -30,7 +30,7 @@ class YuansferController < ApplicationController
     amount = params[:amount]
     time = params[:time]
     reference = params[:reference]
-    note = params[:note]
+    note = params[:note]?params[:note]:""
     verifySign = params[:verifySign]
     begin
       validate(yuansfer_id, status, amount, time, reference, note, verifySign)
