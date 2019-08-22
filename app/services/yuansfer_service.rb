@@ -8,8 +8,8 @@ class YuansferService
     @url = Rails.configuration.yuansfer[:url] + '/online/v2/secure-pay'
     @merchant_no = Rails.configuration.yuansfer[:mechant_no]
     @store_no = Rails.configuration.yuansfer[:store_no]
-    @ipn_url = 'https://www.chibowl.com/yuansfer/ipn'
-    @callback_url = 'https://www.chibowl.com/yuansfer/callback'
+    @ipn_url = 'http://localhost:3000/yuansfer/ipn'
+    @callback_url = 'http://localhost:3000/yuansfer/callback?yuansferId={yuansferId}&status={status}&amount={amount}&time={time}&reference={reference}&note={note}&verifySign={verifySign}'
     @amount = order.total
     @currency = "USD"
     @timeout = 120
@@ -39,7 +39,7 @@ class YuansferService
 
   def test_params
     
-    # @amount= '1.00'
+    #@amount= '0.01'
     # @callback_url= 'https://wx.yuansfer.yunkeguan.com/wx'
     # @currency= 'USD'
      @goods_info= '[{"goods_name":"Yuansfer","quantity":"1"}]'
@@ -86,6 +86,7 @@ class YuansferService
         req = Net::HTTP::Post.new(uri.path) 
         test_params
         param = request_params
+        #binding.pry
         req.set_form_data(param)
         res = http.request(req)
         puts "response #{res.body}"
