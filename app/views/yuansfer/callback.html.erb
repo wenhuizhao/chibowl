@@ -1,1 +1,38 @@
-<p><%= @response%></p>
+<div class="oxy-section">
+    <div class="oxy-section__content">
+        <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+              <% @order = Order.find(@param["reference"])%>
+              <%case @param["status"]%> 
+                <%when "success"%>
+                <div class="mdl-typography--title horizontal_center"><i class="material-icons">done</i></div>
+                <div class="mdl-typography--title horizontal_center" ><%= t 'orders.order_success'%></div>
+                <%= link_to details_order_path(@order) do%>
+                    <div class="mdl-typography--title horizontal_center"><%= t 'orders.order_details'%></div>
+                <%end%>
+                <%when "failed"%>
+                <div class="mdl-typography--title horizontal_center"><i class="material-icons">highlight_off</i></div>
+                <div class="mdl-typography--title horizontal_center" ><%= t 'orders.yuansfer.pay_failed'%></div>
+                <%when "closed"%>
+                <div class="mdl-typography--title horizontal_center"><i class="material-icons"></i>close</div>
+                <div class="mdl-typography--title horizontal_center" ><%= t 'orders.yuansfer.pay_closed'%></div>
+              <% end%>
+              <div class="mdl-typography--title horizontal_center" ><%= t 'orders.show.any_question'%></div>
+                <%= link_to root_path do%>
+                    <div class="mdl-typography--title horizontal_center"><%= t 'orders.show.back_to_homepage'%></div>
+                <%end%>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+            </div>
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  $(document).ready(function() {
+  <% if @param["status"]=="success" %>
+    clearCart();
+  <% end %>
+  });
+</script>
