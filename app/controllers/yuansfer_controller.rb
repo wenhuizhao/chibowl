@@ -46,11 +46,13 @@ class YuansferController < ApplicationController
   def validate(yuansfer_id, status, amount, time, reference, note, verifySign)
     if verifySign != signature(yuansfer_id, status, amount, time, note, reference)
       @response = 'wrong verifySign:' + params.to_s
+      @param = params
       Rails.logger.debug('wrong verifySign:' + params.to_s)
     elsif !Order.exists?(reference)
       Rails.logger.debug('no order id:' + reference.to_s)
       Rails.logger.debug('params:' + params.to_s)
       @response = 'no order id:'+reference.to_s+' params:' + params.to_s
+      @param = params
     else
       order = Order.find(reference)
       Rails.logger.debug('order before changing status:' + order.to_json)
@@ -59,12 +61,14 @@ class YuansferController < ApplicationController
         order.save!
         Rails.logger.debug('order:' + order.to_json)
         @response = 'pay success' + params.to_s
+        @param = params
         Rails.logger.debug('response : ' + @response)
       else
         order.status = Order.statuses[:pending]
         order.save!
         Rails.logger.debug('order:' + order.to_json)
         @response = 'try later' + params.to_s
+        @param = params
         Rails.logger.debug('response : ' + @response)
       end
       payment_time = DateTime.strptime(time, '%y%m%d%H%M%S')
@@ -73,7 +77,7 @@ class YuansferController < ApplicationController
         yuansfer_id: yuansfer_id,
         status: status,
         amount: amount,
-        payment_time: payment_time
+        payment_time: payment_time,
       })
     end
 

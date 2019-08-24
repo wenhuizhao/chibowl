@@ -140,6 +140,9 @@ zh:
       any_question: "如果您有任何疑问，请联系客服人员微信： WildLife96"
     order_success: '下单成功'
     order_details: "订单详情"
+    yuansfer:
+      pay_closed: "支付关闭，请重新支付～"
+      pay_failed: "支付失败，请重新支付～"
     cart:
       cart_title: '购物车'
       apply_coupon: '使用优惠卷'
