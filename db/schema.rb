@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_030402) do
+ActiveRecord::Schema.define(version: 2019_08_25_015913) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -291,6 +291,20 @@ ActiveRecord::Schema.define(version: 2019_07_29_030402) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "order_id"
+    t.string "yuansfer_id"
+    t.integer "status"
+    t.float "amount"
+    t.float "refund_amount"
+    t.float "void_amount"
+    t.integer "transaction_type"
+    t.string "currency"
+    t.datetime "payment_time"
+    t.float "exchange_rate"
+    t.string "vendor"
+  end
+
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -323,11 +337,10 @@ ActiveRecord::Schema.define(version: 2019_07_29_030402) do
     t.bigint "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string "stripe_id"
+    t.string "authentication_token", limit: 30
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "uuid_extensions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

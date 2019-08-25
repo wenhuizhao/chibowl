@@ -40,11 +40,12 @@ Rails.application.routes.draw do
   end
 
   resources :demos
-  devise_for :user, :path => '', 
-    :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" },
-    :controllers => {
-      :registrations => "users/registrations",
-      :omniauth_callbacks => "users/omniauth_callback" 
+  devise_for :user, path: '',
+    path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' },
+    controllers: {
+      sessions: 'users/sessions',
+      registrations: 'users/registrations',
+      omniauth_callbacks: 'users/omniauth_callback'
     }
   get 'home/index2'
   get 'home/error_page'
