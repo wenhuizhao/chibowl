@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  acts_as_token_authenticatable
+
   has_many :chefs
   has_many :orders
   geocoded_by :address
