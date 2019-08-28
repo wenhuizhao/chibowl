@@ -38,7 +38,7 @@ class Order < ApplicationRecord
   end
 
   def shipping
-    2
+    0
   end
 
   def total

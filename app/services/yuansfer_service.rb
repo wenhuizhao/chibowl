@@ -14,6 +14,7 @@ class YuansferService
     @currency = "USD"
     @timeout = 120
     @order_id = order.id.to_s
+    #@order_id = 218
     @terminal = "ONLINE"
     @goods_info = order.order_items.map do |item|
       {
