@@ -14,6 +14,7 @@ class YuansferService
     @currency = "USD"
     @timeout = 120
     @order_id = order.id.to_s
+    #@order_id = 218
     @terminal = "ONLINE"
     @goods_info = order.order_items.map do |item|
       {
@@ -86,7 +87,7 @@ class YuansferService
         req = Net::HTTP::Post.new(uri.path) 
         test_params
         param = request_params
-        #binding.pry
+        binding.pry
         req.set_form_data(param)
         res = http.request(req)
         puts "response #{res.body}"
