@@ -1,4 +1,4 @@
-<div class="oxy-section">
+<!--<div class="oxy-section">
   <div class="oxy-section__content">
   <%= form_for(@order, url: {action: "stripe_charge"}, method: :post) do %>
     <%= hidden_field_tag :order_id, @order.id %>
@@ -14,12 +14,12 @@
   $(document).ready(function() {
     clearCart();
   });
-</script>
+</script>-->
 
 
-<!--<div class="oxy-section">
+<div class="oxy-section">
     <div class="oxy-section__content">
-        <%= form_for(@order, url: {action: "stripe_charge"}, method: :post) do |f| %>
+        <%= form_for(@order, url: {action: "stripe_charge"}, :html => { :id => "my_form" }, method: :post) do |f| %>
             <%= hidden_field_tag :order_id, @order.id%>
             <%= hidden_field_tag(:stripeToken)%>
             <%= hidden_field_tag(:stripeEmail)%>
@@ -59,31 +59,35 @@
                     </table>
                 </div>
             </div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored", id="pay_by_card"><%= t 'orders.checkout.pay_with_card'%></button>
+            <!--<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored", id="pay_by_card"><%= t 'orders.checkout.pay_with_card'%></button>-->
         <%end%>
     </div>
 </div>
 
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script>
+  $(document).ready(function() {
+    clearCart();
+  });
   var handler = StripeCheckout.configure({
     key: '<%= Rails.application.credentials.stripe[Rails.env.to_sym][:publishable_key] %>',
     locale: 'auto',
     name: "Chibowl.com",
     description: "Chibowl Order",
     panelLabel: "Pay With Card",
-    //allowRememberMe: false,
+    allowRememberMe: false,
     token: function(token) {
-    $('input#stripeToken').val(token.id);
-    $('input#stripeEmail').val(token.email);
-    $('form').submit();
+    $('#stripeToken').val(token.id);
+    $('#stripeEmail').val(token.email);
+    $('#my_form').submit();
   }
   });
-  $('#pay_by_card').on('click', function(){
-    handler.open()
-  });
+  // $('#pay_by_card').on('click', function(){
+  //   handler.open();
+  // });
+  handler.open();
   $(window).on('popstate', function() {
-  handler.close();
-});
-</script>-->
+   handler.close();
+  });
+</script>
 
