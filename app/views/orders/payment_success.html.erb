@@ -1,3 +1,23 @@
-<div>
-  Your payment is received!
+<div class="oxy-section">
+    <div class="oxy-section__content">
+        <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+              <% if @order.status == "paid"%>
+                <div class="mdl-typography--title horizontal_center"><i class="material-icons">done</i></div>
+                <div class="mdl-typography--title horizontal_center" ><%= t 'orders.order_success'%></div>
+                <%= link_to details_order_path(@order) do%>
+                    <div class="mdl-typography--title horizontal_center"><%= t 'orders.order_details'%></div>
+                <%end%>
+              <div class="mdl-typography--title horizontal_center" ><%= t 'orders.show.any_question'%></div>
+                <%= link_to root_path do%>
+                    <div class="mdl-typography--title horizontal_center"><%= t 'orders.show.back_to_homepage'%></div>
+                <%end%>
+              <%end%>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+            </div>
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            </div>
+        </div>
+    </div>
 </div>
