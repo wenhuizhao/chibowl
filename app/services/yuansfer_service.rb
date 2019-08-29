@@ -33,7 +33,6 @@ class YuansferService
 
   def call
     response=make_post_req
-    binding.pry
     JSON.parse(response)
   end
 
