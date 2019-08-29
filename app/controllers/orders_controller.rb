@@ -122,7 +122,7 @@ class OrdersController < ApplicationController
     @order = prepare_order(order_params)
     respond_to do |format|
       if @order.save
-        #UserMailer.with(order:@order).order_email.deliver_later
+        UserMailer.with(order:@order).order_email.deliver_later
         if @order.pay_by_stripe?
           format.html { render :stripe_pay }
         elsif @order.pay_by_wechat? || @order.pay_by_alipay?
@@ -151,10 +151,10 @@ class OrdersController < ApplicationController
   def stripe_charge
     order_id = params[:order_id]
     @order = Order.find_by_id(order_id)
+    #binding.pry
     StripeChargesService.new(params[:stripeEmail], params[:stripeToken], order_id, current_user).call
-    Rails.logger.debug(@order)
-    Rails.logger.debug("email to user")
-    UserMailer.with(order:@order).order_email.deliver_later
+    @order.status = Order.statuses[:paid]
+    @order.save!
     render :payment_success
   end
 

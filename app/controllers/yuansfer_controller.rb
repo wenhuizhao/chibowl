@@ -23,7 +23,7 @@ class YuansferController < ApplicationController
     end
     @order = Order.find(@param["reference"])
     if @order.status == "paid"
-      UserMailer.with(order:@order).order_email.deliver_later
+      #UserMailer.with(order:@order).order_email.deliver_later
     end
   end
 
