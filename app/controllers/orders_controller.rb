@@ -152,6 +152,8 @@ class OrdersController < ApplicationController
     order_id = params[:order_id]
     @order = Order.find_by_id(order_id)
     StripeChargesService.new(params[:stripeEmail], params[:stripeToken], order_id, current_user).call
+    Rails.logger.debug(@order)
+    Rails.logger.debug("email to user")
     UserMailer.with(order:@order).order_email.deliver_later
     render :payment_success
   end
