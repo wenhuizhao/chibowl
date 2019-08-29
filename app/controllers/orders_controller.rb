@@ -148,6 +148,7 @@ class OrdersController < ApplicationController
   end
 
   def stripe_charge
+    binding.pry
     order_id = params[:order_id]
     @order = Order.find_by_id(order_id)
     StripeChargesService.new(params[:stripeEmail], params[:stripeToken], order_id, current_user).call

@@ -15,3 +15,75 @@
     clearCart();
   });
 </script>
+
+
+<!--<div class="oxy-section">
+    <div class="oxy-section__content">
+        <%= form_for(@order, url: {action: "stripe_charge"}, method: :post) do |f| %>
+            <%= hidden_field_tag :order_id, @order.id%>
+            <%= hidden_field_tag(:stripeToken)%>
+            <%= hidden_field_tag(:stripeEmail)%>
+            <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
+                <div class="mdl-grid mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone oxy-margin-bottom-40">
+                    <table class="mdl-data-table mdl-js-data-table oxy-full-width oxy-card-order__summary-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <% @order.order_items.each do |item|%>
+                                    <tr>
+                                      <td><%=item.product.name%>
+                                        <strong>x <%=item.quantity%></strong>
+                                      </td>
+                                      <td><%=item.subtotal.round(2)%></td>
+                                    </tr>
+                                  <% end %>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>Subtotal</td>
+                                        <td><%=@order.subtotal_with_unit %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping</td>
+                                        <td>$<%=@order.shipping%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td><%=@order.total_with_unit %></td>
+                                    </tr>
+                                </tfoot>
+                    </table>
+                </div>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored", id="pay_by_card"><%= t 'orders.checkout.pay_with_card'%></button>
+        <%end%>
+    </div>
+</div>
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script>
+  var handler = StripeCheckout.configure({
+    key: '<%= Rails.application.credentials.stripe[Rails.env.to_sym][:publishable_key] %>',
+    locale: 'auto',
+    name: "Chibowl.com",
+    description: "Chibowl Order",
+    panelLabel: "Pay With Card",
+    //allowRememberMe: false,
+    token: function(token) {
+    $('input#stripeToken').val(token.id);
+    $('input#stripeEmail').val(token.email);
+    $('form').submit();
+  }
+  });
+  $('#pay_by_card').on('click', function(){
+    handler.open()
+  });
+  $(window).on('popstate', function() {
+  handler.close();
+});
+</script>-->
+

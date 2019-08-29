@@ -166,7 +166,7 @@ zh:
       billing_details: '账单信息'
       place_order: '提交订单'
       order_success: '您的订单已经成功提交，我们会尽快处理。'
-      
+      pay_with_card: '信用卡支付'
   products:
     cart:
       cart_title: '购物车'
