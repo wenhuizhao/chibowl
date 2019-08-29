@@ -21,6 +21,10 @@ class YuansferController < ApplicationController
     rescue => e
       Rails.logger.error(e)
     end
+    if @param["status"]=="success"
+      @order = Order.find(@param["reference"])
+      UserMailer.with(order:@order).order_email.deliver_later
+    end
   end
 
   def ipn

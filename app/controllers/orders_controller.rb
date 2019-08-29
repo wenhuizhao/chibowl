@@ -122,7 +122,7 @@ class OrdersController < ApplicationController
     @order = prepare_order(order_params)
     respond_to do |format|
       if @order.save
-        UserMailer.with(order:@order).order_email.deliver_later
+        #UserMailer.with(order:@order).order_email.deliver_later
         if @order.pay_by_stripe?
           format.html { render :stripe_pay }
         elsif @order.pay_by_wechat? || @order.pay_by_alipay?
@@ -136,6 +136,7 @@ class OrdersController < ApplicationController
             Rails.logger.error(e)
           end
         else
+          #UserMailer.with(order:@order).order_email.deliver_later
           format.html { redirect_to order_path(@order, clear_cart:true), notice: t('.order_success') }
           format.json { render :show, status: :created, location: @order }
         end
@@ -151,6 +152,7 @@ class OrdersController < ApplicationController
     order_id = params[:order_id]
     @order = Order.find_by_id(order_id)
     StripeChargesService.new(params[:stripeEmail], params[:stripeToken], order_id, current_user).call
+    UserMailer.with(order:@order).order_email.deliver_later
     render :payment_success
   end
 
