@@ -152,7 +152,8 @@ class OrdersController < ApplicationController
     order_id = params[:order_id]
     @order = Order.find_by_id(order_id)
     #binding.pry
-    StripeChargesService.new(params[:stripeEmail], params[:stripeToken], order_id, current_user).call
+    user = current_user.nil? ? GuestUser.new : current_user
+    StripeChargesService.new(params[:stripeEmail], params[:stripeToken], order_id, user).call
     @order.status = Order.statuses[:paid]
     @order.save!
     UserMailer.with(order:@order).order_email.deliver_later
