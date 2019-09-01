@@ -137,6 +137,8 @@ class OrdersController < ApplicationController
           end
         else
           #UserMailer.with(order:@order).order_email.deliver_later
+          @order.create_sub_order
+          @order.save!
           format.html { redirect_to order_path(@order, clear_cart:true), notice: t('.order_success') }
           format.json { render :show, status: :created, location: @order }
         end
@@ -155,6 +157,7 @@ class OrdersController < ApplicationController
     user = current_user.nil? ? GuestUser.new : current_user
     StripeChargesService.new(params[:stripeEmail], params[:stripeToken], order_id, user).call
     @order.status = Order.statuses[:paid]
+    @order.create_sub_order
     @order.save!
     UserMailer.with(order:@order).order_email.deliver_later
     render :payment_success

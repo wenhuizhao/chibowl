@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items
+  has_many :sub_orders
   enum status: {"pending" => 0, "paid" => 1, "deliveried" =>2}
 
   before_validation :set_uuid, on: :create
@@ -86,5 +87,47 @@ class Order < ApplicationRecord
     end
     output
   end
+
+  def split_order
+    output = {}
+    available_days = self.order_items.group_by(&:available_day)
+    available_days.keys.sort.each do |day|
+      output[day]= {}
+      items = available_days[day]
+      chefs = items.map(&:product).map(&:chef).uniq
+      chefs.each do |chef|
+        product_array = []
+          items.select {|i| i.product.chef == chef}.each do |item|
+            product_array.push(item.id)
+          end
+        output[day][chef.id] = {
+          name: chef.name,
+          products: product_array
+        }
+      end
+    end
+    output
+  end
   
+  def create_sub_order
+    sub_order_arr = []
+    sub = self.split_order
+    sub.each do |date, hash|
+      hash.each do |chef_id, products|
+        suborder = self.sub_orders.build({
+          chef_id: chef_id,
+          status: SubOrder.statuses[:pending],
+          pick_up_date: date
+        })
+        suborder.save
+        sub_order_arr.push(suborder)
+        products[:products].each do |product|
+          #binding.pry
+          OrderItem.find(product).update(sub_order_id: suborder.id )
+        end
+      end
+    end
+    sub_order_arr
+  end
+
 end
