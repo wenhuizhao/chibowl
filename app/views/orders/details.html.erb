@@ -1,12 +1,21 @@
 <div class="oxy-section">
 <div class="oxy-section__content">
 <div class="mdl-grid mdl-grid--no-fullwidth oxy-margin-top-40 ">
+
+<% @order.sub_orders.each do |suborder|%>
 <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-
-
+<div class="mdl-typography--title"><%= t '.pick_up_date'%>: <%= I18n.localize(suborder.pick_up_date, format: '%Y-%m-%d')%></div>
+<div class="mdl-typography--title"><%= Chef.find(suborder.chef_id).name%></div>
+<div class="mdl-typography--title"><%= t '.order_product'%>:</div>
+<%suborder.order_items.each do |item|%>
+<div class="mdl-typography--title mdl-typography--font-light"><%= Product.find(item.product_id).name%>: $<%= item.price%> * <%= item.quantity%></div>
+<%end%>
 </div>
+<%end%>
 
-    <% @order.pickup_date_restaunt.each do |day, products_hash| %>
+
+
+    <!-- <% @order.pickup_date_restaunt.each do |day, products_hash| %>
     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
         <div class="mdl-typography--title"><%= t'orders.order_by_available_day.customer_name'%>:<%= @order.first_name%>&nbsp;<%= @order.last_name%></div>
         <div class="mdl-typography--title"><%= t'orders.order_by_available_day.customer_email'%>:<%=@order.email%></div>
@@ -23,7 +32,7 @@
             <%end%>
             <% end %>
     </div>
-    <% end %>
+    <% end %> %>-->
 
 </div>
 </div>

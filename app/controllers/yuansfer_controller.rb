@@ -62,6 +62,9 @@ class YuansferController < ApplicationController
       Rails.logger.debug('order before changing status:' + order.to_json)
       if status == 'success'
         order.status = Order.statuses[:paid]
+        if order.sub_orders.empty? || order.sub_orders.nil?
+          order.create_sub_order
+        end
         order.save!
         Rails.logger.debug('order:' + order.to_json)
         @response = 'pay success' + params.to_s
