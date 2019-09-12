@@ -272,7 +272,7 @@
                             </div> %>
                         </div>
                         <div class="mdl-card__actions mdl-card--border mdl-typography--text-right">
-                            <%=f.button t('.place_order'), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored", id: 'submit_button'%>
+                            <%=f.submit t('.place_order'), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored", id: 'submit_button'%>
                         </div>
                     </div>
                 </div>
@@ -282,9 +282,9 @@
 </div>
 <script>
   $(document).ready(function($) {
-      $('#place-order-form').on("submit",function(){
-          $("#submit_button").prop("disabled",true);
-      });
+    //   $('#place-order-form').on("submit",function(){
+    //       $("#submit_button").prop("disabled",true);
+    //   });
       $('#create-account-check').change(function() {
           toggleDetail('#create-account-check', '#create-account-details');
       });
